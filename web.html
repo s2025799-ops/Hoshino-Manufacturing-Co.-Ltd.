@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星野製作所 | 公式Webサイト</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- ヘッダー -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 text-white backdrop-blur-md border-b border-slate-800 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                    <i data-lucide="wrench" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-wider block">星野製作所</span>
+                    <span class="text-xs text-blue-400 block -mt-1">Hoshino Works</span>
+                </div>
+            </div>
+            
+            <!-- デスクトップ ナビゲーション -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-400 transition-colors">企業紹介</a>
+                <a href="#products" class="hover:text-blue-400 transition-colors">製品紹介</a>
+                <a href="#schedule" class="hover:text-blue-400 transition-colors">スケジュール</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">ご依頼</a>
+            </nav>
+
+            <!-- モバイルメニューボタン -->
+            <button id="menu-btn" class="md:hidden p-2 hover:bg-slate-800 rounded-md focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- モバイル ナビゲーション -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 py-4 space-y-3">
+            <a href="#about" class="block py-2 hover:text-blue-400 transition-colors">企業紹介</a>
+            <a href="#products" class="block py-2 hover:text-blue-400 transition-colors">製品紹介</a>
+            <a href="#schedule" class="block py-2 hover:text-blue-400 transition-colors">スケジュール</a>
+            <a href="#contact" class="block py-2 hover:text-blue-400 transition-colors">ご依頼</a>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="gradient-bg text-white py-20 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-4xl mx-auto relative z-10 space-y-6">
+            <!-- 5周年アニバーサリーバッジ -->
+            <div class="inline-flex items-center space-x-2 bg-blue-500/20 border border-blue-500/30 text-blue-300 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase animate-pulse">
+                <i data-lucide="party-popper" class="w-4 h-4"></i>
+                <span>おかげさまで5周年</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+                確かな技術で<br class="sm:hidden"><span class="text-blue-400">安心を約束</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                星野製作所は、精巧な模型製作からグラフィックデザインまで、確かなクオリティと情熱でお客様の理想をカタチにします。
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                <a href="#products" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-8 py-3.5 rounded-lg shadow-lg hover:shadow-blue-500/20 transition-all duration-200">
+                    製品を見る
+                </a>
+                <a href="#contact" class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium px-8 py-3.5 rounded-lg transition-all duration-200">
+                    ご依頼はこちら
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 企業紹介セクション -->
+    <section id="about" class="py-20 px-4 bg-white scroll-mt-16">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900">企業紹介</h2>
+                <div class="h-1 w-12 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-4 text-sm sm:text-base">確かなものづくりへのこだわりと、日々の活動情報についてご紹介します。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- コンセプト説明 -->
+                <div class="space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">Concept</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                            技術の灯を絶やさず、<br>常に最高の一品を。
+                        </h3>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed">
+                        星野製作所は、鉄道模型や乗務員扉の精密再現、企業ロゴやWEBデザインなど、多岐にわたる「創作」を行っています。手仕事ならではの細部へのこだわりと、モダンな技術の融合により、多くのお客様から信頼をいただいております。
+                    </p>
+                    
+                    <!-- 基本情報ミニテーブル -->
+                    <div class="border-t border-slate-100 pt-6 space-y-4">
+                        <div class="flex items-center space-x-3 text-slate-700">
+                            <div class="bg-blue-50 p-2 rounded-lg text-blue-600">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">活動拠点</span>
+                                <span class="font-semibold text-sm sm:text-base">東京都千代田区</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 text-slate-700">
+                            <div class="bg-blue-50 p-2 rounded-lg text-blue-600">
+                                <i data-lucide="calendar" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">活動日時</span>
+                                <span class="font-semibold text-sm sm:text-base">毎日営業 <span class="text-rose-500 font-bold ml-2">※木曜定休日</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ビジュアル・イメージ placeholder -->
+                <div class="relative bg-slate-100 rounded-2xl overflow-hidden aspect-video md:aspect-square flex items-center justify-center border border-slate-200 group">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="absolute inset-0 bg-slate-900/40"></div>
+                    <div class="relative z-10 text-center text-white px-6">
+                        <i data-lucide="hammer" class="w-12 h-12 mx-auto mb-4 text-blue-400"></i>
+                        <h4 class="text-xl font-bold">確かな技術で安心を約束</h4>
+                        <p class="text-xs text-slate-300 mt-2">Hoshino Works Philosophy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 製品紹介セクション -->
+    <section id="products" class="py-20 px-4 bg-slate-50 scroll-mt-16">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900">製品紹介</h2>
+                <div class="h-1 w-12 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-4 text-sm sm:text-base">ロゴデザインから鉄道模型、デジタルコンテンツまで、これまで手掛けた主な制作実績です。</p>
+            </div>
+
+            <!-- 製品カードグリッド -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 製品 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center text-slate-400 relative">
+                        <i data-lucide="sparkles" class="w-12 h-12 text-blue-500/20"></i>
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2.5 py-1 rounded-full font-semibold">ロゴマーク</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">HR東日本様 ロゴマーク</h3>
+                            <p class="text-sm text-slate-600">企業アイデンティティを体現するスタイリッシュで象徴的なシンボルマーク。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 製品 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center text-slate-400 relative">
+                        <i data-lucide="sparkles" class="w-12 h-12 text-blue-500/20"></i>
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2.5 py-1 rounded-full font-semibold">ロゴマーク</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">SHK様 ロゴマーク</h3>
+                            <p class="text-sm text-slate-600">モダンな造形とカラーパレットが特徴のオリジナルロゴデザイン。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 製品 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center text-slate-400 relative">
+                        <i data-lucide="heart" class="w-12 h-12 text-rose-500/20"></i>
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2.5 py-1 rounded-full font-semibold">キャラクター</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">ディピョン丸©︎</h3>
+                            <p class="text-sm text-slate-600">親しみやすく愛嬌のあるオリジナルマスコットキャラクター。多方面で活用中。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 製品 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center text-slate-400 relative">
+                        <i data-lucide="sparkles" class="w-12 h-12 text-blue-500/20"></i>
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2.5 py-1 rounded-full font-semibold">ロゴマーク</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">星野商事様 ロゴマーク</h3>
+                            <p class="text-sm text-slate-600">信頼感とグローバルな躍進を想起させる高品質なビジネスロゴ。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 製品 5 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center text-slate-400 relative">
+                        <i data-lucide="navigation" class="w-12 h-12 text-blue-500/20"></i>
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2.5 py-1 rounded-full font-semibold">サインシステム</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">HR東日本様 足元サインシステム</h3>
+                            <p class="text-sm text-slate-600">視認性と実用性を追求した、安全かつスムーズな導線誘導のためのデザイン。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 製品 6 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center text-slate-400 relative">
+                        <i data-lucide="video" class="w-12 h-12 text-blue-500/20"></i>
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-2.5 py-1 rounded-full font-semibold">WEB・YouTube</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">SHK様 YouTubeデザイン</h3>
+                            <p class="text-sm text-slate-600">視聴者の目を惹くチャンネルアート、サムネイルテンプレートの一連のビジュアル群。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 製品 7 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center text-slate-400 relative">
+                        <i data-lucide="box" class="w-12 h-12 text-blue-500/20"></i>
+                        <div class="absolute top-4 left-4 bg-slate-900/80 text-white text-xs px-
