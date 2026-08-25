@@ -282,6 +282,20 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </div>
 </div>
 
+<!-- ビデオ再生用モーダル -->
+<div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeVideoModal()">
+  <div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+    <!-- 閉じるボタン -->
+    <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-sky-300 transition-colors">
+      <i data-lucide="x" class="w-8 h-8"></i>
+    </button>
+    <!-- ビデオプレイヤー -->
+    <video id="contact-video" controls class="w-full rounded-lg shadow-2xl bg-black">
+      <!-- 旧ロゴアニメーション.mp4.mov -->
+      <source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime">
+      お使いのブラウザは動画タグをサポートしていません。
+    </video>  
+
 <!-- スクリプト -->
 <script>
 // 初期製品データ定義
@@ -471,19 +485,7 @@ onclick="openImageModal('${prod.imageUrl}', '${prod.title}')" />
 </div>
 `;
 
-<!-- ビデオ再生用モーダル -->
-<div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeVideoModal()">
-  <div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-    <!-- 閉じるボタン -->
-    <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-sky-300 transition-colors">
-      <i data-lucide="x" class="w-8 h-8"></i>
-    </button>
-    <!-- ビデオプレイヤー -->
-    <video id="contact-video" controls class="w-full rounded-lg shadow-2xl bg-black">
-      <!-- 旧ロゴアニメーション.mp4.mov -->
-      <source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime">
-      お使いのブラウザは動画タグをサポートしていません。
-    </video>
+
   </div>  
 container.appendChild(card);
 });
