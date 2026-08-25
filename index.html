@@ -189,20 +189,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 <div class="max-w-4xl mx-auto px-4 text-center">
 <div class="inline-flex items-center justify-center w-20 h-20 bg-white text-sky-500 rounded-full mb-6 shadow-sm border border-sky-100">
 <i data-lucide="mail" class="w-10 h-10"></i>
-<!-- ビデオ再生用モーダル -->
-<div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeVideoModal()">
-  <div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-    <!-- 閉じるボタン -->
-    <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-sky-300 transition-colors">
-      <i data-lucide="x" class="w-8 h-8"></i>
-    </button>
-    <!-- ビデオプレイヤー -->
-    <video id="contact-video" controls class="w-full rounded-lg shadow-2xl bg-black">
-      <!-- 旧ロゴアニメーション.mp4.mov -->
-      <source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime">
-      お使いのブラウザは動画タグをサポートしていません。
-    </video>
-  </div>
+
 </div>
 </div>
 <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">ご依頼案内</h3>
@@ -587,6 +574,20 @@ function closeVideoModal() {
 window.addEventListener('DOMContentLoaded', () => {
 renderProducts();
 });
+<!-- ビデオ再生用モーダル -->
+<div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeVideoModal()">
+  <div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+    <!-- 閉じるボタン -->
+    <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-sky-300 transition-colors">
+      <i data-lucide="x" class="w-8 h-8"></i>
+    </button>
+    <!-- ビデオプレイヤー -->
+    <video id="contact-video" controls class="w-full rounded-lg shadow-2xl bg-black">
+      <!-- 旧ロゴアニメーション.mp4.mov -->
+      <source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime">
+      お使いのブラウザは動画タグをサポートしていません。
+    </video>
+  </div>
 </script>
 </body>
 </html>
