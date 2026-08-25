@@ -282,6 +282,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </div>
 </div>
 
+<!-- 【修正】ここにビデオモーダルを正しく配置しました -->
 <!-- ビデオ再生用モーダル -->
 <div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeVideoModal()">
   <div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
@@ -294,7 +295,9 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <!-- 旧ロゴアニメーション.mp4.mov -->
       <source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime">
       お使いのブラウザは動画タグをサポートしていません。
-    </video>  
+    </video>
+  </div>  
+</div>
 
 <!-- スクリプト -->
 <script>
@@ -485,8 +488,6 @@ onclick="openImageModal('${prod.imageUrl}', '${prod.title}')" />
 </div>
 `;
 
-
-  </div>  
 container.appendChild(card);
 });
 
@@ -586,6 +587,7 @@ function closeVideoModal() {
     video.currentTime = 0;
   }
 }
+
 // 初期化処理
 window.addEventListener('DOMContentLoaded', () => {
 renderProducts();
