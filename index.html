@@ -233,6 +233,11 @@ LINE、Gmail、zoomなど常時受け付けております。
 </div>
 </section>
 
+<!-- カウンター表示エリア -->
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200 text-xs font-medium text-slate-600 mb-3">
+  <i data-lucide="users" class="w-3.5 h-3.5 text-sky-500"></i>
+  <span>総訪問者数: <strong id="visitor-count" class="text-slate-900">読み込み中...</strong> 人</span>
+</div>
 <!-- フッター -->
 <footer class="bg-white border-t border-slate-200 py-8 text-center">
 <div class="max-w-6xl mx-auto px-4">
@@ -613,6 +618,30 @@ window.addEventListener('DOMContentLoaded', () => {
 renderProducts();
 });
 
+// 訪問者数の取得とカウントアップ
+async function initVisitorCounter() {
+  const countElement = document.getElementById('visitor-count');
+  if (!countElement) return;
+
+  try {
+    // 独自の識別キー（hoshino-factory-site）でカウントを1増やすAPI
+    const res = await fetch('https://api.counterapi.dev/v1/hoshino-factory-site/visits/up');
+    const data = await res.json();
+    
+    // カウント数をカンマ区切りで表示（例: 1,234）
+    countElement.textContent = data.count.toLocaleString();
+  } catch (error) {
+    console.error('Counter API Error:', error);
+    countElement.textContent = '---';
+  }
+}
+
+// 画面読み込み時に実行
+window.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  initVisitorCounter(); // カウンター呼び出し
+});
+  
 </script>
 </body>
 </html>
