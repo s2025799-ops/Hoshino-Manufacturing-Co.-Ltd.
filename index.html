@@ -323,14 +323,13 @@ LINE、Gmail、zoomなど常時受け付けております。
 <!-- スクリプト -->
 <script>
 // 初期製品データ定義
-// 初期製品データ定義
 const defaultProducts = [
 {
 id: 'hr-logo',
 title: 'HR東日本様 ロゴマーク',
 category: 'logo',
 customIconType: 'hr-svg',
-imageUrl: 'IMG_hr-rogo.jpg,
+imageUrl: 'IMG_hr-rogo.jpg',
 imageVisible: true
 },
 {
@@ -340,7 +339,7 @@ category: 'logo',
 icon: 'pen-tool',
 iconBg: 'bg-indigo-50',
 iconColor: 'text-indigo-500',
-imageUrl: 'IMG_shk.jpg,
+imageUrl: 'IMG_shk.jpg',
 imageVisible: true
 },
 {
@@ -350,7 +349,7 @@ category: 'logo',
 icon: 'pen-tool',
 iconBg: 'bg-indigo-50',
 iconColor: 'text-indigo-500',
-imageUrl: 'IMG_nintendoho.jpg,
+imageUrl: 'IMG_nintendoho.jpg',
 imageVisible: true
 },
 {
@@ -370,7 +369,7 @@ category: 'design',
 icon: 'youtube',
 iconBg: 'bg-red-50',
 iconColor: 'text-red-500',
-imageUrl: 'IMG_youtushk.jpg,
+imageUrl: 'IMG_youtushk.jpg',
 imageVisible: true
 },
 {
@@ -380,7 +379,7 @@ category: 'design',
 icon: 'star',
 iconBg: 'bg-yellow-50',
 iconColor: 'text-yellow-500',
-imageUrl: 'IMG_depyon.PNG,
+imageUrl: 'IMG_depyon.PNG',
 imageVisible: true
 },
 {
@@ -390,7 +389,7 @@ category: 'model',
 icon: 'box',
 iconBg: 'bg-sky-50',
 iconColor: 'text-sky-500',
-imageUrl: 'IMG_531 lao.jpg,
+imageUrl: 'IMG_531 lao.jpg',
 imageVisible: true
 },
 {
@@ -400,7 +399,7 @@ category: 'model',
 icon: 'box',
 iconBg: 'bg-sky-50',
 iconColor: 'text-sky-500',
-imageUrl: 'IMG-231-kao.jpg,
+imageUrl: 'IMG-231-kao.jpg',
 imageVisible: true
 },
 {
@@ -410,11 +409,10 @@ category: 'model',
 icon: 'box',
 iconBg: 'bg-sky-50',
 iconColor: 'text-sky-500',
-imageUrl: 'IMG_231-door.HEIK,
+imageUrl: 'IMG_231-door.jpg', // HEIKからjpgに変更（実際のファイル形式に合わせて変更してください）
 imageVisible: true
 }
 ];
-
 // localStorageからデータ読み込みまたは初期データセット
 let products = loadProducts();
 let currentEditingIndex = null;
