@@ -564,6 +564,49 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 <iframe src="train.html" width="100%" height="200" frameborder="0"></iframe>
 </section>  
 
+<!-- 今日のラッキーおみくじセクション -->
+<section id="omikuji" class="py-16 bg-slate-50 border-t border-slate-100">
+  <div class="max-w-xl mx-auto px-4 text-center">
+    
+    <div class="mb-6">
+      <span class="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full border border-amber-200 inline-block mb-2">
+        DAILY FORTUNE
+      </span>
+      <h3 class="text-2xl font-bold text-slate-900 mb-1">星野製作所 おみくじ</h3>
+      <p class="text-xs text-slate-500">今日のラッキーアイテム＆カラーを占ってみよう！</p>
+    </div>
+
+    <!-- おみくじカード -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+      
+      <!-- 結果表示エリア（初期状態は非表示） -->
+      <div id="omikuji-result" class="hidden mb-6 animate-fade-in">
+        <span id="omikuji-luck" class="text-4xl font-black text-amber-500 block mb-3">大吉</span>
+        
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 space-y-2 text-sm text-slate-700 text-left">
+          <p class="flex justify-between items-center">
+            <span class="font-bold text-slate-500">ラッキーアイテム：</span>
+            <span id="omikuji-item" class="text-sky-600 font-bold">E231系前面模型</span>
+          </p>
+          <p class="flex justify-between items-center border-t border-slate-200/60 pt-2">
+            <span class="font-bold text-slate-500">ラッキーカラー：</span>
+            <span id="omikuji-color" class="text-indigo-600 font-bold">スカイブルー</span>
+          </p>
+          <p id="omikuji-desc" class="text-xs text-slate-600 pt-2 border-t border-slate-200/60 leading-relaxed text-center">
+            素晴らしいひらめきが舞い降りる一日！
+          </p>
+        </div>
+      </div>
+
+      <!-- くじ引きボタン -->
+      <button id="omikuji-btn" onclick="drawOmikuji()" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold rounded-xl shadow-md shadow-amber-500/20 transition-all transform active:scale-95 flex items-center justify-center gap-2">
+        <i data-lucide="sparkles" class="w-5 h-5"></i>
+        <span id="omikuji-btn-text">おみくじを引く</span>
+      </button>
+
+    </div>
+  </div>
+</section>
 <!-- メイキング案内バナー (index.html 内に配置) -->
 <div class="my-12 max-w-4xl mx-auto px-4">
   <div class="bg-gradient-to-r from-slate-900 to-sky-950 text-white rounded-2xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-sky-500/20 relative overflow-hidden">
@@ -1211,6 +1254,60 @@ window.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   initVisitorCounter();
 });
+// おみくじのデータ定義
+const omikujiData = [
+  {
+    luck: "超大吉 ⭐︎",
+    item: "E231系前面模型",
+    color: "スカイブルー",
+    desc: "ものづくりの神様が味方する日！素晴らしいアイディアが形になります。"
+  },
+  {
+    luck: "大吉 🌟",
+    item: "HR東日本ロゴ",
+    color: "エメラルドグリーン",
+    desc: "デザインセンスが光る1日。新しい挑戦をすると良い結果に！"
+  },
+  {
+    luck: "吉 👍",
+    item: "乗務員扉模型",
+    color: "シルバー",
+    desc: "細部まで丁寧にこだわることで、周りからの評価がアップします。"
+  },
+  {
+    luck: "中吉 ✨",
+    item: "特製ペーパークラフト",
+    color: "レモンイエロー",
+    desc: "手先を使う作業や創作活動にツキがあるラッキーデー！"
+  },
+  {
+    luck: "小吉 💡",
+    item: "精密デザインナイフ",
+    color: "オレンジ",
+    desc: "焦らずコツコツ作業を進めると、満足のいく仕上がりになります。"
+  }
+];
+
+function drawOmikuji() {
+  const resultArea = document.getElementById('omikuji-result');
+  const btnText = document.getElementById('omikuji-btn-text');
+
+  // ランダム選出
+  const randomIndex = Math.floor(Math.random() * omikujiData.length);
+  const result = omikujiData[randomIndex];
+
+  // データ反映
+  document.getElementById('omikuji-luck').textContent = result.luck;
+  document.getElementById('omikuji-item').textContent = result.item;
+  document.getElementById('omikuji-color').textContent = result.color;
+  document.getElementById('omikuji-desc').textContent = result.desc;
+
+  // 表示切替
+  resultArea.classList.remove('hidden');
+  if (btnText) {
+    btnText.textContent = "もう一度引く";
+  }
+}  
 </script>
 </body>
 </html>
