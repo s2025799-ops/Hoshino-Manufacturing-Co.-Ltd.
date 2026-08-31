@@ -57,7 +57,13 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <a href="#schedule" class="hover:text-sky-500 transition-colors">スケジュール</a>
       <a href="#contact" class="hover:text-sky-500 transition-colors font-semibold text-sky-600">ご依頼案内</a>
     </nav>
-
+　<!-- ダークモード切替ボタン -->
+<button onclick="toggleDarkMode()" 
+        class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" 
+        title="テーマ切り替え"
+        aria-label="ダークモード切り替え">
+  <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5"></i>
+</button>
     <!-- モバイルメニューボタン（mobile-menuの外・flexの中に配置） -->
     <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 hover:text-sky-500 focus:outline-none" aria-label="Toggle Menu">
       <i data-lucide="menu" class="w-6 h-6"></i>
@@ -76,13 +82,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     <a href="#schedule" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">スケジュール</a>
     <a href="#contact" onclick="toggleMobileMenu()" class="block text-sky-600 hover:text-sky-500 py-1 font-semibold">ご依頼案内</a>
   </div>
-<!-- ダークモード切替ボタン -->
-<button onclick="toggleDarkMode()" 
-        class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" 
-        title="テーマ切り替え"
-        aria-label="ダークモード切り替え">
-  <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5"></i>
-</button>  
+  
 </header>
 <main class="flex-grow">
 <!-- メインビジュアル / ヒーローセクション -->
