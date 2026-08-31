@@ -55,11 +55,11 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 <!-- モバイルナビゲーション -->
 <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3">
   <a href="#news" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">新着情報</a> <!-- 追加 -->
-  <a href="#faq" class="hover:text-sky-500 transition-colors">よくある質問</a>
+  <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1 transition-colors">よくある質問</a>
   <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">企業紹介</a>
   <a href="#history" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">歴史</a>
   <a href="#products" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">製品紹介</a>
-  <a href="#portfolio" class="hover:text-sky-500 transition-colors">制作実績</a>
+  <a href="#portfolio" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1 transition-colors">制作実績</a>
   <a href="#entertainment" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">エンタメ</a>
   <a href="#schedule" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">スケジュール</a>
   <a href="#contact" onclick="toggleMobileMenu()" class="block text-sky-600 hover:text-sky-500 py-1 font-semibold">ご依頼案内</a>
