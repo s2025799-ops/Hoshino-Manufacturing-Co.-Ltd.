@@ -886,8 +886,36 @@ LINE、Gmail、zoomなど常時受け付けております。
     </button>
   </div>
 </div>
+
+<!-- ページトップへ戻るボタン -->
+<button id="back-to-top"
+        onclick="scrollToTop()"
+        class="fixed bottom-6 right-6 z-50 p-3 bg-sky-500 hover:bg-sky-400 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4 hover:scale-110"
+        aria-label="ページトップへ戻る">
+  <i data-lucide="arrow-up" class="w-6 h-6"></i>
+</button>
 <!-- スクリプト -->
 <script>
+// スクロール位置に応じたボタンの表示制御
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+    backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+  } else {
+    backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+    backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+  }
+});
+
+// スムーススクロール実行
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}  
 // 初期リアクションデータ
 const reactionKeys = ['awesome', 'cheer', 'want', 'god'];
 
