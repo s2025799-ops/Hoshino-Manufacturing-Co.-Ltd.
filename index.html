@@ -668,7 +668,61 @@ LINE、Gmail、zoomなど常時受け付けております。
 
 </div>
 </section>
+<!-- リアクションボタンセクション -->
+<section id="reactions" class="py-16 bg-white border-t border-slate-100">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <div class="mb-8">
+      <h3 class="text-2xl font-bold text-slate-900 mb-2">ワンタップで応援！</h3>
+      <p class="text-xs text-slate-500">気になったボタンを押してね（何回でも押せます）</p>
+    </div>
 
+    <!-- リアクションボタン一覧 -->
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      
+      <!-- ボタン 1: すごい！ -->
+      <button onclick="sendReaction('awesome')" class="group relative bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+        <span class="text-2xl group-hover:scale-125 transition-transform">👍</span>
+        <div class="text-left">
+          <div class="text-xs font-bold text-slate-700 group-hover:text-sky-600">すごい！</div>
+          <div id="count-awesome" class="text-xs text-slate-400 font-medium">0</div>
+        </div>
+      </button>
+
+      <!-- ボタン 2: 応援！ -->
+      <button onclick="sendReaction('cheer')" class="group relative bg-slate-50 hover:bg-pink-50 border border-slate-200 hover:border-pink-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+        <span class="text-2xl group-hover:scale-125 transition-transform">❤️</span>
+        <div class="text-left">
+          <div class="text-xs font-bold text-slate-700 group-hover:text-pink-600">応援！</div>
+          <div id="count-cheer" class="text-xs text-slate-400 font-medium">0</div>
+        </div>
+      </button>
+
+      <!-- ボタン 3: 欲しい！ -->
+      <button onclick="sendReaction('want')" class="group relative bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+        <span class="text-2xl group-hover:scale-125 transition-transform">✨</span>
+        <div class="text-left">
+          <div class="text-xs font-bold text-slate-700 group-hover:text-amber-600">欲しい！</div>
+          <div id="count-want" class="text-xs text-slate-400 font-medium">0</div>
+        </div>
+      </button>
+
+      <!-- ボタン 4:低評価※重要なのです -->
+      <button onclick="sendReaction('god')" class="group relative bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+        <span class="text-2xl group-hover:scale-125 transition-transform">🔥</span>
+        <div class="text-left">
+          <div class="text-xs font-bold text-slate-700 group-hover:text-indigo-600">低評価※重要なのです</div>
+          <div id="count-god" class="text-xs text-slate-400 font-medium">0</div>
+        </div>
+      </button>
+
+    </div>
+
+    <!-- リアクション完了メッセージ表示エリア -->
+    <p id="reaction-thanks" class="text-xs font-bold text-sky-600 mt-4 opacity-0 transition-opacity duration-300 h-4">
+      リアクションありがとうございます！
+    </p>
+  </div>
+</section>
 <!-- カウンター表示エリア -->
 <div class="text-center my-6">
   <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200 text-xs font-medium text-slate-600">
@@ -791,6 +845,48 @@ LINE、Gmail、zoomなど常時受け付けております。
 </div>
 <!-- スクリプト -->
 <script>
+// 初期リアクションデータ
+const reactionKeys = ['awesome', 'cheer', 'want', 'god'];
+
+// カウントの読み込みと表示
+function loadReactions() {
+  reactionKeys.forEach(key => {
+    const savedCount = localStorage.getItem('reaction_' + key) || 0;
+    const countElement = document.getElementById('count-' + key);
+    if (countElement) {
+      countElement.textContent = parseInt(savedCount).toLocaleString();
+    }
+  });
+}
+
+// リアクション送信処理
+function sendReaction(type) {
+  // カウント加算
+  let currentCount = parseInt(localStorage.getItem('reaction_' + type) || 0);
+  currentCount++;
+  localStorage.setItem('reaction_' + type, currentCount);
+
+  // 表示更新
+  const countElement = document.getElementById('count-' + type);
+  if (countElement) {
+    countElement.textContent = currentCount.toLocaleString();
+  }
+
+  // お礼メッセージのアニメーション表示
+  const thanksMsg = document.getElementById('reaction-thanks');
+  if (thanksMsg) {
+    thanksMsg.classList.remove('opacity-0');
+    clearTimeout(window.thanksTimer);
+    window.thanksTimer = setTimeout(() => {
+      thanksMsg.classList.add('opacity-0');
+    }, 2000);
+  }
+}
+
+// ページ読み込み時にカウントを反映
+window.addEventListener('DOMContentLoaded', () => {
+  loadReactions();
+});
 // 初期製品データ定義
 const defaultProducts = [
 {
