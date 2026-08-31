@@ -43,20 +43,22 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
 <!-- PC用ナビゲーション -->
 <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+  <a href="#news" class="hover:text-sky-500 transition-colors">新着情報</a> <!-- 追加 -->
   <a href="#about" class="hover:text-sky-500 transition-colors">企業紹介</a>
   <a href="#history" class="hover:text-sky-500 transition-colors">歴史</a>
   <a href="#products" class="hover:text-sky-500 transition-colors">製品紹介</a>
-  <a href="#entertainment" class="hover:text-sky-500 transition-colors">エンタメ</a> <!-- 追加 -->
+  <a href="#entertainment" class="hover:text-sky-500 transition-colors">エンタメ</a>
   <a href="#schedule" class="hover:text-sky-500 transition-colors">スケジュール</a>
   <a href="#contact" class="hover:text-sky-500 transition-colors font-semibold text-sky-600">ご依頼案内</a>
 </nav>
 
 <!-- モバイルナビゲーション -->
 <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3">
+  <a href="#news" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">新着情報</a> <!-- 追加 -->
   <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">企業紹介</a>
   <a href="#history" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">歴史</a>
   <a href="#products" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">製品紹介</a>
-  <a href="#entertainment" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">エンタメ</a> <!-- 追加 -->
+  <a href="#entertainment" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">エンタメ</a>
   <a href="#schedule" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">スケジュール</a>
   <a href="#contact" onclick="toggleMobileMenu()" class="block text-sky-600 hover:text-sky-500 py-1 font-semibold">ご依頼案内</a>
 </div>
@@ -95,8 +97,49 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </div>
 </section>
 
+<!-- 【新規追加】新着情報セクション -->
+<section id="news" class="py-20 bg-white border-t border-slate-100">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- 大きい見出し -->
+    <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-slate-900 mb-3">新着情報</h3>
+      <p class="text-slate-500">News & Topics</p>
+      <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- コンテンツカード -->
+    <div class="max-w-4xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row">
+      <!-- 任意の画像エリア（※srcを実際の画像ファイル名に置き換えてください） -->
+      <div class="md:w-1/2 relative bg-slate-200 min-h-[240px]">
+        <img src="news_image.jpg"
+             alt="新着情報画像"
+             onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/64748b?text=News+Image';"
+             class="w-full h-full object-cover">
+      </div>
+
+      <!-- 説明エリア -->
+      <div class="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 text-sky-700">お知らせ</span>
+          <span class="text-xs text-slate-400">2026.08.31</span>
+        </div>
+        
+        <!-- 説明 (小見出し) -->
+        <h4 class="text-xl font-bold text-slate-900 mb-3">
+          【小見出し】ここに新着情報のタイトルを入力してください
+        </h4>
+
+        <!-- 説明 (本文) -->
+        <p class="text-slate-600 leading-relaxed text-sm">
+          ここには新着情報の詳細な説明が入ります。例えば、新製品の発表、イベントの告知、休業案内など、ユーザーに知らせたい最新トピックを自由に入力してください。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 企業紹介セクション -->
-<section id="about" class="py-20 bg-white border-t border-slate-100">
+<section id="about" class="py-20 bg-slate-50 border-t border-slate-100">
 <div class="max-w-6xl mx-auto px-4">
 <div class="text-center mb-12">
 <h3 class="text-3xl font-bold text-slate-900 mb-3">企業紹介</h3>
@@ -106,24 +149,24 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <!-- 企業理念 -->
-<div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
-<div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
+<div class="bg-white border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
+<div class="w-14 h-14 bg-slate-50 shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
 <i data-lucide="lightbulb" class="w-7 h-7 text-sky-500"></i>
 </div>
 <h4 class="text-lg font-bold text-slate-900 mb-2">企業理念</h4>
 <p class="text-slate-600 font-medium">確かな技術で安心を約束</p>
 </div>
 <!-- 活動拠点 -->
-<div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
-<div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
+<div class="bg-white border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
+<div class="w-14 h-14 bg-slate-50 shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
 <i data-lucide="map-pin" class="w-7 h-7 text-sky-500"></i>
 </div>
 <h4 class="text-lg font-bold text-slate-900 mb-2">活動拠点</h4>
 <p class="text-slate-600 font-medium">東京都</p>
 </div>
 <!-- 活動日時 -->
-<div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
-<div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
+<div class="bg-white border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
+<div class="w-14 h-14 bg-slate-50 shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
 <i data-lucide="clock" class="w-7 h-7 text-sky-500"></i>
 </div>
 <h4 class="text-lg font-bold text-slate-900 mb-2">活動日時</h4>
@@ -134,7 +177,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </section>
 
 <!-- 歴史・沿革セクション -->
-<section id="history" class="py-20 bg-slate-50 border-t border-slate-100">
+<section id="history" class="py-20 bg-white border-t border-slate-100">
   <div class="max-w-3xl mx-auto px-4">
     <div class="text-center mb-12">
       <h3 class="text-3xl font-bold text-slate-900 mb-3">星野製作所の歴史</h3>
@@ -149,7 +192,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <div class="relative pl-6 md:pl-8">
         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
         <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2021年</div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
           <p class="text-slate-800 font-medium text-sm">漫画制作係として発足</p>
         </div>
       </div>
@@ -158,7 +201,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <div class="relative pl-6 md:pl-8">
         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
         <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2022年</div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
           <p class="text-slate-800 font-medium text-sm">デジタル化</p>
           <p class="text-slate-600 text-xs border-t border-slate-100 pt-2">デジタル作画からアニメーション制作へ</p>
         </div>
@@ -168,7 +211,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <div class="relative pl-6 md:pl-8">
         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
         <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2023年</div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
           <p class="text-slate-800 font-medium text-sm">初の長編アニメーション(マンガ)がヒット</p>
           <p class="text-slate-600 text-xs border-t border-slate-100 pt-2">この頃から単純な画像編集も視野に</p>
         </div>
@@ -178,7 +221,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <div class="relative pl-6 md:pl-8">
         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
         <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2024年</div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
           <p class="text-slate-800 font-medium text-sm">情報提供サービスのようなものを試験運用</p>
         </div>
       </div>
@@ -187,7 +230,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <div class="relative pl-6 md:pl-8">
         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
         <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2025年</div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
           <p class="text-slate-800 font-medium text-sm">画像編集 ＋ 工作 ＋ 映像編集で星野製作所運用開始</p>
           <p class="text-slate-600 text-xs border-t border-slate-100 pt-2">本格的なソフト使用開始</p>
         </div>
@@ -216,8 +259,9 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   </div>
 </section>
+
 <!-- 製品紹介セクション -->
-<section id="products" class="py-20 bg-slate-50">
+<section id="products" class="py-20 bg-slate-50 border-t border-slate-100">
 <div class="max-w-6xl mx-auto px-4">
 <div class="text-center mb-12">
 <h3 class="text-3xl font-bold text-slate-900 mb-3">製品紹介</h3>
@@ -326,8 +370,9 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   </div>
 <iframe src="train.html" width="100%" height="200" frameborder="0"></iframe>
 </section>  
+
 <!-- スケジュールセクション -->
-<section id="schedule" class="py-20 bg-white border-t border-b border-slate-100">
+<section id="schedule" class="py-20 bg-slate-50 border-t border-b border-slate-100">
 <div class="max-w-3xl mx-auto px-4">
 <div class="text-center mb-12">
 <h3 class="text-3xl font-bold text-slate-900 mb-3">制作スケジュール</h3>
@@ -414,10 +459,13 @@ LINE、Gmail、zoomなど常時受け付けております。
 </section>
 
 <!-- カウンター表示エリア -->
-<div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200 text-xs font-medium text-slate-600 mb-3">
-  <i data-lucide="users" class="w-3.5 h-3.5 text-sky-500"></i>
-  <span>総訪問者数: <strong id="visitor-count" class="text-slate-900">読み込み中...</strong> 人</span>
+<div class="text-center my-6">
+  <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200 text-xs font-medium text-slate-600">
+    <i data-lucide="users" class="w-3.5 h-3.5 text-sky-500"></i>
+    <span>総訪問者数: <strong id="visitor-count" class="text-slate-900">読み込み中...</strong> 人</span>
+  </div>
 </div>
+
 <!-- フッター -->
 <footer class="bg-white border-t border-slate-200 py-8 text-center">
 <div class="max-w-6xl mx-auto px-4">
@@ -485,7 +533,6 @@ LINE、Gmail、zoomなど常時受け付けております。
 </div>
 </div>
 
-<!-- 【修正】ここにビデオモーダルを正しく配置しました -->
 <!-- ビデオ再生用モーダル -->
 <div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeVideoModal()">
   <div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
@@ -495,7 +542,6 @@ LINE、Gmail、zoomなど常時受け付けております。
     </button>
     <!-- ビデオプレイヤー -->
     <video id="contact-video" controls class="w-full rounded-lg shadow-2xl bg-black">
-      <!-- 旧ロゴアニメーション.mp4.mov -->
       <source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime">
       お使いのブラウザは動画タグをサポートしていません。
     </video>
@@ -591,10 +637,11 @@ category: 'model',
 icon: 'box',
 iconBg: 'bg-sky-50',
 iconColor: 'text-sky-500',
-imageUrl: 'IMG_231-door.HEIC', // HEIKからjpgに変更（実際のファイル形式に合わせて変更してください）
+imageUrl: 'IMG_231-door.HEIC',
 imageVisible: true
 }
 ];
+
 // localStorageからデータ読み込みまたは初期データセット
 let products = loadProducts();
 let currentEditingIndex = null;
@@ -604,7 +651,6 @@ const saved = localStorage.getItem('hoshino_factory_products');
 if (saved) {
 try {
 const parsed = JSON.parse(saved);
-// 初期設定の基本情報を継承しつつ保存データを統合
 return defaultProducts.map(def => {
 const found = parsed.find(p => p.id === def.id);
 return found ? { ...def, imageUrl: found.imageUrl } : def;
@@ -629,7 +675,6 @@ products.forEach((prod, index) => {
 const card = document.createElement('div');
 card.className = "bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between";
 
-// アイコン部分の判定
 let iconHtml = '';
 if (prod.customIconType === 'hr-svg') {
 iconHtml = `
@@ -647,7 +692,6 @@ iconHtml = `
 </div>`;
 }
 
-// 画像部分の表示状態
 const isVisible = prod.imageVisible;
 
 card.innerHTML = `
@@ -659,7 +703,6 @@ ${iconHtml}
 </div>
 </div>
 
-<!-- アコーディオン画像表示領域 -->
 <div class="overflow-hidden transition-all duration-300 ${isVisible ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'}">
 <div class="relative group rounded-lg overflow-hidden border border-slate-200 bg-slate-100">
 <img src="${prod.imageUrl}"
@@ -676,7 +719,6 @@ onclick="openImageModal('${prod.imageUrl}', '${prod.title}')" />
 </div>
 </div>
 
-<!-- 操作ボタン領域 -->
 <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs gap-2 mt-auto">
 <button onclick="toggleImage(${index})" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${isVisible ? 'bg-sky-100 text-sky-700 hover:bg-sky-200' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">
 <i data-lucide="${isVisible ? 'eye-off' : 'image'}" class="w-3.5 h-3.5"></i>
@@ -693,17 +735,14 @@ onclick="openImageModal('${prod.imageUrl}', '${prod.title}')" />
 container.appendChild(card);
 });
 
-// Lucideアイコンの再描画
 lucide.createIcons();
 }
 
-// 画像の表示/非表示切り替え
 function toggleImage(index) {
 products[index].imageVisible = !products[index].imageVisible;
 renderProducts();
 }
 
-// URL編集モーダルの処理
 function openUrlModal(index) {
 currentEditingIndex = index;
 const prod = products[index];
@@ -722,7 +761,7 @@ if (currentEditingIndex !== null) {
 const newUrl = document.getElementById('url-input').value.trim();
 if (newUrl) {
 products[currentEditingIndex].imageUrl = newUrl;
-products[currentEditingIndex].imageVisible = true; // URLセット時に自動で表示
+products[currentEditingIndex].imageVisible = true;
 saveProducts();
 renderProducts();
 }
@@ -740,7 +779,6 @@ renderProducts();
 closeUrlModal();
 }
 
-// 大画面拡大モーダルの処理
 function openImageModal(url, title) {
 document.getElementById('modal-img').src = url;
 document.getElementById('modal-caption').textContent = title;
@@ -751,7 +789,6 @@ function closeImageModal() {
 document.getElementById('image-modal').classList.add('hidden');
 }
 
-// 問い合わせダイアログ
 function openContactNotice() {
 document.getElementById('notice-modal').classList.remove('hidden');
 }
@@ -760,19 +797,16 @@ function closeNoticeModal() {
 document.getElementById('notice-modal').classList.add('hidden');
 }
 
-// モバイルメニュー開閉処理
 function toggleMobileMenu() {
 const menu = document.getElementById('mobile-menu');
 menu.classList.toggle('hidden');
 }
 
-// ビデオモーダルの処理
 function openVideoModal() {
   const modal = document.getElementById('video-modal');
   const video = document.getElementById('contact-video');
   
   modal.classList.remove('hidden');
-  // モーダルが開いたら自動的に再生を開始する
   if (video) {
     video.play();
   }
@@ -783,29 +817,19 @@ function closeVideoModal() {
   const video = document.getElementById('contact-video');
   
   modal.classList.add('hidden');
-  // モーダルを閉じた時に動画を一時停止し、最初に戻す
   if (video) {
     video.pause();
     video.currentTime = 0;
   }
 }
 
-// 初期化処理
-window.addEventListener('DOMContentLoaded', () => {
-renderProducts();
-});
-
-// 訪問者数の取得とカウントアップ
 async function initVisitorCounter() {
   const countElement = document.getElementById('visitor-count');
   if (!countElement) return;
 
   try {
-    // 独自の識別キー（hoshino-factory-site）でカウントを1増やすAPI
     const res = await fetch('https://api.counterapi.dev/v1/hoshino-factory-site/visits/up');
     const data = await res.json();
-    
-    // カウント数をカンマ区切りで表示（例: 1,234）
     countElement.textContent = data.count.toLocaleString();
   } catch (error) {
     console.error('Counter API Error:', error);
@@ -813,12 +837,10 @@ async function initVisitorCounter() {
   }
 }
 
-// 画面読み込み時に実行
 window.addEventListener('DOMContentLoaded', () => {
   renderProducts();
-  initVisitorCounter(); // カウンター呼び出し
+  initVisitorCounter();
 });
-  
 </script>
 </body>
 </html>
