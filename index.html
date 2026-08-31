@@ -6,6 +6,12 @@
 <title>星野製作所 | 公式Webサイト</title>
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Tailwindのダークモード切替方式を'class'に指定
+  tailwind.config = {
+    darkMode: 'class',
+  }
+</script>  
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
@@ -72,6 +78,13 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     <a href="#schedule" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">スケジュール</a>
     <a href="#contact" onclick="toggleMobileMenu()" class="block text-sky-600 hover:text-sky-500 py-1 font-semibold">ご依頼案内</a>
   </div>
+<!-- ダークモード切替ボタン -->
+<button onclick="toggleDarkMode()" 
+        class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" 
+        title="テーマ切り替え"
+        aria-label="ダークモード切り替え">
+  <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5"></i>
+</button>  
 </header>
 <main class="flex-grow">
 <!-- メインビジュアル / ヒーローセクション -->
@@ -896,6 +909,40 @@ LINE、Gmail、zoomなど常時受け付けております。
 </button>
 <!-- スクリプト -->
 <script>
+// ダークモードの切り替え処理
+function toggleDarkMode() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('hoshino_theme', isDark ? 'dark' : 'light');
+  updateDarkModeIcon(isDark);
+}
+
+// アイコンの表示更新
+function updateDarkModeIcon(isDark) {
+  const icon = document.getElementById('dark-mode-icon');
+  if (icon) {
+    icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+    lucide.createIcons();
+  }
+}
+
+// ページ読み込み時に保存された設定を適用
+function initDarkMode() {
+  const savedTheme = localStorage.getItem('hoshino_theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+  updateDarkModeIcon(isDark);
+}
+
+// ページ読み込み時に実行
+window.addEventListener('DOMContentLoaded', () => {
+  initDarkMode();
+});  
 // スクロール位置に応じたボタンの表示制御
 const backToTopBtn = document.getElementById('back-to-top');
 
