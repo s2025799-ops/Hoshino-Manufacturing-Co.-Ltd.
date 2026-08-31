@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>制作の裏側・メイキング | 星野製作所</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+</style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white">
+
+<!-- ヘッダー -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center space-x-3">
+      <img src="IMG_2647.jpeg" alt="星野製作所 ロゴ" class="w-10 h-auto object-contain">
+      <div>
+        <h1 class="text-base font-bold tracking-wider leading-none text-slate-900">星野製作所</h1>
+        <span class="text-[10px] text-slate-500">HOSHINO FACTORY</span>
+      </div>
+    </a>
+    <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 hover:text-sky-500 bg-sky-50 hover:bg-sky-100 px-3.5 py-2 rounded-xl transition-colors">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      トップページへ戻る
+    </a>
+  </div>
+</header>
+
+<main class="flex-grow py-12 px-4">
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- タイトルエリア -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold mb-4">
+        <i data-lucide="hammer" class="w-3.5 h-3.5"></i>
+        <span>BEHIND THE SCENES</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-3">制作の裏側・メイキング</h2>
+      <p class="text-slate-500 text-sm max-w-xl mx-auto">
+        星野製作所のものづくりがどのように行われているか、構想から完成までのプロセスを公開しています。
+      </p>
+      <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- メイキング 1: 模型・ペーパークラフト -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm mb-12">
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+        <div class="w-10 h-10 bg-sky-50 text-sky-500 rounded-xl flex items-center justify-center font-bold">01</div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">精密鉄道模型・ペーパークラフトの制作ステップ</h3>
+          <p class="text-xs text-slate-400">紙とデジタル描画でリアルな質感を再現するまで</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- STEP 1 -->
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-bold text-sky-600 bg-sky-100 px-2 py-0.5 rounded-full inline-block mb-2">STEP 1</span>
+            <h4 class="font-bold text-slate-800 text-sm mb-2">資料収集・図面作成</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">実車やロゴの構造を分析し、PCソフトで精密な展開図を引きます。</p>
+          </div>
+          <img src="making_step1.jpg" alt="ステップ1" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2e8f0/64748b?text=Step+1';" class="w-full h-28 object-cover rounded-lg">
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-bold text-sky-600 bg-sky-100 px-2 py-0.5 rounded-full inline-block mb-2">STEP 2</span>
+            <h4 class="font-bold text-slate-800 text-sm mb-2">試作・組み立て調整</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">実際に組み立て、寸法や折り目の強度・ズレを繰り返し検証します。</p>
+          </div>
+          <img src="making_step2.jpg" alt="ステップ2" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2e8f0/64748b?text=Step+2';" class="w-full h-28 object-cover rounded-lg">
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-bold text-sky-600 bg-sky-100 px-2 py-0.5 rounded-full inline-block mb-2">STEP 3</span>
+            <h4 class="font-bold text-slate-800 text-sm mb-2">細部加工・パーツ追加</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">乗務員扉やライト周りなど、立体感を際立たせるパーツを取り付けます。</p>
+          </div>
+          <img src="making_step3.jpg" alt="ステップ3" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2e8f0/64748b?text=Step+3';" class="w-full h-28 object-cover rounded-lg">
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-bold text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full inline-block mb-2">COMPLETE</span>
+            <h4 class="font-bold text-slate-800 text-sm mb-2">完成・撮影</h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">光の当たり方を調整して撮影し、ギャラリーや動画用素材として完成です。</p>
+          </div>
+          <img src="making_step4.jpg" alt="ステップ4" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2e8f0/64748b?text=Complete';" class="w-full h-28 object-cover rounded-lg">
+        </div>
+      </div>
+    </section>
+
+    <!-- メイキング 2: デザイン制作 -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm mb-12">
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+        <div class="w-10 h-10 bg-indigo-50 text-indigo-500 rounded-xl flex items-center justify-center font-bold">02</div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">ロゴ・サインデザインの裏側</h3>
+          <p class="text-xs text-slate-400">アイディアスケッチからデジタルデータ化まで</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+          <span class="text-xs font-bold text-sky-600 mb-2 block">【アイデア出しと手書きラフ】</span>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            最初からパソコンで描くのではなく、まずは紙に数十案のスケッチを出し、最も視認性の高い形を厳選していきます。
+          </p>
+          <div class="h-44 bg-slate-200 rounded-lg overflow-hidden">
+            <img src="making_logo.jpg" alt="ロゴ制作過程" onerror="this.onerror=null; this.src='https://placehold.co/600x300/e2e8f0/64748b?text=Sketch+Process';" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+          <span class="text-xs font-bold text-indigo-600 mb-2 block">【色覚・コントラスト検証】</span>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            サインシステム等では、遠くから見ても一目で伝わるよう、背景色と文字の明暗比や配色テストを念入りに行っています。
+          </p>
+          <div class="h-44 bg-slate-200 rounded-lg overflow-hidden">
+            <img src="making_color.jpg" alt="配色検証" onerror="this.onerror=null; this.src='https://placehold.co/600x300/e2e8f0/64748b?text=Color+Testing';" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- トップに戻るボタン -->
+    <div class="text-center pt-4">
+      <a href="index.html" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all transform hover:scale-105">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        トップページに戻る
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+  &copy; 2026 星野製作所 (Hoshino Factory). All rights reserved.
+</footer>
+
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
