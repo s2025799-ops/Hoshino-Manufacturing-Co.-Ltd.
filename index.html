@@ -33,9 +33,12 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
 <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
 <div class="flex items-center space-x-3">
-<!-- お手持ちのロゴ画像に変更 -->
-<img src="IMG_2647.jpeg" alt="星野製作所 ロゴ" class="w-12 h-auto object-contain">
-<div>
+<!-- ヘッダーのロゴ画像を以下に差し替え -->
+<img src="IMG_2647.jpeg" 
+     alt="星野製作所 ロゴ" 
+     class="w-12 h-auto object-contain cursor-pointer select-none transition-transform active:scale-95" 
+     onclick="handleLogoClick()"
+     title="？？？">
 <h1 class="text-lg font-bold tracking-wider leading-none text-slate-900">星野製作所</h1>
 <span class="text-xs text-slate-500">HOSHINO FACTORY</span>
 </div>
@@ -739,7 +742,36 @@ LINE、Gmail、zoomなど常時受け付けております。
     </video>
   </div>  
 </div>
+<!-- 隠しギミック用モーダル -->
+<div id="secret-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="closeSecretModal()">
+  <div class="bg-gradient-to-b from-slate-900 to-sky-950 text-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-sky-500/30 text-center relative overflow-hidden" onclick="event.stopPropagation()">
+    <!-- 背景装飾 -->
+    <div class="absolute -right-10 -top-10 w-32 h-32 bg-sky-500/20 rounded-full blur-2xl"></div>
+    <div class="absolute -left-10 -bottom-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl"></div>
 
+    <!-- アイコン -->
+    <div class="w-20 h-20 bg-sky-500/20 border border-sky-400/30 text-sky-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner animate-bounce">
+      <i data-lucide="sparkles" class="w-10 h-10"></i>
+    </div>
+
+    <span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-bold border border-sky-500/30">
+      SECRET FOUND!
+    </span>
+
+    <h4 class="text-2xl font-black mt-4 mb-2 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-sky-200 to-white">
+      隠し要素発見！
+    </h4>
+
+    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+      星野製作所のWebサイトを発見・閲覧していただきありがとうございます！<br>
+      これからも「確かな技術と遊び心」で面白いコンテンツをお届けします⭐︎
+    </p>
+
+    <button onclick="closeSecretModal()" class="w-full py-3 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-sky-500/30">
+      閉じる
+    </button>
+  </div>
+</div>
 <!-- スクリプト -->
 <script>
 // 初期製品データ定義
@@ -857,7 +889,40 @@ return defaultProducts;
 function saveProducts() {
 localStorage.setItem('hoshino_factory_products', JSON.stringify(products.map(p => ({ id: p.id, imageUrl: p.imageUrl }))));
 }
+// 隠しギミック用変数
+let logoClickCount = 0;
+let logoClickTimer = null;
 
+function handleLogoClick() {
+  logoClickCount++;
+  
+  // 最後に押してから1.5秒経過したらカウントリセット
+  clearTimeout(logoClickTimer);
+  logoClickTimer = setTimeout(() => {
+    logoClickCount = 0;
+  }, 1500);
+
+  // 5回達成でモーダル表示
+  if (logoClickCount === 5) {
+    logoClickCount = 0;
+    openSecretModal();
+  }
+}
+
+function openSecretModal() {
+  const modal = document.getElementById('secret-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    lucide.createIcons();
+  }
+}
+
+function closeSecretModal() {
+  const modal = document.getElementById('secret-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
 // 製品グリッドのレンダリング
 function renderProducts() {
 const container = document.getElementById('product-grid');
