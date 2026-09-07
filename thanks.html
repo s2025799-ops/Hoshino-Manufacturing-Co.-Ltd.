@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Special Thanks - 協力者紹介</title>
   <style>
-    body {
+  body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  /* 画像の上に白い半透明（85%）の膜を重ねて文字を見やすくします */
-  background: linear-gradient(rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.70)), url('IMG_2911.png');
+  /* 画像の重複を防ぎ、画面全体に綺麗にフィットさせます */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('bg-company.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #e0c3fc; /* 万が一の隙間埋め用背景色 */
   min-height: 100vh;
   color: #333;
   margin: 0;
