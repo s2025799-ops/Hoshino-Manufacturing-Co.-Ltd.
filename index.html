@@ -258,6 +258,130 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   renderTabs();
   updateFloorInfo();
 </script>
+<!-- Lucide Icons (CDN) -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<section class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors">
+  <h2 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">フロアマップ</h2>
+
+  <!-- タブ切り替えボタン -->
+  <div id="floor-tabs" class="flex flex-wrap gap-2 mb-6 border-b border-slate-200 dark:border-slate-700 pb-4"></div>
+
+  <!-- マップ画像 & 施設リスト表示エリア -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- 図面画像表示領域 -->
+    <div class="lg:col-span-2 relative min-h-[300px] bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center p-4">
+      <img id="floor-image" src="" alt="フロアマップ図面" class="w-full h-auto max-h-[400px] object-contain rounded shadow-sm transition-opacity duration-200">
+    </div>
+
+    <!-- 施設詳細・アイコンリスト -->
+    <div class="p-5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col">
+      <h3 id="floor-name" class="text-lg font-bold text-slate-900 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-800 pb-2"></h3>
+      <ul id="floor-list" class="space-y-3 text-slate-600 dark:text-slate-300 text-sm">
+        <!-- JSでアイコン付きリストを動的挿入 -->
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 各フロアのデータ（画像URLとアイコン付き施設データ）
+  const floors = {
+    'RF': {
+      name: '屋上 (RF)',
+      image: 'https://placehold.co/800x500/0f172a/ffffff?text=RF+Floor+Map',
+      items: [
+        { label: '屋上テラス', icon: 'sun' },
+        { label: 'リフレッシュエリア', icon: 'coffee' },
+        { label: '太陽光発電設備', icon: 'zap' }
+      ]
+    },
+    '7F': {
+      name: '7階 - 役員フロア',
+      image: 'https://placehold.co/800x500/0f172a/ffffff?text=7F+Floor+Map',
+      items: [
+        { label: '役員室', icon: 'briefcase' },
+        { label: '特別応接室', icon: 'award' },
+        { label: '大会議室', icon: 'users' }
+      ]
+    },
+    '6F': {
+      name: '6階 - 開発部',
+      image: 'https://placehold.co/800x500/0f172a/ffffff?text=6F+Floor+Map',
+      items: [
+        { label: '執務エリア', icon: 'laptop' },
+        { label: 'サーバー室', icon: 'server' },
+        { label: 'フォーカスブース', icon: 'headphones' }
+      ]
+    },
+    '1F': {
+      name: '1階 - エントランス',
+      image: 'https://placehold.co/800x500/0f172a/ffffff?text=1F+Floor+Map',
+      items: [
+        { label: '総合受付', icon: 'building' },
+        { label: '来客用会議室', icon: 'door-closed' },
+        { label: 'セキュリティゲート', icon: 'shield-check' }
+      ]
+    }
+  };
+
+  const tabsContainer = document.getElementById('floor-tabs');
+  const floorNameEl = document.getElementById('floor-name');
+  const floorListEl = document.getElementById('floor-list');
+  const floorImgEl = document.getElementById('floor-image');
+
+  let currentFloor = '1F';
+
+  function renderTabs() {
+    tabsContainer.innerHTML = '';
+    Object.keys(floors).forEach(key => {
+      const btn = document.createElement('button');
+      btn.textContent = key;
+      const isActive = key === currentFloor;
+      
+      btn.className = `px-3.5 py-1.5 rounded-lg text-sm font-medium transition ${
+        isActive 
+          ? 'bg-sky-500 text-white shadow-sm' 
+          : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'
+      }`;
+
+      btn.onclick = () => {
+        currentFloor = key;
+        renderTabs();
+        updateFloorInfo();
+      };
+      tabsContainer.appendChild(btn);
+    });
+  }
+
+  function updateFloorInfo() {
+    const data = floors[currentFloor];
+    
+    // 画像更新
+    floorImgEl.src = data.image;
+    floorImgEl.alt = `${data.name}の図面`;
+
+    // テキスト更新
+    floorNameEl.textContent = data.name;
+    
+    // アイコン付きリスト挿入
+    floorListEl.innerHTML = data.items.map(item => `
+      <li class="flex items-center gap-3">
+        <i data-lucide="${item.icon}" class="w-4 h-4 text-sky-500 shrink-0"></i>
+        <span>${item.label}</span>
+      </li>
+    `).join('');
+
+    // Lucideアイコンをレンダリング
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  }
+
+  // 初期化
+  renderTabs();
+  updateFloorInfo();
+</script>  
 <!-- FAQセクション -->
 <section id="faq" class="py-20 bg-white border-t border-slate-100">
   <div class="max-w-4xl mx-auto px-4">
