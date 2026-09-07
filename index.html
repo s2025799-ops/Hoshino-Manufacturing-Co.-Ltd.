@@ -31,7 +31,6 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white">
 <body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
 <!-- ヘッダー -->
 <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
@@ -57,7 +56,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       <a href="#schedule" class="hover:text-sky-500 transition-colors">スケジュール</a>
       <a href="#contact" class="hover:text-sky-500 transition-colors font-semibold text-sky-600">ご依頼案内</a>
     </nav>
-　<!-- ダークモード切替ボタン -->
+  <!-- ダークモード切替ボタン -->
 <button onclick="toggleDarkMode()" 
         class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" 
         title="テーマ切り替え"
@@ -145,7 +144,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
         <!-- 説明 (本文) -->
         <p class="text-slate-600 leading-relaxed text-sm">
-          動画制作のネタが尽きた結果漫画に迷走したのでどうか暖かく見守ってください。なんで二等身じゃないかって？二等身じゃカッコつかないし参考にできる構図がち⚪︎かわしか無かったからですよ。この構図もある漫画の扉絵を参考にしているので気づいたら当職に言ってください。乞うご期待　星野
+          動画制作のネタが尽きた結果漫画に迷走したのでどうか暖かく見守ってください。なんで二等身じゃないかって？二等身じゃカッコつかないし参考にできる構図がち⚪︎かわしか無かったからですよ。この構図もある漫画の扉絵を参考にしているので気づいたら当職に言ってください。乞うご期待 星野
         </p>
       </div>
     </div>
@@ -189,78 +188,8 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </div>
 </div>
 </section>
+
 <!-- フロアマップセクション -->
-<section class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors">
-  <h2 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">フロアマップ</h2>
-
-  <!-- フロア切り替えタブ -->
-  <div id="floor-tabs" class="flex flex-wrap gap-2 mb-6 border-b border-slate-200 dark:border-slate-700 pb-4">
-    <!-- JSでタブを動的生成、または直書き -->
-  </div>
-
-  <!-- フロア詳細表示領域 -->
-  <div class="p-5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-    <h3 id="floor-name" class="text-lg font-bold text-slate-900 dark:text-white mb-2">1F</h3>
-    <ul id="floor-list" class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-300 text-sm">
-      <!-- 選択されたフロアの内容が入ります -->
-    </ul>
-  </div>
-</section>
-
-<script>
-  // 各フロアのデータ構造
-  const floors = {
-    'RF': { name: '屋上 (RF) - リフレッシュガーデン', items: ['屋上テラス', 'リフレッシュエリア', '太陽光発電設備'] },
-    '7F': { name: '7階 - 役員フロア', items: ['役員室', '特別応接室', '大会議室'] },
-    '6F': { name: '6階 - 開発部・インフラチーム', items: ['執務エリア', 'サーバー室', 'フォーカスブース'] },
-    '5F': { name: '5階 - デザイン部・企画部', items: ['執務エリア', 'デザインラボ', '撮影スタジオ'] },
-    '4F': { name: '4階 - 営業部・カスタマーサポート', items: ['執務エリア', 'オンライン商談ブース', 'ミーティングエリア'] },
-    '3F': { name: '3階 - 人事部・総務部・経理部', items: ['管理部門執務室', '面接室', '文書保管室'] },
-    '2F': { name: '2階 - 社員食堂 & カフェラウンジ', items: ['カフェテリア', 'フリースペース', '自動販売機コーナー'] },
-    '1F': { name: '1階 - エントランス & 受付', items: ['総合受付', '来客用会議室 (A〜D)', 'セキュリティゲート'] },
-  };
-
-  const tabsContainer = document.getElementById('floor-tabs');
-  const floorNameEl = document.getElementById('floor-name');
-  const floorListEl = document.getElementById('floor-list');
-
-  let currentFloor = '1F';
-
-  function renderTabs() {
-    tabsContainer.innerHTML = '';
-    Object.keys(floors).forEach(key => {
-      const btn = document.createElement('button');
-      btn.textContent = key;
-      const isActive = key === currentFloor;
-      
-      btn.className = `px-3.5 py-1.5 rounded-lg text-sm font-medium transition ${
-        isActive 
-          ? 'bg-sky-500 text-white shadow-sm' 
-          : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'
-      }`;
-
-      btn.onclick = () => {
-        currentFloor = key;
-        renderTabs();
-        updateFloorInfo();
-      };
-      tabsContainer.appendChild(btn);
-    });
-  }
-
-  function updateFloorInfo() {
-    const data = floors[currentFloor];
-    floorNameEl.textContent = data.name;
-    floorListEl.innerHTML = data.items.map(item => `<li>${item}</li>`).join('');
-  }
-
-  // 初期表示
-  renderTabs();
-  updateFloorInfo();
-</script>
-<!-- Lucide Icons (CDN) -->
-<script src="https://unpkg.com/lucide@latest"></script>
-
 <section class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors">
   <h2 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">フロアマップ</h2>
 
@@ -382,6 +311,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   renderTabs();
   updateFloorInfo();
 </script>  
+
 <!-- FAQセクション -->
 <section id="faq" class="py-20 bg-white border-t border-slate-100">
   <div class="max-w-4xl mx-auto px-4">
