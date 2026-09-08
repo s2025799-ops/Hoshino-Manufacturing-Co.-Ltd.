@@ -150,11 +150,72 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     </div>
   </div>
 </section>
-<!-- 5周年記念特設ページへのボタン（機械パネル風） -->
-<div style="text-align: center; margin: 40px 0;">
-  <a href="5th.html" style="background-color: #f3f4f6; color: #1f2937; padding: 14px 28px; border: 2px solid #1f2937; border-radius: 4px; text-decoration: none; font-weight: bold; display: inline-block; font-family: monospace; letter-spacing: 1px; box-shadow: 4px 4px 0px #4b5563; transition: all 0.2s ease;">
-    ⚙️ [ SYS_ACCESS ] 5周年記念 特設ページへ
+<!-- 5周年記念特設ページへの超大型ボタン -->
+<div style="text-align: center; margin: 60px 0;">
+  <a href="5th.html" class="btn-5th-anniversary">
+    <span class="btn-icon">⚠️</span>
+    <span class="btn-text">SYS_ACCESS // 5周年特設ページ起動</span>
+    <span class="btn-icon">⚠️</span>
   </a>
+</div>
+
+<style>
+  .btn-5th-anniversary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* 黄色とオレンジの警戒ストライプ */
+    background: repeating-linear-gradient(
+      -45deg,
+      #ffcc00,
+      #ffcc00 20px,
+      #ffaa00 20px,
+      #ffaa00 40px
+    );
+    background-size: 56px 56px;
+    color: #111;
+    font-family: 'Helvetica Neue', monospace, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-decoration: none;
+    padding: 24px 40px;
+    border: 6px solid #111;
+    border-radius: 12px;
+    /* 極厚の立体シャドウ */
+    box-shadow: 0 12px 0 #111, 0 20px 25px rgba(0,0,0,0.5);
+    transition: all 0.1s ease-in-out;
+    animation: stripe-scroll 2s linear infinite;
+    max-width: 90%;
+  }
+
+  /* クリック（タップ）したときの押し込み動作 */
+  .btn-5th-anniversary:active {
+    transform: translateY(12px);
+    box-shadow: 0 0 0 #111, 0 5px 10px rgba(0,0,0,0.5);
+  }
+
+  .btn-icon {
+    font-size: 2rem;
+    filter: drop-shadow(2px 2px 0px rgba(255,255,255,0.5));
+  }
+
+  /* 背景が流れるアニメーション */
+  @keyframes stripe-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 56px 0; }
+  }
+
+  /* スマホ向けのサイズ調整 */
+  @media (max-width: 600px) {
+    .btn-5th-anniversary {
+      font-size: 1.2rem;
+      padding: 16px 20px;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+</style>
 </div>
 <!-- 企業紹介セクション -->
 <section id="about" class="py-20 bg-slate-50 border-t border-slate-100">
