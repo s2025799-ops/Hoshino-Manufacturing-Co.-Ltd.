@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5周年記念特設ページ - 星野製作所</title>
+<style>
+  :root {
+    --ui-bg: #f3f4f6;
+    --ui-border: #4b5563;
+    --ui-accent: #2563eb;
+    --ui-text: #1f2937;
+    --ui-screen: #ffffff;
+  }
+  
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--ui-bg);
+    /* 機械的な方眼紙（グリッド）背景 */
+    background-image: linear-gradient(rgba(75, 85, 99, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(75, 85, 99, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--ui-text);
+  }
+
+  .machine-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--ui-screen);
+    border: 3px solid var(--ui-border);
+    border-radius: 4px;
+    box-shadow: 8px 8px 0px rgba(75, 85, 99, 0.3);
+    position: relative;
+    padding: 50px 30px;
+  }
+
+  /* 四隅のネジ風装飾 */
+  .screw {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #d1d5db;
+    border: 2px solid var(--ui-border);
+    border-radius: 50%;
+  }
+  .screw.tl { top: 12px; left: 12px; }
+  .screw.tr { top: 12px; right: 12px; }
+  .screw.bl { bottom: 12px; left: 12px; }
+  .screw.br { bottom: 12px; right: 12px; }
+
+  .system-title {
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.4rem;
+    color: var(--ui-text);
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--ui-text);
+    display: inline-block;
+    margin: 0 auto 30px auto;
+    padding-bottom: 5px;
+  }
+  .title-wrapper { text-align: center; }
+
+  /* ロゴ配置エリア（警戒線風のハッチング枠） */
+  .anniversary-logo {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: repeating-linear-gradient(
+      45deg,
+      #f9fafb,
+      #f9fafb 10px,
+      #f3f4f6 10px,
+      #f3f4f6 20px
+    );
+    border: 2px dashed #9ca3af;
+    border-radius: 4px;
+  }
+  .anniversary-logo img {
+    max-width: 100%;
+    /* スマホなどで大きすぎないよう制限 */
+    max-height: 250px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .data-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 600px) {
+    .data-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* データパネル（情報エリア） */
+  .data-panel {
+    border: 2px solid var(--ui-border);
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .data-header {
+    background-color: var(--ui-border);
+    color: #fff;
+    padding: 8px 15px;
+    font-family: monospace;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+  }
+  .data-header::before {
+    content: '▶';
+    color: #34d399; /* 稼働中を示す緑のランプ風 */
+    margin-right: 8px;
+    font-size: 0.8rem;
+  }
+
+  .data-content {
+    padding: 20px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* メインページに戻るボタン */
+  .btn-return {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 0;
+    padding: 12px 30px;
+    background-color: var(--ui-text);
+    color: #fff;
+    text-decoration: none;
+    font-family: monospace;
+    font-weight: bold;
+    border: 2px solid var(--ui-text);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-return:hover {
+    background-color: #fff;
+    color: var(--ui-text);
+    box-shadow: 4px 4px 0px var(--ui-border);
+    transform: translateY(-2px);
+  }
+</style>
+</head>
+<body>
+
+  <div class="machine-container">
+    <!-- 装飾のネジ -->
+    <div class="screw tl"></div>
+    <div class="screw tr"></div>
+    <div class="screw bl"></div>
+    <div class="screw br"></div>
+
+    <!-- コンソール風タイトル -->
+    <div class="title-wrapper">
+      <div class="system-title">SYSTEM INIT // 5TH_ANNIVERSARY</div>
+    </div>
+
+    <!-- ロゴ配置エリア -->
+    <div class="anniversary-logo">
+      <!-- 以下の src="..." にアップロードした5周年ロゴのパスを入れてください（例: images/logo5th.png） -->
+      <img src="ここにロゴ画像の名前.png" alt="星野製作所 5周年記念ロゴ">
+    </div>
+
+    <div class="data-grid">
+      <!-- パネル1 -->
+      <div class="data-panel">
+        <div class="data-header">MODULE_01 : 稼働ログ記録</div>
+        <div class="data-content">
+          <p>星野製作所が稼働を開始してから5年。皆様のサポートというエネルギーを得て、当システムは安定稼働を続けてまいりました。これまでの軌跡と実績のデータをここにアーカイブします。</p>
+        </div>
+      </div>
+
+      <!-- パネル2 -->
+      <div class="data-panel">
+        <div class="data-header">MODULE_02 : 次期アップデート</div>
+        <div class="data-content">
+          <p>次のフェーズへの移行プロセスは既に開始されています。さらなる機能拡張、生産ラインの最適化、そして新たな「想像力」の具現化に向けて、システムアップデートを継続します。</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-return">[ EXIT ] メインシステムへ戻る</a>
+  </div>
+
+</body>
+</html>
