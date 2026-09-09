@@ -1,193 +1,227 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>5周年記念特設ページ - 星野製作所</title>
-<style>
-  :root {
-    --ui-bg: #f3f4f6;
-    --ui-border: #4b5563;
-    --ui-accent: #2563eb;
-    --ui-text: #1f2937;
-    --ui-screen: #ffffff;
-  }
-  
-  body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: var(--ui-bg);
-    /* 機械的な方眼紙（グリッド）背景 */
-    background-image: linear-gradient(rgba(75, 85, 99, 0.1) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(75, 85, 99, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    color: var(--ui-text);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5周年記念特設ページ - 星野製作所</title>
+  <style>
+    :root {
+      --primary-color: #0f233a; /* 上品で深いネイビー */
+      --accent-gold: #c5a059;   /* 控えめなゴールド */
+      --text-dark: #2c2c2c;
+      --bg-light: #f8f9fa;
+      --bg-white: #ffffff;
+    }
 
-  .machine-container {
-    max-width: 900px;
-    margin: 40px auto;
-    background: var(--ui-screen);
-    border: 3px solid var(--ui-border);
-    border-radius: 4px;
-    box-shadow: 8px 8px 0px rgba(75, 85, 99, 0.3);
-    position: relative;
-    padding: 50px 30px;
-  }
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Shippori Mincho", serif, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.8;
+      letter-spacing: 0.04em;
+    }
 
-  /* 四隅のネジ風装飾 */
-  .screw {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: #d1d5db;
-    border: 2px solid var(--ui-border);
-    border-radius: 50%;
-  }
-  .screw.tl { top: 12px; left: 12px; }
-  .screw.tr { top: 12px; right: 12px; }
-  .screw.bl { bottom: 12px; left: 12px; }
-  .screw.br { bottom: 12px; right: 12px; }
+    .container {
+      max-width: 860px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
 
-  .system-title {
-    text-align: center;
-    font-family: monospace;
-    font-size: 1.4rem;
-    color: var(--ui-text);
-    letter-spacing: 2px;
-    border-bottom: 2px solid var(--ui-text);
-    display: inline-block;
-    margin: 0 auto 30px auto;
-    padding-bottom: 5px;
-  }
-  .title-wrapper { text-align: center; }
+    .anniversary-card {
+      background: var(--bg-white);
+      border-radius: 6px;
+      padding: 60px 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--accent-gold);
+      text-align: center;
+    }
 
-  /* ロゴ配置エリア（警戒線風のハッチング枠） */
-  .anniversary-logo {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 30px;
-    background: repeating-linear-gradient(
-      45deg,
-      #f9fafb,
-      #f9fafb 10px,
-      #f3f4f6 10px,
-      #f3f4f6 20px
-    );
-    border: 2px dashed #9ca3af;
-    border-radius: 4px;
-  }
-  .anniversary-logo img {
-    max-width: 100%;
-    /* スマホなどで大きすぎないよう制限 */
-    max-height: 250px; 
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
+    /* 5周年ロゴ */
+    .logo-area {
+      margin-bottom: 30px;
+    }
+    .logo-area img {
+      max-width: 220px;
+      height: auto;
+    }
 
-  .data-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  @media (min-width: 600px) {
-    .data-grid { grid-template-columns: 1fr 1fr; }
-  }
+    .badge {
+      display: inline-block;
+      color: var(--accent-gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
 
-  /* データパネル（情報エリア） */
-  .data-panel {
-    border: 2px solid var(--ui-border);
-    background-color: #fff;
-    position: relative;
-  }
-  
-  .data-header {
-    background-color: var(--ui-border);
-    color: #fff;
-    padding: 8px 15px;
-    font-family: monospace;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-  }
-  .data-header::before {
-    content: '▶';
-    color: #34d399; /* 稼働中を示す緑のランプ風 */
-    margin-right: 8px;
-    font-size: 0.8rem;
-  }
+    h1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin: 0 0 20px 0;
+      font-weight: 500;
+    }
 
-  .data-content {
-    padding: 20px;
-    line-height: 1.7;
-    font-size: 0.95rem;
-  }
+    .divider {
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent-gold);
+      margin: 25px auto;
+    }
 
-  /* メインページに戻るボタン */
-  .btn-return {
-    display: block;
-    width: fit-content;
-    margin: 40px auto 0;
-    padding: 12px 30px;
-    background-color: var(--ui-text);
-    color: #fff;
-    text-decoration: none;
-    font-family: monospace;
-    font-weight: bold;
-    border: 2px solid var(--ui-text);
-    border-radius: 2px;
-    transition: all 0.2s;
-  }
-  .btn-return:hover {
-    background-color: #fff;
-    color: var(--ui-text);
-    box-shadow: 4px 4px 0px var(--ui-border);
-    transform: translateY(-2px);
-  }
-</style>
+    .lead-text {
+      font-size: 1rem;
+      color: #555;
+      max-width: 680px;
+      margin: 0 auto 40px auto;
+      text-align: justify;
+      text-justify: inter-ideograph;
+    }
+
+    /* メッセージエリア */
+    .message-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .message-box {
+      background: #fafafa;
+      padding: 28px;
+      border: 1px solid #eaeaea;
+      border-radius: 4px;
+    }
+
+    .message-box h2 {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .message-box p {
+      font-size: 0.92rem;
+      color: #666;
+      margin: 0;
+    }
+
+    /* ビデオセクション */
+    .video-section {
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid #eee;
+    }
+
+    .video-section h2 {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      margin: 25px 0 10px 0;
+      background: #000;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .video-note {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    /* 戻るボタン */
+    .btn-return {
+      display: inline-block;
+      margin-top: 50px;
+      padding: 14px 40px;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-return:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
+
+    @media (max-width: 600px) {
+      .message-grid { grid-template-columns: 1fr; }
+      .anniversary-card { padding: 40px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="machine-container">
-    <!-- 装飾のネジ -->
-    <div class="screw tl"></div>
-    <div class="screw tr"></div>
-    <div class="screw bl"></div>
-    <div class="screw br"></div>
+  <div class="container">
+    <div class="anniversary-card">
+      
+      <!-- 5周年ロゴ -->
+      <div class="logo-area">
+        <!-- ロゴ画像のファイル名に合わせて変更してください -->
+        <img src="IMG_3670.jpeg" alt="星野製作所 5周年記念ロゴ">
+      </div>
 
-    <!-- コンソール風タイトル -->
-    <div class="title-wrapper">
-      <div class="system-title">SYSTEM INIT // 5TH_ANNIVERSARY</div>
-    </div>
+      <span class="badge">5th Anniversary</span>
+      <h1>感謝を込めて、次の未来へ</h1>
+      <div class="divider"></div>
 
-    <!-- ロゴ配置エリア -->
-    <div class="anniversary-logo">
-      <!-- 以下の src="..." にアップロードした5周年ロゴのパスを入れてください（例: images/logo5th.png） -->
-      <img src="IMG_3670.jpeg" alt="星野製作所 5周年記念ロゴ">
-    </div>
+      <p class="lead-text">
+        星野製作所は、おかげさまで創立5周年を迎えることができました。<br>
+        これまでの歩みを支えてくださった皆様に心より感謝申し上げます。確かなモノづくりと柔軟な発想を大切に、これからも歩んでまいります。
+      </p>
 
-    <div class="data-grid">
-      <!-- パネル1 -->
-      <div class="data-panel">
-        <div class="data-header">MODULE_01 : 稼働ログ記録</div>
-        <div class="data-content">
-          <p>星野製作所が稼働を開始してから5年。皆様のサポートというエネルギーを得て、当システムは安定稼働を続けてまいりました。これまでの軌跡と実績のデータをここにアーカイブします。</p>
+      <!-- メッセージ -->
+      <div class="message-grid">
+        <div class="message-box">
+          <h2>これまでの歩み</h2>
+          <p>試行錯誤から始まった活動も、皆様の温かいご支援により5年間継続することができました。積み重ねてきた経験と信頼を大切にしています。</p>
+        </div>
+        <div class="message-box">
+          <h2>これからの展望</h2>
+          <p>基本となる姿勢を守りつつ、時代の変化に合わせた新しい表現やアプローチにも挑戦していきます。より愛される製作所を目指します。</p>
         </div>
       </div>
 
-      <!-- パネル2 -->
-      <div class="data-panel">
-        <div class="data-header">MODULE_02 : 次期アップデート</div>
-        <div class="data-content">
-          <p>次のフェーズへの移行プロセスは既に開始されています。さらなる機能拡張、生産ラインの最適化、そして新たな「想像力」の具現化に向けて、システムアップデートを継続します。</p>
-        </div>
-      </div>
-    </div>
+      <!-- 5周年記念ビデオセクション -->
+      <div class="video-section">
+        <h2>5周年記念動画</h2>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">これまでの軌跡を動画でご紹介いたします。</p>
 
-    <a href="index.html" class="btn-return">[ EXIT ] メインシステムへ戻る</a>
+        <div class="video-wrapper">
+          <!-- 動画ファイル名（例: video_5th.mp4）を src に指定してください -->
+          <video controls poster="images/video_thumbnail.jpg">
+            <source src="kinen.mp4" type="video/mp4">
+            お使いのブラウザは動画再生に対応していません。
+          </video>
+        </div>
+        <p class="video-note">※Webサイト表示の軽量化（ファイル容量削減）のため、動画の画質を圧縮して掲載しております。</p>
+      </div>
+
+      <!-- トップへ戻るボタン -->
+      <div>
+        <a href="index.html" class="btn-return">メインページへ戻る</a>
+      </div>
+
+    </div>
   </div>
 
 </body>
