@@ -31,9 +31,9 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200">
 <!-- ヘッダー -->
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+<header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
   <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
     <div class="flex items-center space-x-3">
       <!-- ロゴ画像 -->
@@ -42,206 +42,203 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
            class="w-12 h-auto object-contain cursor-pointer select-none transition-transform active:scale-95" 
            onclick="handleLogoClick()"
            title="？？？">
-      <h1 class="text-lg font-bold tracking-wider leading-none text-slate-900">星野製作所</h1>
-      <span class="text-xs text-slate-500">HOSHINO FACTORY</span>
+      <h1 class="text-lg font-bold tracking-wider leading-none text-slate-900 dark:text-white">星野製作所</h1>
+      <span class="text-xs text-slate-500 dark:text-slate-400">HOSHINO FACTORY</span>
     </div>
 
-    <!-- PC用ナビゲーション（flex要素の中に移動） -->
-    <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-      <a href="#news" class="hover:text-sky-500 transition-colors">新着情報</a>
-      <a href="#about" class="hover:text-sky-500 transition-colors">企業紹介</a>
-      <a href="#history" class="hover:text-sky-500 transition-colors">歴史</a>
-      <a href="#products" class="hover:text-sky-500 transition-colors">製品紹介</a>
-      <a href="#entertainment" class="hover:text-sky-500 transition-colors">エンタメ</a>
-      <a href="#schedule" class="hover:text-sky-500 transition-colors">スケジュール</a>
-      <a href="#contact" class="hover:text-sky-500 transition-colors font-semibold text-sky-600">ご依頼案内</a>
+    <!-- PC用ナビゲーション -->
+    <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+      <a href="#news" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">新着情報</a>
+      <a href="#about" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">企業紹介</a>
+      <a href="#history" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">歴史</a>
+      <a href="#products" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">製品紹介</a>
+      <a href="#entertainment" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">エンタメ</a>
+      <a href="#schedule" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">スケジュール</a>
+      <a href="#contact" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors font-semibold text-sky-600 dark:text-sky-400">ご依頼案内</a>
     </nav>
-  <!-- ダークモード切替ボタン -->
-<button onclick="toggleDarkMode()" 
-        class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" 
-        title="テーマ切り替え"
-        aria-label="ダークモード切り替え">
-  <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5"></i>
-</button>
-    <!-- モバイルメニューボタン（mobile-menuの外・flexの中に配置） -->
-    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 hover:text-sky-500 focus:outline-none" aria-label="Toggle Menu">
+    
+    <!-- ダークモード切替ボタン -->
+    <button onclick="toggleDarkMode()" 
+            class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" 
+            title="テーマ切り替え"
+            aria-label="ダークモード切り替え">
+      <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5"></i>
+    </button>
+
+    <!-- モバイルメニューボタン -->
+    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 dark:text-slate-300 hover:text-sky-500 focus:outline-none" aria-label="Toggle Menu">
       <i data-lucide="menu" class="w-6 h-6"></i>
     </button>
   </div>
 
-  <!-- モバイルナビゲーション（ボタンの外側・ヘッダー直下へ配置） -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3">
-    <a href="#news" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">新着情報</a>
-    <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1 transition-colors">よくある質問</a>
-    <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">企業紹介</a>
-    <a href="#history" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">歴史</a>
-    <a href="#products" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">製品紹介</a>
-    <a href="#portfolio" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1 transition-colors">制作実績</a>
-    <a href="#entertainment" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">エンタメ</a>
-    <a href="#schedule" onclick="toggleMobileMenu()" class="block text-slate-600 hover:text-sky-500 py-1">スケジュール</a>
-    <a href="#contact" onclick="toggleMobileMenu()" class="block text-sky-600 hover:text-sky-500 py-1 font-semibold">ご依頼案内</a>
+  <!-- モバイルナビゲーション -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-4 py-4 space-y-3">
+    <a href="#news" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1">新着情報</a>
+    <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1 transition-colors">よくある質問</a>
+    <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1">企業紹介</a>
+    <a href="#history" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1">歴史</a>
+    <a href="#products" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1">製品紹介</a>
+    <a href="#portfolio" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1 transition-colors">制作実績</a>
+    <a href="#entertainment" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1">エンタメ</a>
+    <a href="#schedule" onclick="toggleMobileMenu()" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 py-1">スケジュール</a>
+    <a href="#contact" onclick="toggleMobileMenu()" class="block text-sky-600 dark:text-sky-400 hover:text-sky-500 py-1 font-semibold">ご依頼案内</a>
   </div>
-  
 </header>
+
 <main class="flex-grow">
 <!-- メインビジュアル / ヒーローセクション -->
 <section class="relative py-24 md:py-32 overflow-hidden bg-cover bg-center" style="background-image: url('IMG_2911.png');">
-<!-- 文字を読みやすくするための半透明フィルター（白） -->
-<div class="absolute inset-0 bg-white/70"></div>
+  <!-- 文字を読みやすくするためのフィルター -->
+  <div class="absolute inset-0 bg-white/70 dark:bg-slate-900/80 transition-colors"></div>
 
-<div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-<!-- 5周年アニバーサリーバッジ -->
-<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-sky-100 text-sky-600 text-sm font-medium mb-8 shadow-sm">
-<i data-lucide="party-popper" class="w-4 h-4"></i>
-<span>おかげさまで5周年</span>
-</div>
+  <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+    <!-- 5周年アニバーサリーバッジ -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-sky-100 dark:border-slate-700 text-sky-600 dark:text-sky-400 text-sm font-medium mb-8 shadow-sm">
+      <i data-lucide="party-popper" class="w-4 h-4"></i>
+      <span>おかげさまで5周年</span>
+    </div>
 
-<h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
-確かな技術で<br class="md:hidden" />安心を約束
-</h2>
-<p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-デザインから模型製作まで、幅広いニーズにお応えする星野製作所。<br class="hidden md:inline" />
-あなたの「欲しい」をカタチにします。
-</p>
-<a href="#contact" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-sky-400 hover:to-indigo-500 transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
-制作を依頼する
-<i data-lucide="arrow-right" class="w-5 h-5"></i>
-</a>
-</div>
+    <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
+      確かな技術で<br class="md:hidden" />安心を約束
+    </h2>
+    <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+      デザインから模型製作まで、幅広いニーズにお応えする星野製作所。<br class="hidden md:inline" />
+      あなたの「欲しい」をカタチにします。
+    </p>
+    <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-sky-400 hover:to-indigo-500 transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
+      制作を依頼する
+      <i data-lucide="arrow-right" class="w-5 h-5"></i>
+    </a>
+  </div>
 </section>
 
-<!-- 【新規追加】新着情報セクション -->
-<section id="news" class="py-20 bg-white border-t border-slate-100">
+<!-- 新着情報セクション -->
+<section id="news" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-6xl mx-auto px-4">
-    <!-- 大きい見出し -->
     <div class="text-center mb-12">
-      <h3 class="text-3xl font-bold text-slate-900 mb-3">新着情報</h3>
-      <p class="text-slate-500">News & Topics</p>
+      <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">新着情報</h3>
+      <p class="text-slate-500 dark:text-slate-400">News & Topics</p>
       <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
-    <!-- コンテンツカード -->
-    <div class="max-w-4xl mx-auto bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row">
-      <!-- 任意の画像エリア（※srcを実際の画像ファイル名に置き換えてください） -->
-      <div class="md:w-1/2 relative bg-slate-200 min-h-[240px]">
+    <div class="max-w-4xl mx-auto bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row">
+      <div class="md:w-1/2 relative bg-slate-200 dark:bg-slate-700 min-h-[240px]">
         <img src="IMG_manga.jpg"
              alt="新着情報画像"
              onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/64748b?text=News+Image';"
              class="w-full h-full object-cover">
       </div>
 
-      <!-- 説明エリア -->
       <div class="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
         <div class="flex items-center gap-2 mb-3">
-          <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 text-sky-700">お知らせ</span>
-          <span class="text-xs text-slate-400">2026.08.31</span>
+          <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300">お知らせ</span>
+          <span class="text-xs text-slate-400 dark:text-slate-500">2026.08.31</span>
         </div>
         
-        <!-- 説明 (小見出し) -->
-        <h4 class="text-xl font-bold text-slate-900 mb-3">
+        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
           ディピョン丸新作マンガ始動
         </h4>
 
-        <!-- 説明 (本文) -->
-        <p class="text-slate-600 leading-relaxed text-sm">
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
           動画制作のネタが尽きた結果漫画に迷走したのでどうか暖かく見守ってください。なんで二等身じゃないかって？二等身じゃカッコつかないし参考にできる構図がち⚪︎かわしか無かったからですよ。この構図もある漫画の扉絵を参考にしているので気づいたら当職に言ってください。乞うご期待 星野
         </p>
       </div>
     </div>
   </div>
 </section>
-<!-- 5周年記念特設ページへの大型ボタン（上質＆高視認性） -->
-<div style="text-align: center; margin: 60px 0;">
-  <a href="5th.html" style="background: #0056b3; color: #ffffff; padding: 28px 74px; border-radius: 60px; text-decoration: none; display: inline-block; border: 2px solid #c5a059; box-shadow: 0 12px 30px rgba(0, 86, 179, 0.3); transition: all 0.3s ease; max-width: 90%; box-sizing: border-box;">
-    <span style="display: block; font-size: 1.55rem; font-weight: bold; letter-spacing: 2px; line-height: 1.2;">5周年記念 特設ページへ</span>
-    <span style="display: block; font-size: 0.85rem; font-weight: 300; margin-top: 8px; letter-spacing: 4px; color: #f0f4f8; opacity: 0.9;">SPECIAL CONTENTS</span>
+
+<!-- 5周年記念特設ページへの大型ボタン -->
+<div class="text-center my-14 px-4">
+  <a href="5th.html" class="inline-block bg-[#0056b3] text-white py-7 px-10 md:px-16 rounded-[60px] no-underline border-2 border-[#c5a059] shadow-lg hover:shadow-xl transition-all max-w-[90%] box-border">
+    <span class="block text-2xl md:text-3xl font-bold tracking-wider leading-tight">5周年記念 特設ページへ</span>
+    <span class="block text-xs md:text-sm font-light mt-2 tracking-widest text-slate-100 opacity-90">SPECIAL CONTENTS</span>
   </a>
 </div>
-<!-- 更新情報セクション -->
-<section style="background-color: #ffffff; padding: 30px; border-radius: 8px; margin: 30px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #0056b3;">
-  <h2 style="color: #333; margin-top: 0; margin-bottom: 20px; font-size: 1.4rem; border-bottom: 2px solid #eee; padding-bottom: 10px;">更新情報</h2>
 
-  <ul style="list-style: none; padding: 0; margin: 0;">
-    <!-- 1件目 -->
-    <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 15px;">
-      <time style="color: #666; font-size: 0.9rem; white-space: nowrap; margin-top: 2px;">2026.09.09</time>
-      <span style="background-color: #e3f2fd; color: #0056b3; font-size: 0.8rem; padding: 4px 10px; border-radius: 4px; white-space: nowrap; font-weight: bold;">お知らせ</span>
-      <span style="color: #333; font-size: 0.95rem; line-height: 1.5;">5周年記念特設に初の長尺動画を投稿しました。</span>
+<!-- 更新情報セクション -->
+<section class="bg-white dark:bg-slate-800 p-8 rounded-xl my-8 shadow-sm border-t-4 border-[#0056b3] border-x border-b border-slate-200 dark:border-slate-700 max-w-6xl mx-auto px-4 transition-colors">
+  <h2 class="text-slate-900 dark:text-white mt-0 mb-5 text-xl font-bold border-b border-slate-200 dark:border-slate-700 pb-2">更新情報</h2>
+
+  <ul class="list-none p-0 m-0">
+    <li class="flex items-start gap-4 mb-4 border-b border-dashed border-slate-200 dark:border-slate-700 pb-4">
+      <time class="text-slate-500 dark:text-slate-400 text-sm whitespace-nowrap mt-0.5">2026.09.09</time>
+      <span class="bg-sky-100 dark:bg-sky-900/50 text-[#0056b3] dark:text-sky-300 text-xs px-2.5 py-1 rounded whitespace-nowrap font-bold">お知らせ</span>
+      <span class="text-slate-800 dark:text-slate-200 text-sm leading-relaxed">5周年記念特設に初の長尺動画を投稿しました。</span>
     </li>
     
-    <!-- 2件目 -->
-    <li style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 15px;">
-      <time style="color: #666; font-size: 0.9rem; white-space: nowrap; margin-top: 2px;">2026.09.08</time>
-      <span style="background-color: #f1f8e9; color: #33691e; font-size: 0.8rem; padding: 4px 10px; border-radius: 4px; white-space: nowrap; font-weight: bold;">更新</span>
-      <span style="color: #333; font-size: 0.95rem; line-height: 1.5;">スペシャルサンクスページのレイアウトを調整しました。</span>
+    <li class="flex items-start gap-4 mb-4 border-b border-dashed border-slate-200 dark:border-slate-700 pb-4">
+      <time class="text-slate-500 dark:text-slate-400 text-sm whitespace-nowrap mt-0.5">2026.09.08</time>
+      <span class="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs px-2.5 py-1 rounded whitespace-nowrap font-bold">更新</span>
+      <span class="text-slate-800 dark:text-slate-200 text-sm leading-relaxed">スペシャルサンクスページのレイアウトを調整しました。</span>
     </li>
     
-    <!-- 3件目 -->
-    <li style="display: flex; align-items: flex-start; gap: 15px;">
-      <time style="color: #666; font-size: 0.9rem; white-space: nowrap; margin-top: 2px;">2026.09.07</time>
-      <span style="background-color: #fff3e0; color: #e65100; font-size: 0.8rem; padding: 4px 10px; border-radius: 4px; white-space: nowrap; font-weight: bold;">更新</span>
-      <span style="color: #333; font-size: 0.95rem; line-height: 1.5;">リアクションボタンを追加しました。</span>
+    <li class="flex items-start gap-4">
+      <time class="text-slate-500 dark:text-slate-400 text-sm whitespace-nowrap mt-0.5">2026.09.07</time>
+      <span class="bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 text-xs px-2.5 py-1 rounded whitespace-nowrap font-bold">更新</span>
+      <span class="text-slate-800 dark:text-slate-200 text-sm leading-relaxed">リアクションボタンを追加しました。</span>
     </li>
   </ul>
 </section>  
+
 <!-- 企業紹介セクション -->
-<section id="about" class="py-20 bg-slate-50 border-t border-slate-100">
+<section id="about" class="py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
 <div class="max-w-6xl mx-auto px-4">
 <div class="text-center mb-12">
-<h3 class="text-3xl font-bold text-slate-900 mb-3">企業紹介</h3>
-<p class="text-slate-500">About Us</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">企業紹介</h3>
+<p class="text-slate-500 dark:text-slate-400">About Us</p>
 <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <!-- 企業理念 -->
-<div class="bg-white border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
-<div class="w-14 h-14 bg-slate-50 shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 text-center hover:border-sky-300 dark:hover:border-sky-500 hover:shadow-md transition-all group">
+<div class="w-14 h-14 bg-slate-50 dark:bg-slate-700 shadow-sm border border-slate-100 dark:border-slate-600 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 dark:group-hover:bg-sky-900/30 transition-colors">
 <i data-lucide="lightbulb" class="w-7 h-7 text-sky-500"></i>
 </div>
-<h4 class="text-lg font-bold text-slate-900 mb-2">企業理念</h4>
-<p class="text-slate-600 font-medium">確かな技術で安心を約束</p>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">企業理念</h4>
+<p class="text-slate-600 dark:text-slate-300 font-medium">確かな技術で安心を約束</p>
 </div>
 <!-- 活動拠点 -->
-<div class="bg-white border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
-<div class="w-14 h-14 bg-slate-50 shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 text-center hover:border-sky-300 dark:hover:border-sky-500 hover:shadow-md transition-all group">
+<div class="w-14 h-14 bg-slate-50 dark:bg-slate-700 shadow-sm border border-slate-100 dark:border-slate-600 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 dark:group-hover:bg-sky-900/30 transition-colors">
 <i data-lucide="map-pin" class="w-7 h-7 text-sky-500"></i>
 </div>
-<h4 class="text-lg font-bold text-slate-900 mb-2">活動拠点</h4>
-<p class="text-slate-600 font-medium">東京都</p>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">活動拠点</h4>
+<p class="text-slate-600 dark:text-slate-300 font-medium">東京都</p>
 </div>
 <!-- 活動日時 -->
-<div class="bg-white border border-slate-200 rounded-2xl p-8 text-center hover:border-sky-300 hover:shadow-md transition-all group">
-<div class="w-14 h-14 bg-slate-50 shadow-sm border border-slate-100 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 transition-colors">
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 text-center hover:border-sky-300 dark:hover:border-sky-500 hover:shadow-md transition-all group">
+<div class="w-14 h-14 bg-slate-50 dark:bg-slate-700 shadow-sm border border-slate-100 dark:border-slate-600 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-sky-50 dark:group-hover:bg-sky-900/30 transition-colors">
 <i data-lucide="clock" class="w-7 h-7 text-sky-500"></i>
 </div>
-<h4 class="text-lg font-bold text-slate-900 mb-2">活動日時</h4>
-<p class="text-slate-600 font-medium">毎日 <span class="text-sm text-slate-400">（木曜定休日）</span></p>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">活動日時</h4>
+<p class="text-slate-600 dark:text-slate-300 font-medium">毎日 <span class="text-sm text-slate-400 dark:text-slate-500">（木曜定休日）</span></p>
 </div>
 </div>
 </div>
 </section>
 
 <!-- 創業者の言葉コーナー -->
-<section style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #007bff; display: flex; align-items: center; gap: 20px;">
-  <img src="IMG_3659.jpeg" alt="創業者アイコン" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
-  <div style="flex-grow: 1;">
-    <h2 style="margin-top: 0; color: #333;">創業者の言葉</h2>
-    <blockquote style="font-style: italic; margin: 10px 0; color: #555; line-height: 1.6;">
+<section class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl my-8 border-l-4 border-sky-500 flex flex-col md:flex-row items-center gap-5 max-w-6xl mx-auto px-4 transition-colors">
+  <img src="IMG_3659.jpeg" alt="創業者アイコン" class="w-20 h-20 rounded-full object-cover shrink-0">
+  <div class="grow">
+    <h2 class="mt-0 text-slate-900 dark:text-white text-xl font-bold mb-2">創業者の言葉</h2>
+    <blockquote class="italic my-2 text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
       どうも皆さんこんにちは。私のようなクズが作った企業の小さなホームページに来訪してくださりありがとうございます。完全フィクション※実際の企業とは違うという意味合いで。のホームページですのでクスッと笑っていただければ幸いです。みなさんに言いたいことはただ一つ。想像力を大事にしてください。現に私1人の妄想がたくさん人の協力を得て今あなたがみている画面になっているのですから。
     </blockquote>
-    <p style="text-align: right; font-weight: bold; margin: 0; color: #333;">— 創業者 星野 takoika</p>
+    <p class="text-right font-bold m-0 text-slate-800 dark:text-slate-200 text-sm">— 創業者 星野 takoika</p>
   </div>
 </section>
 
-<!-- スペシャルサンクスページへのボタン（枠の外に配置） -->
-<div style="text-align: center; margin: 30px 0;">
-  <a href="thanks.html" style="background-color: #007bff; color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; white-space: nowrap; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<!-- スペシャルサンクスページへのボタン -->
+<div class="text-center my-8">
+  <a href="thanks.html" class="bg-sky-600 hover:bg-sky-500 text-white py-3 px-6 rounded-full font-bold inline-block whitespace-nowrap shadow-md transition-colors">
     🤝 スペシャルサンクス（協力者紹介）を見る
   </a>
 </div>  
+
 <!-- フロアマップセクション -->
-<section class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors">
+<section class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors max-w-6xl mx-auto">
   <h2 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">フロアマップ</h2>
 
   <!-- タブ切り替えボタン -->
@@ -263,20 +260,21 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     </div>
   </div>
 </section>
+
 <!-- フロアマップ（建物断面図）エリア -->
-<section style="background-color: #ffffff; padding: 24px; border-radius: 12px; margin: 30px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); text-align: center;">
-  <h2 style="color: #333; margin-top: 0; margin-bottom: 15px; font-size: 1.5rem;">フロアマップ</h2>
+<section class="bg-white dark:bg-slate-800 p-6 rounded-xl my-8 shadow-sm border border-slate-200 dark:border-slate-700 text-center max-w-6xl mx-auto px-4 transition-colors">
+  <h2 class="text-slate-900 dark:text-white mt-0 mb-4 text-xl font-bold">フロアマップ</h2>
   
-  <div style="width: 100%; overflow: hidden; border-radius: 8px;">
-    <img src="IMG_3669.png" alt="星野製作所 建物断面図" style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border: 1px solid #eee; border-radius: 8px;">
+  <div class="w-full overflow-hidden rounded-lg">
+    <img src="IMG_3669.png" alt="星野製作所 建物断面図" class="w-full max-w-[800px] h-auto block mx-auto border border-slate-200 dark:border-slate-700 rounded-lg">
   </div>
   
-  <p style="color: #666; font-size: 0.85rem; margin-top: 12px; margin-bottom: 0;">
+  <p class="text-slate-500 dark:text-slate-400 text-xs mt-3 mb-0">
     ※星野製作所 本社ビルの構造図（断面図）です
   </p>
 </section>
+
 <script>
-  // 各フロアのデータ（画像URLとアイコン付き施設データ）
   const floors = {
     'RF': {
       name: '屋上 (RF)',
@@ -347,15 +345,10 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   function updateFloorInfo() {
     const data = floors[currentFloor];
-    
-    // 画像更新
     floorImgEl.src = data.image;
     floorImgEl.alt = `${data.name}の図面`;
-
-    // テキスト更新
     floorNameEl.textContent = data.name;
     
-    // アイコン付きリスト挿入
     floorListEl.innerHTML = data.items.map(item => `
       <li class="flex items-center gap-3">
         <i data-lucide="${item.icon}" class="w-4 h-4 text-sky-500 shrink-0"></i>
@@ -363,30 +356,27 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       </li>
     `).join('');
 
-    // Lucideアイコンをレンダリング
     if (window.lucide) {
       lucide.createIcons();
     }
   }
 
-  // 初期化
   renderTabs();
   updateFloorInfo();
 </script>  
 
 <!-- FAQセクション -->
-<section id="faq" class="py-20 bg-white border-t border-slate-100">
+<section id="faq" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-4xl mx-auto px-4">
     <div class="text-center mb-12">
-      <h3 class="text-3xl font-bold text-slate-900 mb-3">よくある質問</h3>
-      <p class="text-slate-500">FAQ</p>
+      <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">よくある質問</h3>
+      <p class="text-slate-500 dark:text-slate-400">FAQ</p>
       <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
     <div class="space-y-4">
-      <!-- Q1 -->
-      <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 cursor-pointer select-none hover:bg-slate-100 transition-colors">
+      <details class="group bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 dark:text-slate-200 cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-sky-500 font-extrabold text-lg">Q.</span>
             個人からの依頼も可能ですか？
@@ -395,14 +385,13 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </span>
         </summary>
-        <div class="px-5 pb-5 pt-2 text-slate-600 text-sm border-t border-slate-200/60 leading-relaxed">
+        <div class="px-5 pb-5 pt-2 text-slate-600 dark:text-slate-300 text-sm border-t border-slate-200/60 dark:border-slate-700/60 leading-relaxed">
           はい、個人・法人問わず大歓迎です！ロゴデザインやペーパークラフト、動画編集など、1点から気軽にご相談ください。
         </div>
       </details>
 
-      <!-- Q2 -->
-      <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 cursor-pointer select-none hover:bg-slate-100 transition-colors">
+      <details class="group bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 dark:text-slate-200 cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-sky-500 font-extrabold text-lg">Q.</span>
             依頼から納品までの期間（納期）はどのくらいですか？
@@ -411,14 +400,13 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </span>
         </summary>
-        <div class="px-5 pb-5 pt-2 text-slate-600 text-sm border-t border-slate-200/60 leading-relaxed">
+        <div class="px-5 pb-5 pt-2 text-slate-600 dark:text-slate-300 text-sm border-t border-slate-200/60 dark:border-slate-700/60 leading-relaxed">
           内容や混雑状況によって異なりますが、ロゴ・画像編集で約1〜2週間、模型・ペーパークラフト制作で約2〜4週間程度が目安となります。
         </div>
       </details>
 
-      <!-- Q3 -->
-      <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 cursor-pointer select-none hover:bg-slate-100 transition-colors">
+      <details class="group bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 dark:text-slate-200 cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-sky-500 font-extrabold text-lg">Q.</span>
             どのようなデータ形式で納品されますか？
@@ -427,14 +415,13 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </span>
         </summary>
-        <div class="px-5 pb-5 pt-2 text-slate-600 text-sm border-t border-slate-200/60 leading-relaxed">
+        <div class="px-5 pb-5 pt-2 text-slate-600 dark:text-slate-300 text-sm border-t border-slate-200/60 dark:border-slate-700/60 leading-relaxed">
           PNG、JPEG、PDF、AI（Illustratorデータ）、MOV/MP4（動画）など、ご指定の形式に合わせて柔軟に納品いたします。
         </div>
       </details>
 
-      <!-- Q4 -->
-      <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 cursor-pointer select-none hover:bg-slate-100 transition-colors">
+      <details class="group bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 dark:text-slate-200 cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-sky-500 font-extrabold text-lg">Q.</span>
             制作費用はどのくらいかかりますか？
@@ -443,14 +430,13 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </span>
         </summary>
-        <div class="px-5 pb-5 pt-2 text-slate-600 text-sm border-t border-slate-200/60 leading-relaxed">
+        <div class="px-5 pb-5 pt-2 text-slate-600 dark:text-slate-300 text-sm border-t border-slate-200/60 dark:border-slate-700/60 leading-relaxed">
           ご依頼内容や制作規模によって異なります。お見積もりは無料でお送りしますので、まずはお気軽にご希望をお聞かせください。
         </div>
       </details>
 
-      <!-- Q5 -->
-      <details class="group bg-slate-50 border border-slate-200 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 cursor-pointer select-none hover:bg-slate-100 transition-colors">
+      <details class="group bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+        <summary class="flex items-center justify-between p-5 font-bold text-slate-800 dark:text-slate-200 cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-sky-500 font-extrabold text-lg">Q.</span>
             ai使ってますか？
@@ -459,78 +445,78 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             <i data-lucide="chevron-down" class="w-5 h-5"></i>
           </span>
         </summary>
-        <div class="px-5 pb-5 pt-2 text-slate-600 text-sm border-t border-slate-200/60 leading-relaxed">
+        <div class="px-5 pb-5 pt-2 text-slate-600 dark:text-slate-300 text-sm border-t border-slate-200/60 dark:border-slate-700/60 leading-relaxed">
          いいえ、私は設計図を書いたり自分で考えてやることでドーパミンをドパドパ得るのでaiは使いません
         </div>
       </details>
-
     </div>
   </div>
 </section>
+
 <!-- 歴史・沿革セクション -->
-<section id="history" class="py-20 bg-white border-t border-slate-100">
+<section id="history" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-3xl mx-auto px-4">
     <div class="text-center mb-12">
-      <h3 class="text-3xl font-bold text-slate-900 mb-3">星野製作所の歴史</h3>
-      <p class="text-slate-500">History</p>
+      <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">星野製作所の歴史</h3>
+      <p class="text-slate-500 dark:text-slate-400">History</p>
       <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
     <!-- タイムライン -->
-    <div class="relative border-l-2 border-sky-200 ml-4 md:ml-32 space-y-8">
+    <div class="relative border-l-2 border-sky-200 dark:border-sky-900 ml-4 md:ml-32 space-y-8">
       
       <!-- 2021年 -->
       <div class="relative pl-6 md:pl-8">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
-        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2021年</div>
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
-          <p class="text-slate-800 font-medium text-sm">漫画制作係として発足</p>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white dark:ring-slate-900"></div>
+        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 dark:text-sky-400 text-sm mb-1 md:mb-0">2021年</div>
+        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <p class="text-slate-800 dark:text-slate-100 font-medium text-sm">漫画制作係として発足</p>
         </div>
       </div>
 
       <!-- 2022年 -->
       <div class="relative pl-6 md:pl-8">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
-        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2022年</div>
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
-          <p class="text-slate-800 font-medium text-sm">デジタル化</p>
-          <p class="text-slate-600 text-xs border-t border-slate-100 pt-2">デジタル作画からアニメーション制作へ</p>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white dark:ring-slate-900"></div>
+        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 dark:text-sky-400 text-sm mb-1 md:mb-0">2022年</div>
+        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+          <p class="text-slate-800 dark:text-slate-100 font-medium text-sm">デジタル化</p>
+          <p class="text-slate-600 dark:text-slate-400 text-xs border-t border-slate-200 dark:border-slate-700 pt-2">デジタル作画からアニメーション制作へ</p>
         </div>
       </div>
 
       <!-- 2023年 -->
       <div class="relative pl-6 md:pl-8">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
-        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2023年</div>
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
-          <p class="text-slate-800 font-medium text-sm">初の長編アニメーション(マンガ)がヒット</p>
-          <p class="text-slate-600 text-xs border-t border-slate-100 pt-2">この頃から単純な画像編集も視野に</p>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white dark:ring-slate-900"></div>
+        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 dark:text-sky-400 text-sm mb-1 md:mb-0">2023年</div>
+        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+          <p class="text-slate-800 dark:text-slate-100 font-medium text-sm">初の長編アニメーション(マンガ)がヒット</p>
+          <p class="text-slate-600 dark:text-slate-400 text-xs border-t border-slate-200 dark:border-slate-700 pt-2">この頃から単純な画像編集も視野に</p>
         </div>
       </div>
 
       <!-- 2024年 -->
       <div class="relative pl-6 md:pl-8">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
-        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2024年</div>
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
-          <p class="text-slate-800 font-medium text-sm">情報提供サービスのようなものを試験運用</p>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white dark:ring-slate-900"></div>
+        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 dark:text-sky-400 text-sm mb-1 md:mb-0">2024年</div>
+        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <p class="text-slate-800 dark:text-slate-100 font-medium text-sm">情報提供サービスのようなものを試験運用</p>
         </div>
       </div>
 
       <!-- 2025年 -->
       <div class="relative pl-6 md:pl-8">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white"></div>
-        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 text-sm mb-1 md:mb-0">2025年</div>
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
-          <p class="text-slate-800 font-medium text-sm">画像編集 ＋ 工作 ＋ 映像編集で星野製作所運用開始</p>
-          <p class="text-slate-600 text-xs border-t border-slate-100 pt-2">本格的なソフト使用開始</p>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white dark:ring-slate-900"></div>
+        <div class="md:absolute md:-left-32 md:top-1 font-bold text-sky-600 dark:text-sky-400 text-sm mb-1 md:mb-0">2025年</div>
+        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+          <p class="text-slate-800 dark:text-slate-100 font-medium text-sm">画像編集 ＋ 工作 ＋ 映像編集で星野製作所運用開始</p>
+          <p class="text-slate-600 dark:text-slate-400 text-xs border-t border-slate-200 dark:border-slate-700 pt-2">本格的なソフト使用開始</p>
         </div>
       </div>
 
       <!-- 2026年 -->
       <div class="relative pl-6 md:pl-8">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-100"></div>
-        <div class="md:absolute md:-left-32 md:top-1 font-bold text-indigo-600 text-sm mb-1 md:mb-0">2026年</div>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-100 dark:ring-indigo-950"></div>
+        <div class="md:absolute md:-left-32 md:top-1 font-bold text-indigo-600 dark:text-indigo-400 text-sm mb-1 md:mb-0">2026年</div>
         <div class="bg-gradient-to-r from-sky-500 to-indigo-600 text-white p-5 rounded-xl shadow-md">
           <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 text-xs font-bold mb-1">現在</span>
           <h4 class="text-base font-bold">創設5周年 ホームページ運用開始</h4>
@@ -541,8 +527,8 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     <!-- 結びメッセージ -->
     <div class="mt-16 text-center">
-      <div class="inline-block px-6 py-3 bg-white rounded-full border border-sky-100 shadow-sm">
-        <p class="text-base font-bold text-slate-800 tracking-wider">
+      <div class="inline-block px-6 py-3 bg-white dark:bg-slate-800 rounded-full border border-sky-100 dark:border-slate-700 shadow-sm">
+        <p class="text-base font-bold text-slate-800 dark:text-slate-100 tracking-wider">
           ⭐︎ これからの動きにご期待ください！
         </p>
       </div>
@@ -552,82 +538,74 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </section>
 
 <!-- 製品紹介セクション -->
-<section id="products" class="py-20 bg-slate-50 border-t border-slate-100">
+<section id="products" class="py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
 <div class="max-w-6xl mx-auto px-4">
 <div class="text-center mb-12">
-<h3 class="text-3xl font-bold text-slate-900 mb-3">製品紹介</h3>
-<p class="text-slate-500">Our Products</p>
-<p class="text-xs text-slate-400 mt-2">※「写真を見る」ボタンを押すと画像が表示されます。画像URLの差し替えも可能です。</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">製品紹介</h3>
+<p class="text-slate-500 dark:text-slate-400">Our Products</p>
+<p class="text-xs text-slate-400 dark:text-slate-500 mt-2">※「写真を見る」ボタンを押すと画像が表示されます。画像URLの差し替えも可能です。</p>
 <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
 </div>
 
-<!-- 製品グリッド（JSにて動的生成） -->
-<div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- JavaScriptでカード群が描画されます -->
-</div>
+<!-- 製品グリッド -->
+<div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </div>
 </section>
+
 <!-- 制作環境・機材セクション -->
-<section style="background-color: #ffffff; padding: 30px; border-radius: 8px; margin: 30px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid #0056b3;">
-  <h2 style="color: #333; margin-top: 0; margin-bottom: 20px; font-size: 1.4rem; border-bottom: 2px solid #eee; padding-bottom: 10px;">制作環境・機材</h2>
+<section class="bg-white dark:bg-slate-800 p-8 rounded-xl my-8 shadow-sm border-t-4 border-[#0056b3] border-x border-b border-slate-200 dark:border-slate-700 max-w-6xl mx-auto px-4 transition-colors">
+  <h2 class="text-slate-900 dark:text-white mt-0 mb-5 text-xl font-bold border-b border-slate-200 dark:border-slate-700 pb-2">制作環境・機材</h2>
   
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
     
-    <!-- Keynote -->
-    <div style="background-color: #f9f9f9; padding: 18px; border-radius: 6px; border-left: 5px solid #2196F3;">
-      <h3 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #333;">Keynote</h3>
-      <p style="margin: 0; font-size: 0.9rem; color: #666; line-height: 1.5;">企画構成・プレゼンテーション資料作成</p>
+    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border-l-4 border-blue-500">
+      <h3 class="m-0 mb-2 text-base font-bold text-slate-800 dark:text-white">Keynote</h3>
+      <p class="m-0 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">企画構成・プレゼンテーション資料作成</p>
     </div>
 
-    <!-- Canva -->
-    <div style="background-color: #f9f9f9; padding: 18px; border-radius: 6px; border-left: 5px solid #00C4CC;">
-      <h3 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #333;">Canva</h3>
-      <p style="margin: 0; font-size: 0.9rem; color: #666; line-height: 1.5;">各種デザイン・画像編集・レイアウト調整</p>
+    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border-l-4 border-teal-400">
+      <h3 class="m-0 mb-2 text-base font-bold text-slate-800 dark:text-white">Canva</h3>
+      <p class="m-0 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">各種デザイン・画像編集・レイアウト調整</p>
     </div>
 
-    <!-- ibisPaint -->
-    <div style="background-color: #f9f9f9; padding: 18px; border-radius: 6px; border-left: 5px solid #E91E63;">
-      <h3 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #333;">ibisPaint</h3>
-      <p style="margin: 0; font-size: 0.9rem; color: #666; line-height: 1.5;">イラスト制作・細かなグラフィック作成</p>
+    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border-l-4 border-pink-500">
+      <h3 class="m-0 mb-2 text-base font-bold text-slate-800 dark:text-white">ibisPaint</h3>
+      <p class="m-0 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">イラスト制作・細かなグラフィック作成</p>
     </div>
 
-    <!-- Safari -->
-    <div style="background-color: #f9f9f9; padding: 18px; border-radius: 6px; border-left: 5px solid #007AFF;">
-      <h3 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #333;">Safari</h3>
-      <p style="margin: 0; font-size: 0.9rem; color: #666; line-height: 1.5;">Webブラウジング・サイトの動作検証</p>
+    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border-l-4 border-blue-600">
+      <h3 class="m-0 mb-2 text-base font-bold text-slate-800 dark:text-white">Safari</h3>
+      <p class="m-0 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Webブラウジング・サイトの動作検証</p>
     </div>
 
-    <!-- GitHub -->
-    <div style="background-color: #f9f9f9; padding: 18px; border-radius: 6px; border-left: 5px solid #181717;">
-      <h3 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #333;">GitHub</h3>
-      <p style="margin: 0; font-size: 0.9rem; color: #666; line-height: 1.5;">ソースコードのバージョン管理・サイト公開</p>
+    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border-l-4 border-slate-700 dark:border-slate-400">
+      <h3 class="m-0 mb-2 text-base font-bold text-slate-800 dark:text-white">GitHub</h3>
+      <p class="m-0 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">ソースコードのバージョン管理・サイト公開</p>
     </div>
 
-    <!-- 家庭用プリンタ -->
-    <div style="background-color: #f9f9f9; padding: 18px; border-radius: 6px; border-left: 5px solid #8BC34A;">
-      <h3 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #333;">家庭用プリンタ</h3>
-      <p style="margin: 0; font-size: 0.9rem; color: #666; line-height: 1.5;">テスト出力・ペーパープロトタイプの確認</p>
+    <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-md border-l-4 border-lime-500">
+      <h3 class="m-0 mb-2 text-base font-bold text-slate-800 dark:text-white">家庭用プリンタ</h3>
+      <p class="m-0 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">テスト出力・ペーパープロトタイプの確認</p>
     </div>
 
   </div>
 </section>
+
 <!-- 制作実績セクション -->
-<section id="portfolio" class="py-20 bg-slate-50 border-t border-slate-100">
+<section id="portfolio" class="py-20 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
-      <h3 class="text-3xl font-bold text-slate-900 mb-3">制作実績</h3>
-      <p class="text-slate-500">Case Studies</p>
+      <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">制作実績</h3>
+      <p class="text-slate-500 dark:text-slate-400">Case Studies</p>
       <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
-    <!-- 事例カード一覧 -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       
       <!-- 事例 1 -->
-      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
         <div>
-          <!-- メイン画像 -->
-          <div class="relative h-52 bg-slate-200">
+          <div class="relative h-52 bg-slate-200 dark:bg-slate-700">
             <img src="IMG_3515.jpeg"
                  alt="実績1"
                  onerror="this.onerror=null; this.src='https://placehold.co/800x450/e2e8f0/64748b?text=Case+Study+1';"
@@ -637,25 +615,24 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             </span>
           </div>
 
-          <!-- テキストコンテンツ -->
           <div class="p-6 md:p-8">
-            <h4 class="text-xl font-bold text-slate-900 mb-2">
+            <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">
               HR東日本様 足元サインシステムデザイン
             </h4>
-            <p class="text-xs text-slate-400 mb-6 flex items-center gap-1">
+            <p class="text-xs text-slate-400 dark:text-slate-500 mb-6 flex items-center gap-1">
               <i data-lucide="clock" class="w-3.5 h-3.5"></i> 制作期間：約2週間
             </p>
 
             <div class="space-y-4 text-sm">
-              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                <span class="text-sky-600 font-bold text-xs uppercase tracking-wider block mb-1">【ご依頼内容】</span>
-                <p class="text-slate-700 leading-relaxed">
+              <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                <span class="text-sky-600 dark:text-sky-400 font-bold text-xs uppercase tracking-wider block mb-1">【ご依頼内容】</span>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
                   駅構内の視認性を高め、直感的に移動できる足元サインシステムおよび関連ロゴの制作。
                 </p>
               </div>
-              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                <span class="text-indigo-600 font-bold text-xs uppercase tracking-wider block mb-1">【工夫・ポイント】</span>
-                <p class="text-slate-700 leading-relaxed">
+              <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider block mb-1">【工夫・ポイント】</span>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
                   遠くからでも識別しやすい配色パターンを選定し、ピクトグラムの視認性を極限まで高めました。
                 </p>
               </div>
@@ -665,10 +642,9 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       </div>
 
       <!-- 事例 2 -->
-      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
         <div>
-          <!-- メイン画像 -->
-          <div class="relative h-52 bg-slate-200">
+          <div class="relative h-52 bg-slate-200 dark:bg-slate-700">
             <img src="IMG_paper1.PNG"
                  alt="実績2"
                  onerror="this.onerror=null; this.src='https://placehold.co/800x450/e2e8f0/64748b?text=Case+Study+2';"
@@ -678,25 +654,24 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             </span>
           </div>
 
-          <!-- テキストコンテンツ -->
           <div class="p-6 md:p-8">
-            <h4 class="text-xl font-bold text-slate-900 mb-2">
+            <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">
               531系 前面リアルペーパークラフト制作
             </h4>
-            <p class="text-xs text-slate-400 mb-6 flex items-center gap-1">
+            <p class="text-xs text-slate-400 dark:text-slate-500 mb-6 flex items-center gap-1">
               <i data-lucide="clock" class="w-3.5 h-3.5"></i> 制作期間：約3週間
             </p>
 
             <div class="space-y-4 text-sm">
-              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                <span class="text-sky-600 font-bold text-xs uppercase tracking-wider block mb-1">【ご依頼内容】</span>
-                <p class="text-slate-700 leading-relaxed">
+              <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                <span class="text-sky-600 dark:text-sky-400 font-bold text-xs uppercase tracking-wider block mb-1">【ご依頼内容】</span>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
                   展示用として、実物の質感を再現した精密な前面立体模型の制作。
                 </p>
               </div>
-              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                <span class="text-indigo-600 font-bold text-xs uppercase tracking-wider block mb-1">【工夫・ポイント】</span>
-                <p class="text-slate-700 leading-relaxed">
+              <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider block mb-1">【工夫・ポイント】</span>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
                   組み立てやすさと再現度のバランスを追求し、独自の折り目構造を開発して再現しました。
                 </p>
               </div>
@@ -708,40 +683,39 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     </div>
   </div>
 </section>  
+
 <!-- エンタメセクション -->
-<section id="entertainment" class="py-20 bg-white border-t border-slate-100">
+<section id="entertainment" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-12">
-      <h3 class="text-3xl font-bold text-slate-900 mb-3">エンタメ</h3>
-      <p class="text-slate-500">Entertainment</p>
+      <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">エンタメ</h3>
+      <p class="text-slate-500 dark:text-slate-400">Entertainment</p>
       <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
-    <!-- 動画プレイヤー（1つ） -->
+    <!-- 動画プレイヤー -->
     <div class="max-w-3xl mx-auto mb-16">
-      <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+      <h4 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
         <i data-lucide="video" class="w-5 h-5 text-sky-500"></i>
         動画コンテンツ※都合上短尺です-_-
       </h4>
       <div class="relative w-full rounded-2xl overflow-hidden bg-black shadow-lg aspect-video">
         <video controls class="w-full h-full object-contain">
-          <!-- 指定の動画ファイル名を src に設定してください -->
           <source src="hosisei.mov" type="video/quicktime">
           お使いのブラウザは動画再生に対応していません。
         </video>
       </div>
     </div>
 
-    <!-- 画像ギャラリー（4つ） -->
+    <!-- 画像ギャラリー -->
     <div>
-      <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+      <h4 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
         <i data-lucide="image" class="w-5 h-5 text-sky-500"></i>
         ペーパークラフトギャラリー
       </h4>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <!-- 画像 1 -->
-        <div class="relative group rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-square shadow-sm">
+        <div class="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 aspect-square shadow-sm">
           <img src="ent_image1.jpg"
                alt="エンタメ画像1"
                onerror="this.onerror=null; this.src='IMG_rete.jpg';"
@@ -754,8 +728,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
           </div>
         </div>
 
-        <!-- 画像 2 -->
-        <div class="relative group rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-square shadow-sm">
+        <div class="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 aspect-square shadow-sm">
           <img src="ent_image2.jpg"
                alt="エンタメ画像2"
                onerror="this.onerror=null; this.src='IMG_1870.jpg';"
@@ -768,8 +741,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
           </div>
         </div>
 
-        <!-- 画像 3 -->
-        <div class="relative group rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-square shadow-sm">
+        <div class="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 aspect-square shadow-sm">
           <img src="ent_image3.jpg"
                alt="エンタメ画像3"
                onerror="this.onerror=null; this.src='IMG_paper1.PNG';"
@@ -782,8 +754,7 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
           </div>
         </div>
 
-        <!-- 画像 4 -->
-        <div class="relative group rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-square shadow-sm">
+        <div class="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 aspect-square shadow-sm">
           <img src="ent_image4.jpg"
                alt="エンタメ画像4"
                onerror="this.onerror=null; this.src='IMG_paper2.PNG';"
@@ -801,47 +772,46 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   </div>
 <iframe src="train.html" width="100%" height="200" frameborder="0"></iframe>
 </section>  
+
 <!-- 面白Webサイト紹介ページへの特大ボタン -->
-<div style="text-align: center; margin: 50px 0;">
-  <a href="links.html" style="background-color: #0056b3; color: #ffffff; padding: 20px 44px; border-radius: 40px; text-decoration: none; font-weight: bold; font-size: 1.25rem; display: inline-block; box-shadow: 0 6px 16px rgba(0, 86, 179, 0.25); letter-spacing: 1px; transition: transform 0.2s;">
+<div class="text-center my-12 px-4">
+  <a href="links.html" class="bg-[#0056b3] text-white py-5 px-11 rounded-[40px] no-underline font-bold text-xl inline-block shadow-md hover:shadow-lg tracking-wide transition-transform hover:scale-105">
     🌐 面白webサイトコレクションを見る
   </a>
 </div>
+
 <!-- 今日のラッキーおみくじセクション -->
-<section id="omikuji" class="py-16 bg-slate-50 border-t border-slate-100">
+<section id="omikuji" class="py-16 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-xl mx-auto px-4 text-center">
     
     <div class="mb-6">
-      <span class="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full border border-amber-200 inline-block mb-2">
+      <span class="px-3 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 text-xs font-bold rounded-full border border-amber-200 dark:border-amber-700 inline-block mb-2">
         DAILY FORTUNE
       </span>
-      <h3 class="text-2xl font-bold text-slate-900 mb-1">星野製作所 おみくじ</h3>
-      <p class="text-xs text-slate-500">今日のラッキーアイテム＆カラーを占ってみよう！</p>
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">星野製作所 おみくじ</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400">今日のラッキーアイテム＆カラーを占ってみよう！</p>
     </div>
 
-    <!-- おみくじカード -->
-    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
       
-      <!-- 結果表示エリア（初期状態は非表示） -->
       <div id="omikuji-result" class="hidden mb-6 animate-fade-in">
         <span id="omikuji-luck" class="text-4xl font-black text-amber-500 block mb-3">大吉</span>
         
-        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 space-y-2 text-sm text-slate-700 text-left">
+        <div class="bg-slate-50 dark:bg-slate-900 rounded-xl p-4 border border-slate-100 dark:border-slate-700 space-y-2 text-sm text-slate-700 dark:text-slate-300 text-left">
           <p class="flex justify-between items-center">
-            <span class="font-bold text-slate-500">ラッキーアイテム：</span>
-            <span id="omikuji-item" class="text-sky-600 font-bold">E231系前面模型</span>
+            <span class="font-bold text-slate-500 dark:text-slate-400">ラッキーアイテム：</span>
+            <span id="omikuji-item" class="text-sky-600 dark:text-sky-400 font-bold">E231系前面模型</span>
           </p>
-          <p class="flex justify-between items-center border-t border-slate-200/60 pt-2">
-            <span class="font-bold text-slate-500">ラッキーカラー：</span>
-            <span id="omikuji-color" class="text-indigo-600 font-bold">スカイブルー</span>
+          <p class="flex justify-between items-center border-t border-slate-200/60 dark:border-slate-700/60 pt-2">
+            <span class="font-bold text-slate-500 dark:text-slate-400">ラッキーカラー：</span>
+            <span id="omikuji-color" class="text-indigo-600 dark:text-indigo-400 font-bold">スカイブルー</span>
           </p>
-          <p id="omikuji-desc" class="text-xs text-slate-600 pt-2 border-t border-slate-200/60 leading-relaxed text-center">
+          <p id="omikuji-desc" class="text-xs text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 leading-relaxed text-center">
             素晴らしいひらめきが舞い降りる一日！
           </p>
         </div>
       </div>
 
-      <!-- くじ引きボタン -->
       <button id="omikuji-btn" onclick="drawOmikuji()" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold rounded-xl shadow-md shadow-amber-500/20 transition-all transform active:scale-95 flex items-center justify-center gap-2">
         <i data-lucide="sparkles" class="w-5 h-5"></i>
         <span id="omikuji-btn-text">おみくじを引く</span>
@@ -850,7 +820,8 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     </div>
   </div>
 </section>
-<!-- メイキング案内バナー (index.html 内に配置) -->
+
+<!-- メイキング案内バナー -->
 <div class="my-12 max-w-4xl mx-auto px-4">
   <div class="bg-gradient-to-r from-slate-900 to-sky-950 text-white rounded-2xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-sky-500/20 relative overflow-hidden">
     <div class="relative z-10 text-center md:text-left">
@@ -868,38 +839,37 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     </a>
   </div>
 </div>
+
 <!-- スケジュールセクション -->
-<section id="schedule" class="py-20 bg-slate-50 border-t border-b border-slate-100">
+<section id="schedule" class="py-20 bg-slate-50 dark:bg-slate-900 border-t border-b border-slate-100 dark:border-slate-800 transition-colors">
 <div class="max-w-3xl mx-auto px-4">
 <div class="text-center mb-12">
-<h3 class="text-3xl font-bold text-slate-900 mb-3">制作スケジュール</h3>
-<p class="text-slate-500">Schedule</p>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">制作スケジュール</h3>
+<p class="text-slate-500 dark:text-slate-400">Schedule</p>
 <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
 </div>
 
-<div class="relative border-l-2 border-slate-200 ml-4 md:ml-0 md:mx-auto">
-<!-- 7/13 -->
+<div class="relative border-l-2 border-slate-200 dark:border-slate-700 ml-4 md:ml-0 md:mx-auto">
 <div class="mb-10 ml-6 md:ml-10 relative">
-<div class="absolute -left-[35px] md:-left-[49px] w-6 h-6 rounded-full bg-sky-500 border-4 border-white flex items-center justify-center shadow-sm"></div>
-<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-<span class="text-sky-600 font-bold text-sm mb-1 flex items-center gap-2">
+<div class="absolute -left-[35px] md:-left-[49px] w-6 h-6 rounded-full bg-sky-500 border-4 border-white dark:border-slate-900 flex items-center justify-center shadow-sm"></div>
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+<span class="text-sky-600 dark:text-sky-400 font-bold text-sm mb-1 flex items-center gap-2">
 <i data-lucide="calendar" class="w-4 h-4"></i> 07/13
 </span>
-<h4 class="text-xl font-bold text-slate-800">E231系前面模型制作</h4>
+<h4 class="text-xl font-bold text-slate-800 dark:text-white">E231系前面模型制作</h4>
 </div>
 </div>
 
-<!-- 7/20 -->
 <div class="ml-6 md:ml-10 relative">
-<div class="absolute -left-[35px] md:-left-[49px] w-6 h-6 rounded-full bg-indigo-500 border-4 border-white flex items-center justify-center shadow-sm"></div>
-<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-<div class="absolute -right-4 -top-4 text-indigo-50">
+<div class="absolute -left-[35px] md:-left-[49px] w-6 h-6 rounded-full bg-indigo-500 border-4 border-white dark:border-slate-900 flex items-center justify-center shadow-sm"></div>
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-indigo-50 dark:text-indigo-950/40">
 <i data-lucide="video" class="w-24 h-24"></i>
 </div>
-<span class="text-indigo-600 font-bold text-sm mb-1 flex items-center gap-2 relative z-10">
+<span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm mb-1 flex items-center gap-2 relative z-10">
 <i data-lucide="calendar" class="w-4 h-4"></i> 07/20
 </span>
-<h4 class="text-xl font-bold text-slate-800 relative z-10">5周年記念映像公開</h4>
+<h4 class="text-xl font-bold text-slate-800 dark:text-white relative z-10">5周年記念映像公開</h4>
 </div>
 </div>
 </div>
@@ -907,115 +877,108 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </section>
 
 <!-- ご依頼案内セクション -->
-<section id="contact" class="py-24 bg-gradient-to-b from-slate-50 to-sky-50">
+<section id="contact" class="py-24 bg-gradient-to-b from-slate-50 to-sky-50 dark:from-slate-900 dark:to-slate-950 transition-colors">
 <div class="max-w-4xl mx-auto px-4 text-center">
-<div class="inline-flex items-center justify-center w-20 h-20 bg-white text-sky-500 rounded-full mb-6 shadow-sm border border-sky-100">
+<div class="inline-flex items-center justify-center w-20 h-20 bg-white dark:bg-slate-800 text-sky-500 rounded-full mb-6 shadow-sm border border-sky-100 dark:border-slate-700">
 <i data-lucide="mail" class="w-10 h-10"></i>
 </div>
-<h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">ご依頼案内</h3>
+<h3 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">ご依頼案内</h3>
 
-<!-- メッセージと動画ボタン -->
-<div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-12 shadow-lg mb-8">
-<h4 class="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600 mb-6">
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 md:p-12 shadow-lg mb-8">
+<h4 class="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 mb-6">
 「何か作って欲しい方、大歓迎!!」
 </h4>
-<p class="text-slate-600 leading-relaxed mb-8">
+<p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
 ロゴデザインから鉄道模型・サインシステムの制作まで。<br />
 星野製作所はあなたのアイデアを形にするお手伝いをいたします。<br />
 まずはお気軽にご相談ください。
 </p>
-<button onclick="openVideoModal()" class="bg-slate-900 text-white px-8 py-3 rounded-full font-bold hover:bg-slate-800 transition-colors shadow-md flex items-center gap-2 mx-auto">
+<button onclick="openVideoModal()" class="bg-slate-900 dark:bg-slate-700 text-white px-8 py-3 rounded-full font-bold hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors shadow-md flex items-center gap-2 mx-auto">
 <i data-lucide="play" class="w-5 h-5"></i>
 旧ロゴのビデオを見る
 </button>
 </div>
 
-<!-- 今回追加したご依頼方法 -->
-<div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm max-w-2xl mx-auto text-left">
-<h4 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2 border-b border-slate-100 pb-3">
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 shadow-sm max-w-2xl mx-auto text-left">
+<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 border-b border-slate-100 dark:border-slate-700 pb-3">
 <i data-lucide="message-circle" class="w-6 h-6 text-sky-500"></i>
 ご依頼方法
 </h4>
-<p class="text-slate-700 leading-relaxed mb-4">
+<p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
 ご依頼は代表(星野)に直接ご連絡ください。<br />
 LINE、Gmail、zoomなど常時受け付けております。
 </p>
-<div class="bg-slate-50 rounded-lg p-4 text-sm text-slate-600 space-y-2 border border-slate-100">
+<div class="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 text-sm text-slate-600 dark:text-slate-300 space-y-2 border border-slate-100 dark:border-slate-700">
 <p class="flex items-start gap-2">
 <i data-lucide="alert-circle" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
 <span>※一部受付できない時間がございます。</span>
 </p>
 <p class="flex items-start gap-2">
 <i data-lucide="phone-off" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i>
-<span>※<span class="text-red-500 font-medium">電話はお控えください。</span></span>
+<span>※<span class="text-red-500 dark:text-red-400 font-medium">電話はお控えください。</span></span>
 </p>
 </div>
 </div>
 
 </div>
 </section>
+
 <!-- リアクションボタンセクション -->
-<section id="reactions" class="py-16 bg-white border-t border-slate-100">
+<section id="reactions" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-3xl mx-auto px-4 text-center">
     <div class="mb-8">
-      <h3 class="text-2xl font-bold text-slate-900 mb-2">ワンタップで応援！</h3>
-      <p class="text-xs text-slate-500">気になったボタンを押してね（何回でも押せます）</p>
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">ワンタップで応援！</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400">気になったボタンを押してね（何回でも押せます）</p>
     </div>
 
-    <!-- リアクションボタン一覧 -->
     <div class="flex flex-wrap items-center justify-center gap-4">
-      
-      <!-- ボタン 1: すごい！ -->
-      <button onclick="sendReaction('awesome')" class="group relative bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+      <button onclick="sendReaction('awesome')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-sky-50 dark:hover:bg-sky-900/30 border border-slate-200 dark:border-slate-700 hover:border-sky-300 dark:hover:border-sky-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
         <span class="text-2xl group-hover:scale-125 transition-transform">👍</span>
         <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 group-hover:text-sky-600">すごい！</div>
+          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400">すごい！</div>
           <div id="count-awesome" class="text-xs text-slate-400 font-medium">0</div>
         </div>
       </button>
 
-      <!-- ボタン 2: 応援！ -->
-      <button onclick="sendReaction('cheer')" class="group relative bg-slate-50 hover:bg-pink-50 border border-slate-200 hover:border-pink-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+      <button onclick="sendReaction('cheer')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-pink-900/30 border border-slate-200 dark:border-slate-700 hover:border-pink-300 dark:hover:border-pink-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
         <span class="text-2xl group-hover:scale-125 transition-transform">❤️</span>
         <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 group-hover:text-pink-600">応援！</div>
+          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-pink-600 dark:group-hover:text-pink-400">応援！</div>
           <div id="count-cheer" class="text-xs text-slate-400 font-medium">0</div>
         </div>
       </button>
 
-      <!-- ボタン 3: 欲しい！ -->
-      <button onclick="sendReaction('want')" class="group relative bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+      <button onclick="sendReaction('want')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-900/30 border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-amber-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
         <span class="text-2xl group-hover:scale-125 transition-transform">✨</span>
         <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 group-hover:text-amber-600">欲しい！</div>
+          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400">欲しい！</div>
           <div id="count-want" class="text-xs text-slate-400 font-medium">0</div>
         </div>
       </button>
 
-      <!-- ボタン 4:低評価※重要なのです -->
-      <button onclick="sendReaction('god')" class="group relative bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
+      <button onclick="sendReaction('god')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
         <span class="text-2xl group-hover:scale-125 transition-transform">🔥</span>
         <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 group-hover:text-indigo-600">低評価※重要なのです</div>
+          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">低評価※重要なのです</div>
           <div id="count-god" class="text-xs text-slate-400 font-medium">0</div>
         </div>
       </button>
-
     </div>
 
-    <!-- リアクション完了メッセージ表示エリア -->
-    <p id="reaction-thanks" class="text-xs font-bold text-sky-600 mt-4 opacity-0 transition-opacity duration-300 h-4">
+    <p id="reaction-thanks" class="text-xs font-bold text-sky-600 dark:text-sky-400 mt-4 opacity-0 transition-opacity duration-300 h-4">
       リアクションありがとうございます！
     </p>
   </div>
 </section>
+
 <!-- カウンター表示エリア -->
 <div class="text-center my-6">
-  <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 rounded-full border border-slate-200 text-xs font-medium text-slate-600">
+  <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300">
     <i data-lucide="users" class="w-3.5 h-3.5 text-sky-500"></i>
-    <span>総訪問者数: <strong id="visitor-count" class="text-slate-900">読み込み中...</strong> 人</span>
+    <span>総訪問者数: <strong id="visitor-count" class="text-slate-900 dark:text-white">読み込み中...</strong> 人</span>
   </div>
 </div>
+
 <!-- LikeBtn.com BEGIN -->
 <span class="likebtn-wrapper" data-theme="large" data-lang="ja" data-i18n_like="高評価" data-ef_voting="wobble" data-identifier="item_1" data-show_dislike_label="true"></span>
 <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
@@ -1024,16 +987,14 @@ LINE、Gmail、zoomなど常時受け付けております。
 </main>  
 
 <!-- フッター -->
-<footer class="bg-white border-t border-slate-200 py-8 text-center">
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 text-center transition-colors">
 <div class="max-w-6xl mx-auto px-4">
 <div class="flex items-center justify-center space-x-3 mb-4">
-<!-- お手持ちのロゴ画像に変更 -->
 <img src="IMG_2647.jpeg" alt="星野製作所 ロゴ" class="w-12 h-auto object-contain">
-<span class="font-bold text-lg text-slate-900">この企業はフィクションです。</span>
+<span class="font-bold text-lg text-slate-900 dark:text-white">この企業はフィクションです。</span>
 </div>
-<p class="text-slate-500 text-sm">&copy; 2026 星野製作所 (Hoshino Factory). All rights reserved.</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">&copy; 2026 星野製作所 (Hoshino Factory). All rights reserved.</p>
 </div>
-
 </footer>
 
 <!-- 画像拡大用ライトボックスモーダル -->
@@ -1042,32 +1003,32 @@ LINE、Gmail、zoomなど常時受け付けております。
 <button onclick="closeImageModal()" class="absolute -top-12 right-0 text-white hover:text-sky-300 transition-colors">
 <i data-lucide="x" class="w-8 h-8"></i>
 </button>
-<img id="modal-img" src="" alt="拡大表示" class="max-w-full max-h-[80vh] rounded-lg shadow-2xl object-contain bg-white">
+<img id="modal-img" src="" alt="拡大表示" class="max-w-full max-h-[80vh] rounded-lg shadow-2xl object-contain bg-white dark:bg-slate-800">
 <p id="modal-caption" class="text-white font-medium mt-4 text-center"></p>
 </div>
 </div>
 
 <!-- URL設定・編集モーダル -->
 <div id="url-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-<div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
+<div class="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation()">
 <div class="flex justify-between items-center mb-4">
-<h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
 <i data-lucide="link" class="w-5 h-5 text-sky-500"></i>
 画像URLの設定
 </h3>
-<button onclick="closeUrlModal()" class="text-slate-400 hover:text-slate-600">
+<button onclick="closeUrlModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
 <i data-lucide="x" class="w-5 h-5"></i>
 </button>
 </div>
-<p id="url-modal-title" class="text-sm font-semibold text-slate-700 mb-3"></p>
-<label class="block text-xs font-medium text-slate-500 mb-1">写真の画像URLを入力してください：</label>
-<input type="url" id="url-input" placeholder="https://example.com/image.jpg" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4">
+<p id="url-modal-title" class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3"></p>
+<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">写真の画像URLを入力してください：</label>
+<input type="url" id="url-input" placeholder="https://example.com/image.jpg" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4">
 
 <div class="flex justify-end gap-2">
-<button onclick="resetUrlModal()" class="px-4 py-2 text-xs font-medium text-slate-500 hover:text-red-500 transition-colors">
+<button onclick="resetUrlModal()" class="px-4 py-2 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-red-500 transition-colors">
 初期状態に戻す
 </button>
-<button onclick="closeUrlModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">
+<button onclick="closeUrlModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg transition-colors">
 キャンセル
 </button>
 <button onclick="saveUrlModal()" class="px-4 py-2 text-xs font-semibold text-white bg-sky-500 hover:bg-sky-600 rounded-lg transition-colors shadow-sm">
@@ -1079,13 +1040,13 @@ LINE、Gmail、zoomなど常時受け付けております。
 
 <!-- 簡易メッセージボックスモーダル -->
 <div id="notice-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
-<div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl text-center">
-<div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center mx-auto mb-4">
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 max-w-sm w-full shadow-2xl text-center">
+<div class="w-12 h-12 bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 rounded-full flex items-center justify-center mx-auto mb-4">
 <i data-lucide="info" class="w-6 h-6"></i>
 </div>
-<h4 class="text-lg font-bold text-slate-900 mb-2">お問い合わせ</h4>
-<p class="text-sm text-slate-600 mb-6">制作のご依頼やご質問は公式SNSまたはメール等でお問い合わせください。</p>
-<button onclick="closeNoticeModal()" class="w-full py-2 bg-slate-900 text-white rounded-lg font-medium text-sm hover:bg-slate-800 transition-colors">
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">お問い合わせ</h4>
+<p class="text-sm text-slate-600 dark:text-slate-300 mb-6">制作のご依頼やご質問は公式SNSまたはメール等でお問い合わせください。</p>
+<button onclick="closeNoticeModal()" class="w-full py-2 bg-slate-900 dark:bg-slate-700 text-white rounded-lg font-medium text-sm hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors">
 閉じる
 </button>
 </div>
@@ -1094,25 +1055,22 @@ LINE、Gmail、zoomなど常時受け付けております。
 <!-- ビデオ再生用モーダル -->
 <div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeVideoModal()">
   <div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-    <!-- 閉じるボタン -->
     <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-sky-300 transition-colors">
       <i data-lucide="x" class="w-8 h-8"></i>
     </button>
-    <!-- ビデオプレイヤー -->
     <video id="contact-video" controls class="w-full rounded-lg shadow-2xl bg-black">
       <source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime">
       お使いのブラウザは動画タグをサポートしていません。
     </video>
   </div>  
 </div>
+
 <!-- 隠しギミック用モーダル -->
 <div id="secret-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="closeSecretModal()">
   <div class="bg-gradient-to-b from-slate-900 to-sky-950 text-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-sky-500/30 text-center relative overflow-hidden" onclick="event.stopPropagation()">
-    <!-- 背景装飾 -->
     <div class="absolute -right-10 -top-10 w-32 h-32 bg-sky-500/20 rounded-full blur-2xl"></div>
     <div class="absolute -left-10 -bottom-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl"></div>
 
-    <!-- アイコン -->
     <div class="w-20 h-20 bg-sky-500/20 border border-sky-400/30 text-sky-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner animate-bounce">
       <i data-lucide="sparkles" class="w-10 h-10"></i>
     </div>
@@ -1143,6 +1101,7 @@ LINE、Gmail、zoomなど常時受け付けております。
         aria-label="ページトップへ戻る">
   <i data-lucide="arrow-up" class="w-6 h-6"></i>
 </button>
+
 <!-- スクリプト -->
 <script>
 // ダークモードの切り替え処理
@@ -1152,7 +1111,6 @@ function toggleDarkMode() {
   updateDarkModeIcon(isDark);
 }
 
-// アイコンの表示更新
 function updateDarkModeIcon(isDark) {
   const icon = document.getElementById('dark-mode-icon');
   if (icon) {
@@ -1161,7 +1119,6 @@ function updateDarkModeIcon(isDark) {
   }
 }
 
-// ページ読み込み時に保存された設定を適用
 function initDarkMode() {
   const savedTheme = localStorage.getItem('hoshino_theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1175,10 +1132,10 @@ function initDarkMode() {
   updateDarkModeIcon(isDark);
 }
 
-// ページ読み込み時に実行
 window.addEventListener('DOMContentLoaded', () => {
   initDarkMode();
 });  
+
 // スクロール位置に応じたボタンの表示制御
 const backToTopBtn = document.getElementById('back-to-top');
 
@@ -1192,17 +1149,16 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// スムーススクロール実行
 function scrollToTop() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   });
 }  
-// 初期リアクションデータ
+
+// リアクション処理
 const reactionKeys = ['awesome', 'cheer', 'want', 'god'];
 
-// カウントの読み込みと表示
 function loadReactions() {
   reactionKeys.forEach(key => {
     const savedCount = localStorage.getItem('reaction_' + key) || 0;
@@ -1213,20 +1169,16 @@ function loadReactions() {
   });
 }
 
-// リアクション送信処理
 function sendReaction(type) {
-  // カウント加算
   let currentCount = parseInt(localStorage.getItem('reaction_' + type) || 0);
   currentCount++;
   localStorage.setItem('reaction_' + type, currentCount);
 
-  // 表示更新
   const countElement = document.getElementById('count-' + type);
   if (countElement) {
     countElement.textContent = currentCount.toLocaleString();
   }
 
-  // お礼メッセージのアニメーション表示
   const thanksMsg = document.getElementById('reaction-thanks');
   if (thanksMsg) {
     thanksMsg.classList.remove('opacity-0');
@@ -1237,11 +1189,11 @@ function sendReaction(type) {
   }
 }
 
-// ページ読み込み時にカウントを反映
 window.addEventListener('DOMContentLoaded', () => {
   loadReactions();
 });
-// 初期製品データ定義
+
+// 製品データ定義
 const defaultProducts = [
 {
 id: 'hr-logo',
@@ -1256,8 +1208,8 @@ id: 'shk-logo',
 title: 'SHK様 ロゴマーク',
 category: 'logo',
 icon: 'pen-tool',
-iconBg: 'bg-indigo-50',
-iconColor: 'text-indigo-500',
+iconBg: 'bg-indigo-50 dark:bg-indigo-900/40',
+iconColor: 'text-indigo-500 dark:text-indigo-400',
 imageUrl: 'IMG_shk.jpg',
 imageVisible: true
 },
@@ -1266,8 +1218,8 @@ id: 'hoshino-logo',
 title: '星野商事様 ロゴマーク',
 category: 'logo',
 icon: 'pen-tool',
-iconBg: 'bg-indigo-50',
-iconColor: 'text-indigo-500',
+iconBg: 'bg-indigo-50 dark:bg-indigo-900/40',
+iconColor: 'text-indigo-500 dark:text-indigo-400',
 imageUrl: 'IMG_nintendoho.jpg',
 imageVisible: true
 },
@@ -1276,8 +1228,8 @@ id: 'hr-sign',
 title: 'HR東日本様 足元サインシステム',
 category: 'design',
 icon: 'layout',
-iconBg: 'bg-emerald-50',
-iconColor: 'text-emerald-500',
+iconBg: 'bg-emerald-50 dark:bg-emerald-900/40',
+iconColor: 'text-emerald-500 dark:text-emerald-400',
 imageUrl: 'https://cdnstatic.tencentcs.com/edgeone/pages/assets/1787610992093-pIL3.png',
 imageVisible: true
 },
@@ -1286,8 +1238,8 @@ id: 'shk-yt',
 title: 'SHK様 YouTubeデザイン',
 category: 'design',
 icon: 'youtube',
-iconBg: 'bg-red-50',
-iconColor: 'text-red-500',
+iconBg: 'bg-red-50 dark:bg-red-900/40',
+iconColor: 'text-red-500 dark:text-red-400',
 imageUrl: 'IMG_youtushk.jpg',
 imageVisible: true
 },
@@ -1296,8 +1248,8 @@ id: 'dipyon-maru',
 title: 'ディピョン丸',
 category: 'design',
 icon: 'star',
-iconBg: 'bg-yellow-50',
-iconColor: 'text-yellow-500',
+iconBg: 'bg-yellow-50 dark:bg-yellow-900/40',
+iconColor: 'text-yellow-500 dark:text-yellow-400',
 imageUrl: 'IMG_depyon.PNG',
 imageVisible: true
 },
@@ -1306,8 +1258,8 @@ id: 'e531-front',
 title: 'E531系 前面模型',
 category: 'model',
 icon: 'box',
-iconBg: 'bg-sky-50',
-iconColor: 'text-sky-500',
+iconBg: 'bg-sky-50 dark:bg-sky-900/40',
+iconColor: 'text-sky-500 dark:text-sky-400',
 imageUrl: 'IMG_531 lao.jpg',
 imageVisible: true
 },
@@ -1316,8 +1268,8 @@ id: 'e231-front',
 title: 'E231系 前面模型',
 category: 'model',
 icon: 'box',
-iconBg: 'bg-sky-50',
-iconColor: 'text-sky-500',
+iconBg: 'bg-sky-50 dark:bg-sky-900/40',
+iconColor: 'text-sky-500 dark:text-sky-400',
 imageUrl: 'IMG_231-kao.jpg',
 imageVisible: true
 },
@@ -1326,14 +1278,13 @@ id: 'e231-door',
 title: 'E231系 乗務員扉模型',
 category: 'model',
 icon: 'box',
-iconBg: 'bg-sky-50',
-iconColor: 'text-sky-500',
+iconBg: 'bg-sky-50 dark:bg-sky-900/40',
+iconColor: 'text-sky-500 dark:text-sky-400',
 imageUrl: 'IMG_231-door.HEIC',
 imageVisible: true
 }
 ];
 
-// localStorageからデータ読み込みまたは初期データセット
 let products = loadProducts();
 let currentEditingIndex = null;
 
@@ -1356,20 +1307,17 @@ return defaultProducts;
 function saveProducts() {
 localStorage.setItem('hoshino_factory_products', JSON.stringify(products.map(p => ({ id: p.id, imageUrl: p.imageUrl }))));
 }
-// 隠しギミック用変数
+
 let logoClickCount = 0;
 let logoClickTimer = null;
 
 function handleLogoClick() {
   logoClickCount++;
-  
-  // 最後に押してから1.5秒経過したらカウントリセット
   clearTimeout(logoClickTimer);
   logoClickTimer = setTimeout(() => {
     logoClickCount = 0;
   }, 1500);
 
-  // 5回達成でモーダル表示
   if (logoClickCount === 5) {
     logoClickCount = 0;
     openSecretModal();
@@ -1390,19 +1338,19 @@ function closeSecretModal() {
     modal.classList.add('hidden');
   }
 }
-// 製品グリッドのレンダリング
+
 function renderProducts() {
 const container = document.getElementById('product-grid');
 container.innerHTML = '';
 
 products.forEach((prod, index) => {
 const card = document.createElement('div');
-card.className = "bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between";
+card.className = "bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all flex flex-col justify-between";
 
 let iconHtml = '';
 if (prod.customIconType === 'hr-svg') {
 iconHtml = `
-<div class="w-10 h-10 bg-[#2E8B3C]/10 rounded-lg flex items-center justify-center shrink-0">
+<div class="w-10 h-10 bg-[#2E8B3C]/10 dark:bg-[#2E8B3C]/20 rounded-lg flex items-center justify-center shrink-0">
 <svg viewBox="0 0 100 90" class="w-7 h-auto fill-[#2E8B3C]" fill-rule="evenodd">
 <path d="M 10,25 L 22,25 L 22,43 L 38,43 L 38,55 L 22,55 L 22,65 L 7,77 L 12,65 L 12,25 Z" />
 <path d="M 38,25 L 65,25 C 78,25 85,30 85,40 C 85,50 78,55 65,55 L 50,55 L 50,65 L 35,77 L 40,65 L 40,25 Z M 50,37 L 50,43 L 65,43 C 69,43 71,42 71,40 C 71,38 69,37 65,37 Z" />
@@ -1411,7 +1359,7 @@ iconHtml = `
 </div>`;
 } else {
 iconHtml = `
-<div class="w-10 h-10 ${prod.iconBg || 'bg-sky-50'} rounded-lg flex items-center justify-center ${prod.iconColor || 'text-sky-500'} shrink-0">
+<div class="w-10 h-10 ${prod.iconBg || 'bg-sky-50 dark:bg-sky-900/40'} rounded-lg flex items-center justify-center ${prod.iconColor || 'text-sky-500 dark:text-sky-400'} shrink-0">
 <i data-lucide="${prod.icon || 'box'}" class="w-5 h-5"></i>
 </div>`;
 }
@@ -1423,12 +1371,12 @@ card.innerHTML = `
 <div class="flex items-center justify-between gap-3 mb-4">
 <div class="flex items-center gap-3">
 ${iconHtml}
-<h4 class="font-bold text-base text-slate-800 leading-snug">${prod.title}</h4>
+<h4 class="font-bold text-base text-slate-800 dark:text-white leading-snug">${prod.title}</h4>
 </div>
 </div>
 
 <div class="overflow-hidden transition-all duration-300 ${isVisible ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'}">
-<div class="relative group rounded-lg overflow-hidden border border-slate-200 bg-slate-100">
+<div class="relative group rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900">
 <img src="${prod.imageUrl}"
 alt="${prod.title}"
 onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Image+Not+Found';"
@@ -1443,13 +1391,13 @@ onclick="openImageModal('${prod.imageUrl}', '${prod.title}')" />
 </div>
 </div>
 
-<div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs gap-2 mt-auto">
-<button onclick="toggleImage(${index})" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${isVisible ? 'bg-sky-100 text-sky-700 hover:bg-sky-200' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">
+<div class="pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs gap-2 mt-auto">
+<button onclick="toggleImage(${index})" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${isVisible ? 'bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 hover:bg-sky-200 dark:hover:bg-sky-900' : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'}">
 <i data-lucide="${isVisible ? 'eye-off' : 'image'}" class="w-3.5 h-3.5"></i>
 <span>${isVisible ? '写真を隠す' : '写真を見る'}</span>
 </button>
 
-<button onclick="openUrlModal(${index})" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-medium text-slate-500 hover:text-sky-600 hover:bg-sky-50 transition-colors" title="画像URLを編集">
+<button onclick="openUrlModal(${index})" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-medium text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-900/30 transition-colors" title="画像URLを編集">
 <i data-lucide="link" class="w-3.5 h-3.5"></i>
 <span>URL変更</span>
 </button>
@@ -1565,7 +1513,7 @@ window.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   initVisitorCounter();
 });
-// おみくじのデータ定義
+
 const omikujiData = [
   {
     luck: "超大吉 ⭐︎",
@@ -1603,17 +1551,14 @@ function drawOmikuji() {
   const resultArea = document.getElementById('omikuji-result');
   const btnText = document.getElementById('omikuji-btn-text');
 
-  // ランダム選出
   const randomIndex = Math.floor(Math.random() * omikujiData.length);
   const result = omikujiData[randomIndex];
 
-  // データ反映
   document.getElementById('omikuji-luck').textContent = result.luck;
   document.getElementById('omikuji-item').textContent = result.item;
   document.getElementById('omikuji-color').textContent = result.color;
   document.getElementById('omikuji-desc').textContent = result.desc;
 
-  // 表示切替
   resultArea.classList.remove('hidden');
   if (btnText) {
     btnText.textContent = "もう一度引く";
