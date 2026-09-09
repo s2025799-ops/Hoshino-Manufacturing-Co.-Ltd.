@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- メインページ -->
+  <url>
+    <loc>https://s2025799-ops.github.io/Hoshino-Manufacturing-Co.-Ltd./index.html</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 5周年記念特設ページ -->
+  <url>
+    <loc>https://s2025799-ops.github.io/Hoshino-Manufacturing-Co.-Ltd./5th.html</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- スペシャルサンクスページ -->
+  <url>
+    <loc>https://s2025799-ops.github.io/Hoshino-Manufacturing-Co.-Ltd./thanks.html</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 面白Webサイト紹介ページ -->
+  <url>
+    <loc>https://s2025799-ops.github.io/Hoshino-Manufacturing-Co.-Ltd./links.html</loc>
+    <lastmod>2026-09-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
