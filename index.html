@@ -217,7 +217,74 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 </div>
 </div>
 </section>
+<!-- 組織構成・グループ紹介セクション -->
+<section id="organization" class="py-20 bg-slate-50 border-t border-slate-100">
+  <div class="max-w-5xl mx-auto px-4">
+    
+    <!-- セクション見出し -->
+    <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-slate-900 mb-3">組織構成</h3>
+      <p class="text-slate-500">Organization</p>
+      <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+    </div>
 
+    <!-- 枝分かれ図（組織図）表示エリア -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <div class="bg-white p-4 md:p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <h4 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 border-b border-slate-100 pb-3">
+          <i data-lucide="network" class="w-5 h-5 text-sky-500"></i>
+          星野製作所 グループ体制図
+        </h4>
+        
+        <!-- ▼ ここに作成済みの図面のファイル名を指定してください ▼ -->
+        <div class="bg-slate-100 rounded-xl overflow-hidden relative flex items-center justify-center min-h-[300px]">
+          <img src="IMG_organization.png" 
+               alt="組織体制図" 
+               onerror="this.onerror=null; this.src='https://placehold.co/800x450/e2e8f0/64748b?text=Organization+Chart';"
+               class="w-full h-auto object-contain">
+        </div>
+      </div>
+    </div>
+
+    <!-- 各グループの紹介カード（横並びグリッド） -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- グループ1 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-sky-300 transition-all group">
+        <div class="w-12 h-12 bg-sky-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-sky-500 transition-colors">
+          <i data-lucide="pen-tool" class="w-6 h-6 text-sky-500 group-hover:text-white transition-colors"></i>
+        </div>
+        <h5 class="text-lg font-bold text-slate-900 mb-2">デザイン・画像編集班</h5>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          ロゴデザインやサインシステムの構築、Web用画像の編集などを担当するグループです。視認性と美しさを追求します。
+        </p>
+      </div>
+
+      <!-- グループ2 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all group">
+        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-500 transition-colors">
+          <i data-lucide="box" class="w-6 h-6 text-indigo-500 group-hover:text-white transition-colors"></i>
+        </div>
+        <h5 class="text-lg font-bold text-slate-900 mb-2">模型・工作班</h5>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          ペーパークラフトや立体模型の設計・組み立てを行う実動部隊。独自の構造を開発し、細部までこだわったリアルな質感を再現します。
+        </p>
+      </div>
+
+      <!-- グループ3 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all group">
+        <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-emerald-500 transition-colors">
+          <i data-lucide="video" class="w-6 h-6 text-emerald-500 group-hover:text-white transition-colors"></i>
+        </div>
+        <h5 class="text-lg font-bold text-slate-900 mb-2">映像・エンタメ班</h5>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          マンガ制作のノウハウを活かした動画制作やアニメーション編集を担当。クスッと笑えるエンタメコンテンツの企画も行います。
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
 <!-- 創業者の言葉コーナー -->
 <section class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl my-8 border-l-4 border-sky-500 flex flex-col md:flex-row items-center gap-5 max-w-6xl mx-auto px-4 transition-colors">
   <img src="IMG_3659.jpeg" alt="創業者アイコン" class="w-20 h-20 rounded-full object-cover shrink-0">
