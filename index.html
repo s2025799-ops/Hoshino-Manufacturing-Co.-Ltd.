@@ -1906,7 +1906,12 @@ window.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   initVisitorCounter();
 });
-
+// LINE内ブラウザからのアクセス時に外部ブラウザで開き直す
+const ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf('line') !== -1 && !location.search.includes('openExternalBrowser=1')) {
+  const symbol = location.search ? '&' : '?';
+  location.href = location.href + symbol + 'openExternalBrowser=1';
+}
 // おみくじのデータ定義（修正例）
 const omikujiData = [
   {
@@ -1974,6 +1979,6 @@ function drawOmikuji() {
 </script>
 <script data-goatcounter="https://hoshino-project.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-  
+
 </body>
 </html>
