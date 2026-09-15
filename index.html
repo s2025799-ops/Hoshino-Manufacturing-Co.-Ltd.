@@ -149,7 +149,21 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       株式会社星野製作所 公式Web
     </p>
   </div>
+<script>
+function toggleMenu() {
+  const drawer = document.getElementById('drawer-menu');
+  const overlay = document.getElementById('menu-overlay');
 
+  if (drawer && overlay) {
+    // ドロワーメニューのスライド切替
+    drawer.classList.toggle('translate-x-full');
+
+    // 背景オーバーレイの表示・非表示切替
+    overlay.classList.toggle('opacity-0');
+    overlay.classList.toggle('pointer-events-none');
+  }
+}
+</script>
 </aside>
 
 <main class="flex-grow">
