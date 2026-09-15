@@ -982,12 +982,18 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     <div id="disqus_thread" class="bg-white dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700"></div>
     
     <script>
-        (function() {
+      var disqus_config = function () {
+        // 全端末で同じコメントスレッドを読み込ませるための固定設定
+        this.page.identifier = 'hoshino-factory-main'; // ページ固有の識別ID
+        this.page.url = window.location.href.split('#')[0].split('?')[0]; // URLのパラメータやハッシュによるスレッド分離を防止
+      };
+
+      (function() {
         var d = document, s = d.createElement('script');
         s.src = 'https://hoshino-factory.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
-        })();
+      })();
     </script>
     <noscript>コメントを表示するにはJavaScriptを有効にしてください。</noscript>
   </div>
