@@ -947,7 +947,25 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     </div>
   </div>
 </section>
-
+<!-- 感想・コメントセクション -->
+<section class="py-16 bg-slate-50 dark:bg-slate-800 transition-colors">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl font-bold text-center mb-10 text-slate-900 dark:text-white">来訪者の声（コメント欄）</h2>
+    
+    <!-- Disqusコメント表示エリア -->
+    <div id="disqus_thread" class="bg-white dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700"></div>
+    
+    <script>
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hoshino-factory.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>コメントを表示するにはJavaScriptを有効にしてください。</noscript>
+  </div>
+</section>
 <!-- メイキング案内バナー -->
 <div class="my-12 max-w-4xl mx-auto px-4">
   <div class="bg-gradient-to-r from-slate-900 to-sky-950 text-white rounded-2xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-sky-500/20 relative overflow-hidden">
