@@ -1090,7 +1090,122 @@ LINE、Gmail、zoomなど常時受け付けております。
 </p>
 </div>
 </div>
+<!-- お問い合わせ・資料請求セクション -->
+<section id="contact" class="py-20 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- セクションタイトル -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight">製品に関するお問い合わせ・導入のご相談</h2>
+      <p class="mt-4 text-gray-600 text-sm md:text-base">デモ機のご試用、お見積もり、仕様確認などお気軽にご連絡ください。</p>
+    </div>
 
+    <!-- フォームカード本体 -->
+    <div class="bg-[#f7f6f2] rounded-3xl p-6 sm:p-10 md:p-12 shadow-sm border border-gray-100">
+      <form action="#" method="POST" class="space-y-6">
+        
+        <!-- 2列グリッド（入力項目） -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- 貴社名 -->
+          <div>
+            <label for="company" class="block text-[#2c353f] font-bold text-base mb-2">
+              貴社名 <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="company" 
+              name="company" 
+              required 
+              placeholder="例: 株式会社○○" 
+              class="w-full bg-white border border-[#d5d8dc] rounded-xl px-4 py-3.5 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#51749b] focus:ring-2 focus:ring-[#51749b]/20 transition-all"
+            >
+          </div>
+
+          <!-- ご担当者名 -->
+          <div>
+            <label for="name" class="block text-[#2c353f] font-bold text-base mb-2">
+              ご担当者名 <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required 
+              placeholder="例: 山田 太郎" 
+              class="w-full bg-white border border-[#d5d8dc] rounded-xl px-4 py-3.5 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#51749b] focus:ring-2 focus:ring-[#51749b]/20 transition-all"
+            >
+          </div>
+
+          <!-- メールアドレス -->
+          <div>
+            <label for="email" class="block text-[#2c353f] font-bold text-base mb-2">
+              メールアドレス <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              placeholder="example@company.co.jp" 
+              class="w-full bg-white border border-[#d5d8dc] rounded-xl px-4 py-3.5 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#51749b] focus:ring-2 focus:ring-[#51749b]/20 transition-all"
+            >
+          </div>
+
+          <!-- ご検討モデル -->
+          <div>
+            <label for="model" class="block text-[#2c353f] font-bold text-base mb-2">
+              ご検討モデル
+            </label>
+            <div class="relative">
+              <select 
+                id="model" 
+                name="model" 
+                class="w-full bg-white border border-[#d5d8dc] rounded-xl px-4 py-3.5 text-gray-800 appearance-none focus:outline-none focus:border-[#51749b] focus:ring-2 focus:ring-[#51749b]/20 transition-all pr-10 cursor-pointer"
+              >
+                <option value="Dualis X - Hybrid">Dualis X - Hybrid（最上位機）</option>
+                <option value="Dualis A - Standard">Dualis A - Standard</option>
+                <option value="Dualis B - Compact">Dualis B - Compact</option>
+                <option value="その他・未定">その他・未定</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- お問い合わせ内容・ご要望 -->
+        <div>
+          <label for="message" class="block text-[#2c353f] font-bold text-base mb-2">
+            お問い合わせ内容・ご要望
+          </label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="5" 
+            placeholder="具体的な導入環境（広さ、床材など）やご質問事項をご記入ください。" 
+            class="w-full bg-white border border-[#d5d8dc] rounded-xl px-4 py-3.5 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#51749b] focus:ring-2 focus:ring-[#51749b]/20 transition-all resize-y"
+          ></textarea>
+        </div>
+
+        <!-- 送信ボタン -->
+        <div class="pt-4 flex justify-center">
+          <button 
+            type="submit" 
+            class="bg-[#51749b] hover:bg-[#436285] text-white font-bold text-lg px-12 py-3.5 rounded-2xl shadow-md hover:shadow-lg active:scale-95 transition-all duration-200 cursor-pointer"
+          >
+            入力内容を送信する
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
 </div>
 </section>
 
@@ -1098,7 +1213,7 @@ LINE、Gmail、zoomなど常時受け付けております。
 <section id="reactions" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
   <div class="max-w-3xl mx-auto px-4 text-center">
     <div class="mb-8">
-      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">ワンタップで応援！</h3>
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">ワンタップで応援！2026/09/15現在、機能していません。まもなく削除予定です。</h3>
       <p class="text-xs text-slate-500 dark:text-slate-400">気になったボタンを押してね（何回でも押せます）</p>
     </div>
 
