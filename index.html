@@ -177,6 +177,77 @@ function toggleMenu() {
   }
 }
 </script>
+<!-- 接近メロディ＆列車走行アニメーションスタイル -->
+<style>
+  /* 列車が画面左から右へ移動するアニメーション */
+  @keyframes runTrain {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+
+  .train-animation {
+    position: fixed;
+    bottom: 15%; /* 電車が走る上下位置 */
+    left: 0;
+    z-index: 9999;
+    font-size: 4rem; /* 電車の大きさ（絵文字の場合） */
+    white-space: nowrap;
+    pointer-events: none;
+    animation: runTrain 4.5s linear forwards; /* 4.5秒かけて通過 */
+  }
+</style>
+
+<!-- コナミコマンド制御スクリプト -->
+<script>
+  // 音声ファイルの指定（ファイル名に合わせて変更してください）
+  const approachMelody = new Audio('melody.mp3'); 
+
+  const konamiCode = [
+    'b', 'a'
+  ];
+  let konamiIndex = 0;
+
+  document.addEventListener('keydown', (e) => {
+    const inputKey = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    const targetKey = konamiCode[konamiIndex].length === 1 ? konamiCode[konamiIndex].toLowerCase() : konamiCode[konamiIndex];
+
+    if (inputKey === targetKey) {
+      konamiIndex++;
+      if (konamiIndex === konamiCode.length) {
+        startTrainEvent();
+        konamiIndex = 0;
+      }
+    } else {
+      konamiIndex = 0;
+    }
+  });
+
+  function startTrainEvent() {
+    // 1. 接近メロディ再生
+    approachMelody.currentTime = 0;
+    approachMelody.play().catch(err => console.log('音声再生エラー:', err));
+
+    // 2. 2.5秒後に列車を発進させる
+    setTimeout(() => {
+      const train = document.createElement('div');
+      train.className = 'train-animation';
+      
+      // ★ ご用意された画像ファイル名（例: train.png や IMG_train.png）に変更してください
+      train.innerHTML = '<img src="画像ファイル名.png" alt="列車" class="h-20 w-auto object-contain">';
+
+      document.body.appendChild(train);
+
+      // 3. 通過完了（4.5秒後）に画面から削除
+      setTimeout(() => {
+        train.remove();
+      }, 4500);
+    }, 2500);
+  }
+</script>  
 </aside>
 
 <main class="flex-grow">
