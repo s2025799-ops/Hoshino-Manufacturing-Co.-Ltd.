@@ -71,6 +71,11 @@
 				<h1 class="text-lg font-bold tracking-wider leading-none text-slate-900 dark:text-white">星野製作所</h1><span class="text-xs text-slate-500 dark:text-slate-400">HOSHINO FACTORY</span>
 			</div><!-- 右側操作エリア -->
 			<div class="flex items-center space-x-3">
+				<!-- 店内BGM再生ボタン -->
+<button id="bgm-toggle-btn" onclick="toggleShopBgm()" class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+  <i id="bgm-icon" data-lucide="music" class="w-4 h-4"></i>
+  <span id="bgm-text">店内BGM</span>
+</button>
 				<!-- ダークモード切替ボタン -->
 				 <button aria-label="ダークモード切り替え" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" onclick="toggleDarkMode()" title="テーマ切り替え"><i class="w-5 h-5" data-lucide="moon" id="dark-mode-icon"></i></button> <!-- メニューボタン -->
 				 <button aria-label="Toggle Menu" class="p-2 text-slate-600 dark:text-slate-300 hover:text-sky-500 focus:outline-none flex items-center justify-center" onclick="toggleMenu()"><i class="w-6 h-6" data-lucide="menu"></i></button>
@@ -1683,7 +1688,38 @@
       }
       if (window.lucide) lucide.createIcons();
     }
+// ─────────────── 店内BGM機能 ───────────────
+let isBgmPlaying = false;
+const shopBgmAudio = new Audio('shop_bgm.mp3'); // ★ ご用意されたBGMのファイル名に変更してください
+shopBgmAudio.loop = true; // ループ再生
 
+function toggleShopBgm() {
+  const btnText = document.getElementById('bgm-text');
+  const btnIcon = document.getElementById('bgm-icon');
+  const btn = document.getElementById('bgm-toggle-btn');
+
+  if (isBgmPlaying) {
+    shopBgmAudio.pause();
+    isBgmPlaying = false;
+    if (btnText) btnText.textContent = '店内BGM';
+    if (btnIcon) btnIcon.setAttribute('data-lucide', 'music');
+    if (btn) {
+      btn.classList.remove('bg-emerald-500', 'text-white');
+      btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-200');
+    }
+  } else {
+    shopBgmAudio.play().then(() => {
+      isBgmPlaying = true;
+      if (btnText) btnText.textContent = 'BGM 停止';
+      if (btnIcon) btnIcon.setAttribute('data-lucide', 'disc');
+      if (btn) {
+        btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-200');
+        btn.classList.add('bg-emerald-500', 'text-white');
+      }
+    }).catch(err => console.log('BGM再生エラー:', err));
+  }
+  if (window.lucide) lucide.createIcons();
+}
     // ─────────────── 7. カウンター・おみくじ・LINE制御 ───────────────
     async function initVisitorCounter() {
       const countElement = document.getElementById('visitor-count');
