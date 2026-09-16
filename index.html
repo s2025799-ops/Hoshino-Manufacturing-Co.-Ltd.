@@ -34,6 +34,30 @@ scroll-behavior: smooth;
 .transition-max-height {
 transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
+
+  @keyframes dipyonSlide {
+    0% {
+      transform: translateX(120%);
+      opacity: 0;
+    }
+    15% {
+      transform: translateX(0); /* 画面右下にスッと登場 */
+      opacity: 1;
+    }
+    85% {
+      transform: translateX(0); /* その場でお辞儀GIFを再生 */
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(120%); /* 右外へスッと退場 */
+      opacity: 0;
+    }
+  }
+
+  .animate-dipyon-slide {
+    /* 3.5秒かけて「登場 → お辞儀 → 退場」を実行 */
+    animation: dipyonSlide 3.5s ease-in-out forwards;
+  }
 </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200">
@@ -1875,6 +1899,7 @@ id: 'dipyon-maru',
 title: 'ディピョン丸',
 category: 'design',
 icon: 'star',
+onclick="triggerDipyonBow()"  
 iconBg: 'bg-yellow-50 dark:bg-yellow-900/40',
 iconColor: 'text-yellow-500 dark:text-yellow-400',
 imageUrl: 'IMG_depyon.PNG',
@@ -2243,6 +2268,29 @@ function drawOmikuji() {
 </script>
 <script data-goatcounter="https://hoshino-project.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script>
+  const dipyonSound = new Audio('Suica.mp3');
+  let isPlaying = false;
 
+  function playDipyonGif() {
+    if (isPlaying) return; // 再生中の連打防止
+    isPlaying = true;
+
+    const img = document.getElementById('dipyon-img');
+
+    // 1. 効果音再生
+    dipyonSound.currentTime = 0;
+    dipyonSound.play().catch(err => console.log(err));
+
+    // 2. GIF画像に差し替え（末尾の?+時刻は毎回最初から再生させるための処理）
+    img.src = 'dipi.gif?' + new Date().getTime();
+
+    // 3. GIFアニメーションの長さ（例：3秒＝3000ミリ秒）に合わせて静止画に戻す
+    setTimeout(() => {
+      img.src = 'IMG_depyon.PNG';
+      isPlaying = false;
+    },10000); 
+  }
+</script>
 </body>
 </html>
