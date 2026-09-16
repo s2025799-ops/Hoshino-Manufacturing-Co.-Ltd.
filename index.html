@@ -804,59 +804,58 @@
 			</div>
 		</section>
 		
-		<!-- ETCレーン風ギミックセクション（大型＆リアルレイアウト版） -->
-<section id="etc-gate-section" class="py-12 px-4">
-  <div class="max-w-2xl mx-auto bg-slate-900 border-4 border-purple-600 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+		<!-- ETCレーン風ギミックセクション（横フルサイズ ＆ アイボリー大型料金表示器版） -->
+<section id="etc-gate-section" class="py-12 px-2 sm:px-4 w-full">
+  <div class="w-full bg-slate-900 border-4 border-purple-600 rounded-3xl p-4 sm:p-8 shadow-2xl relative overflow-hidden">
     
     <!-- 看板画像エリア -->
     <div class="mb-6 flex justify-center">
       <img src="etc.jpg" 
            alt="ETC専用看板" 
-           class="h-14 sm:h-20 w-auto object-contain drop-shadow-lg" 
-           onerror="this.onerror=null; this.src='https://placehold.co/320x80/6b21a8/ffffff?text=ETC+ONLY';" />
+           class="h-16 sm:h-24 w-auto object-contain drop-shadow-lg" 
+           onerror="this.onerror=null; this.src='https://placehold.co/400x100/6b21a8/ffffff?text=ETC+ONLY';" />
     </div>
 
-    <!-- 3D風 ETCレーン視点メインエリア -->
-    <div class="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl bg-slate-950 mb-6">
+    <!-- 3D風 ETCレーン視点メインエリア（横幅一杯） -->
+    <div class="relative w-full h-80 sm:h-[450px] rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl bg-slate-950 mb-6">
       
       <!-- レイヤー1: 背景（奥へ続く高速道路） -->
       <div class="absolute inset-0 bg-gradient-to-b from-sky-950 via-slate-900 to-slate-800 flex items-center justify-center">
-        <!-- 道路画像（準備できていなければプレースホルダーで道路風表示） -->
-        <img src="etc_road.jpg" 
+        <img src="kousoku.JPG" 
              alt="高速道路" 
-             class="w-full h-full object-cover opacity-70" 
-             onerror="this.onerror=null; this.src='https://placehold.co/800x500/0f172a/475569?text=EXPRESSWAY+LANE';" />
-        <!-- 暗がりとグラデーションの影演出 -->
+             class="w-full h-full object-cover opacity-75" 
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x600/0f172a/475569?text=EXPRESSWAY+LANE';" />
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
       </div>
 
-      <!-- レイヤー2: 料金表示器（右上に設置された独立モニター端末） -->
-      <div class="absolute top-4 right-4 z-20 w-44 sm:w-56 bg-slate-900/90 backdrop-blur-md border-2 border-purple-500/60 rounded-xl p-2 shadow-2xl">
-        <div class="text-[10px] sm:text-xs text-purple-300 font-mono mb-1 flex items-center gap-1 justify-center">
-          <i data-lucide="monitor" class="w-3 h-3"></i>
-          <span>料金表示器</span>
+      <!-- レイヤー2: 料金表示器（横長 ＆ 実物風アイボリー筐体） -->
+      <div class="absolute top-4 right-4 z-20 w-64 sm:w-96 md:w-[420px] bg-[#f2ebd9] border-4 border-[#d4c5a9] rounded-xl p-2.5 shadow-2xl">
+        <div class="text-[11px] sm:text-xs text-slate-700 font-bold font-mono mb-1.5 flex items-center gap-1.5 justify-center">
+          <i data-lucide="monitor" class="w-3.5 h-3.5 text-amber-800"></i>
+          <span class="tracking-wider">料金表示器</span>
         </div>
-        <!-- モニター画面 -->
-        <div class="bg-black rounded-lg border border-slate-700 overflow-hidden h-24 sm:h-32 relative">
+        
+        <!-- 横長の画面モニター部 -->
+        <div class="bg-black rounded-lg border-2 border-[#b8a88a] overflow-hidden h-28 sm:h-36 md:h-40 relative shadow-inner">
           <img id="etc-display-img" 
-               src="etc_off.jpg" 
+               src="etc-stop.jpg" 
                alt="料金表示" 
-               class="w-full h-full object-cover transition-all duration-300" 
-               onerror="this.onerror=null; this.src='https://placehold.co/300x200/1e1b4b/38bdf8?text=STANDBY';" />
+               class="w-full h-full object-contain bg-black transition-all duration-300" 
+               onerror="this.onerror=null; this.src='https://placehold.co/400x200/1e1b4b/38bdf8?text=STANDBY';" />
         </div>
       </div>
 
-      <!-- レイヤー3: 手前（支柱 ＆ 道路を塞ぐ遮断バー） -->
+      <!-- レイヤー3: 手前（支柱 ＆ 遮断バー） -->
       <div class="absolute bottom-6 left-6 right-6 z-30 pointer-events-none flex items-end">
         <!-- バーの支柱 -->
-        <div class="w-6 sm:w-8 h-24 sm:h-28 bg-gradient-to-r from-slate-700 via-slate-500 to-slate-800 border border-slate-400 rounded-t-md z-10 relative shadow-2xl flex-shrink-0">
-          <div class="w-2.5 h-2.5 bg-red-500 rounded-full mx-auto mt-2 animate-ping"></div>
+        <div class="w-7 sm:w-9 h-28 sm:h-32 bg-gradient-to-r from-slate-700 via-slate-500 to-slate-800 border border-slate-400 rounded-t-md z-10 relative shadow-2xl flex-shrink-0">
+          <div class="w-3 h-3 bg-red-500 rounded-full mx-auto mt-2 animate-ping"></div>
         </div>
         
-        <!-- 黄黒遮断バー（道路横断サイズ） -->
+        <!-- 黄黒遮断バー -->
         <div id="etc-bar" 
-             class="h-4 sm:h-5 w-full -ml-1 border-2 border-slate-900 shadow-2xl transition-transform duration-700 ease-out z-20 rounded-r-full"
-             style="transform-origin: left center; background: repeating-linear-gradient(135deg, #facc15, #facc15 16px, #000 16px, #000 32px);">
+             class="h-5 sm:h-6 w-full -ml-1 border-2 border-slate-900 shadow-2xl transition-transform duration-700 ease-out z-20 rounded-r-full"
+             style="transform-origin: left center; background: repeating-linear-gradient(135deg, #facc15, #facc15 18px, #000 18px, #000 36px);">
         </div>
       </div>
 
