@@ -1286,53 +1286,122 @@ LINE、Gmail、zoomなど常時受け付けております。
   </div>
 </section>
 
-<!-- リアクションボタンセクション -->
-<section id="reactions" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
-  <div class="max-w-3xl mx-auto px-4 text-center">
-    <div class="mb-8">
-      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">ワンタップで応援！2026/09/15現在、機能していません。まもなく削除予定です。</h3>
-      <p class="text-xs text-slate-500 dark:text-slate-400">気になったボタンを押してね（何回でも押せます）</p>
+<!-- ==============================================
+     匿名コメント・ご意見箱セクション
+     ============================================== -->
+<section id="feedback-section" class="feedback-section">
+  <div class="feedback-container">
+    
+    <!-- セクション見出し・案内テキスト -->
+    <div class="feedback-header">
+      <span class="feedback-badge">ログイン不要・匿名可</span>
+      <h2 class="feedback-title">ご意見・お便り箱</h2>
+      <p class="feedback-description">
+        アカウント作成やメールアドレスの入力は不要です。<br>
+        サイトへのご感想やメッセージなど、お気軽にお寄せください。
+      </p>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center gap-4">
-      <button onclick="sendReaction('awesome')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-sky-50 dark:hover:bg-sky-900/30 border border-slate-200 dark:border-slate-700 hover:border-sky-300 dark:hover:border-sky-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
-        <span class="text-2xl group-hover:scale-125 transition-transform">👍</span>
-        <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400">すごい！</div>
-          <div id="count-awesome" class="text-xs text-slate-400 font-medium">0</div>
-        </div>
-      </button>
-
-      <button onclick="sendReaction('cheer')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-pink-50 dark:hover:bg-pink-900/30 border border-slate-200 dark:border-slate-700 hover:border-pink-300 dark:hover:border-pink-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
-        <span class="text-2xl group-hover:scale-125 transition-transform">❤️</span>
-        <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-pink-600 dark:group-hover:text-pink-400">応援！</div>
-          <div id="count-cheer" class="text-xs text-slate-400 font-medium">0</div>
-        </div>
-      </button>
-
-      <button onclick="sendReaction('want')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-900/30 border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-amber-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
-        <span class="text-2xl group-hover:scale-125 transition-transform">✨</span>
-        <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400">欲しい！</div>
-          <div id="count-want" class="text-xs text-slate-400 font-medium">0</div>
-        </div>
-      </button>
-
-      <button onclick="sendReaction('god')" class="group relative bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-500 rounded-2xl px-5 py-3.5 transition-all active:scale-95 shadow-sm flex items-center gap-3">
-        <span class="text-2xl group-hover:scale-125 transition-transform">🔥</span>
-        <div class="text-left">
-          <div class="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">低評価※重要なのです</div>
-          <div id="count-god" class="text-xs text-slate-400 font-medium">0</div>
-        </div>
-      </button>
+    <!-- Googleフォーム埋め込み枠 -->
+    <div class="feedback-form-card">
+      <!-- ⚠️ 下記の src="..." の中身を、取得したご自身のGoogleフォームのURLに書き換えてください -->
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfjpHmVIWprW_utMPiqoPWzLi27lH-SXwuaTP7rvzFG_LZAHw/viewform?embedded=true" 
+        width="100%" 
+        height="680" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+        title="ご意見・お便りフォーム">
+        読み込んでいます…
+      </iframe>
     </div>
 
-    <p id="reaction-thanks" class="text-xs font-bold text-sky-600 dark:text-sky-400 mt-4 opacity-0 transition-opacity duration-300 h-4">
-      リアクションありがとうございます！
-    </p>
   </div>
 </section>
+
+<!-- セクション専用スタイリング (CSS) -->
+<style>
+/* セクション全体の外枠・背景 */
+.feedback-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa; /* サイト全体の背景になじむやわらかいグレー */
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* 中央寄せコンテンツ幅 */
+.feedback-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ヘッダーエリア */
+.feedback-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* バッジ（タグ） */
+.feedback-badge {
+  display: inline-block;
+  background-color: #e3f2fd;
+  color: #007bff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+/* 見出し */
+.feedback-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin: 0 0 10px 0;
+}
+
+/* 説明文 */
+.feedback-description {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* フォームを包むホワイトカード */
+.feedback-form-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06); /* 上品なシャドウ */
+  border: 1px solid #eef0f2;
+  overflow: hidden;
+  padding: 10px 0; /* フォームの枠線を自然に見せる調整 */
+}
+
+/* iframeの調整 */
+.feedback-form-card iframe {
+  display: block;
+  border: none;
+}
+
+/* スマホ・iPad用の表示調整（画面幅768px以下） */
+@media (max-width: 768px) {
+  .feedback-section {
+    padding: 40px 15px;
+  }
+  .feedback-title {
+    font-size: 20px;
+  }
+  .feedback-description {
+    font-size: 13px;
+  }
+  .feedback-form-card {
+    border-radius: 12px;
+  }
+}
+</style>
 
 <!-- カウンター表示エリア -->
 <div class="text-center my-6">
