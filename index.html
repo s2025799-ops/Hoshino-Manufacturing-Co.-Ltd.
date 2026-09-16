@@ -75,7 +75,15 @@ transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   </div>
 </header>
-
+<script>
+  // ページ読み込み時に自動で最上部（ヘッダー）へ移動させる
+  window.addEventListener('load', () => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'; // 前回のスクロール位置の自動復元を無効化
+    }
+    window.scrollTo(0, 0); // ページの最上部(X:0, Y:0)へ移動
+  });
+</script>
 <!-- 背景オーバーレイ -->
 <div id="menu-overlay" onclick="toggleMenu()" class="fixed inset-0 bg-black/40 z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
