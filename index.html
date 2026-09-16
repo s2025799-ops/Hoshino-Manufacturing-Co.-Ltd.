@@ -1255,7 +1255,7 @@
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }  
+    }   
 
     // ─────────────── 3. リアクション機能 ───────────────
     const reactionKeys = ['awesome', 'cheer', 'want', 'god'];
@@ -1289,42 +1289,37 @@
         }, 2000);
       }
     }
-// ─────────────── 免責事項ポップアップ制御 ───────────────
-function showDisclaimerModal() {
-  const modal = document.getElementById('disclaimer-modal');
-  const card = document.getElementById('disclaimer-card');
-  if (!modal || !card) return;
 
-  // クリック可能にし、ふわっと表示（CSSトランジション）
-  modal.classList.remove('pointer-events-none');
-  setTimeout(() => {
-    modal.classList.remove('opacity-0');
-    modal.classList.add('opacity-100');
-    card.classList.remove('scale-95');
-    card.classList.add('scale-100');
-  }, 100);
-}
+    // ─────────────── 免責事項ポップアップ制御 ───────────────
+    function showDisclaimerModal() {
+      const modal = document.getElementById('disclaimer-modal');
+      const card = document.getElementById('disclaimer-card');
+      if (!modal || !card) return;
 
-function closeDisclaimerModal() {
-  const modal = document.getElementById('disclaimer-modal');
-  const card = document.getElementById('disclaimer-card');
-  if (!modal || !card) return;
+      modal.classList.remove('pointer-events-none');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+        card.classList.remove('scale-95');
+        card.classList.add('scale-100');
+      }, 100);
+    }
 
-  // ふわっと消す処理
-  modal.classList.remove('opacity-100');
-  modal.classList.add('opacity-0');
-  card.classList.remove('scale-100');
-  card.classList.add('scale-95');
+    function closeDisclaimerModal() {
+      const modal = document.getElementById('disclaimer-modal');
+      const card = document.getElementById('disclaimer-card');
+      if (!modal || !card) return;
 
-  setTimeout(() => {
-    modal.classList.add('pointer-events-none');
-  }, 500);
-}
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
 
-// ページ読み込み完了時に自動実行
-window.addEventListener('DOMContentLoaded', () => {
-  showDisclaimerModal();
-});
+      setTimeout(() => {
+        modal.classList.add('pointer-events-none');
+      }, 500);
+    }
+
     // ─────────────── 4. 製品データ＆描画処理 ───────────────
     const defaultProducts = [
       {
@@ -1497,12 +1492,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         const isVisible = prod.imageVisible;
-
-        // ディピョン丸（id: dipyon-maru）の場合はタップ時にアニメーション処理を呼ぶ
         const imgOnClick = (prod.id === 'dipyon-maru') 
           ? `playDipyonGif(this)` 
           : `openImageModal('${prod.imageUrl}', '${prod.title}')`;
-
         const imgIdAttr = (prod.id === 'dipyon-maru') ? `id="dipyon-img"` : '';
 
         card.innerHTML = `
@@ -1666,7 +1658,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // ─────────────── 6. 盲導鈴 機能 ───────────────
     let isBellPlaying = false;
-    const blindBellAudio = new Audio('eki.mp3'); // 音声ファイル名
+    const blindBellAudio = new Audio('eki.mp3');
     blindBellAudio.loop = true;
 
     function toggleBlindBell() {
@@ -1737,7 +1729,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       resultArea.classList.remove('hidden');
       if (btnText) btnText.textContent = "もう一度引く";
-    }  
+    }   
 
     // ─────────────── 8. ディピョン丸 GIF＆効果音演出 ───────────────
     const dipyonSound = new Audio('Suica.mp3');
@@ -1761,63 +1753,62 @@ window.addEventListener('DOMContentLoaded', () => {
         isDipyonPlaying = false;
       }, 10000); 
     }
-// ─────────────── ETCレーンギミック ───────────────
-let isEtcActive = false;
 
-const ETC_SOUND_PATH = 'etccard.mp3';
-const ETC_IMG_OFF    = 'etc-stop.jpg';
-const ETC_IMG_ON     = 'etc-go.jpg';
+    // ─────────────── 9. ETCレーンギミック ───────────────
+    let isEtcActive = false;
+    const ETC_SOUND_PATH = 'etccard.mp3';
+    const ETC_IMG_OFF    = 'etc-stop.jpg';
+    const ETC_IMG_ON     = 'etc-go.jpg';
 
-function triggerEtcGate() {
-  if (isEtcActive) return;
-  isEtcActive = true;
+    function triggerEtcGate() {
+      if (isEtcActive) return;
+      isEtcActive = true;
 
-  const displayImg = document.getElementById('etc-display-img');
-  const btnText = document.getElementById('etc-btn-text');
-  const etcBar = document.getElementById('etc-bar'); // ★バー要素を取得
+      const displayImg = document.getElementById('etc-display-img');
+      const btnText = document.getElementById('etc-btn-text');
+      const etcBar = document.getElementById('etc-bar');
 
-  // 1. 効果音再生
-  try {
-    const etcAudio = new Audio(ETC_SOUND_PATH);
-    etcAudio.currentTime = 0;
-    etcAudio.play().catch(err => console.warn('音効再生エラー:', err));
-  } catch (e) {
-    console.warn('音声エラー:', e);
-  }
+      try {
+        const etcAudio = new Audio(ETC_SOUND_PATH);
+        etcAudio.currentTime = 0;
+        etcAudio.play().catch(err => console.warn('音効再生エラー:', err));
+      } catch (e) {
+        console.warn('音声エラー:', e);
+      }
 
-  // 2. 画像切り替え ＆ バー跳ね上げ (-75度回転)
-  if (displayImg) {
-    displayImg.src = ETC_IMG_ON + '?' + new Date().getTime();
-  }
-  if (etcBar) {
-    etcBar.style.transform = 'rotate(-75deg)'; // ★バーが上がる
-  }
-  if (btnText) {
-    btnText.textContent = '通信中 / バー開放中...';
-  }
+      if (displayImg) {
+        displayImg.src = ETC_IMG_ON + '?' + new Date().getTime();
+      }
+      if (etcBar) {
+        etcBar.style.transform = 'rotate(-75deg)';
+      }
+      if (btnText) {
+        btnText.textContent = '通信中 / バー開放中...';
+      }
 
-  // 3. 5秒後に元の状態に戻す
-  setTimeout(() => {
-    if (displayImg) {
-      displayImg.src = ETC_IMG_OFF;
+      setTimeout(() => {
+        if (displayImg) {
+          displayImg.src = ETC_IMG_OFF;
+        }
+        if (etcBar) {
+          etcBar.style.transform = 'rotate(0deg)';
+        }
+        if (btnText) {
+          btnText.textContent = 'ETCで通過する';
+        }
+        isEtcActive = false;
+      }, 5000);
     }
-    if (etcBar) {
-      etcBar.style.transform = 'rotate(0deg)'; // ★バーが降りる
-    }
-    if (btnText) {
-      btnText.textContent = 'ETCで通過する';
-    }
-    isEtcActive = false;
-  }, 5000);
-}
-    // ─────────────── 9. 初期化イベント ───────────────
+
+    // ─────────────── 10. 初期化イベント（統合版） ───────────────
     window.addEventListener('DOMContentLoaded', () => {
       initDarkMode();
       loadReactions();
       renderProducts();
       initVisitorCounter();
+      showDisclaimerModal(); // 免責事項ポップアップ呼び出しを統合
     });
-  </script>
+</script>
   <script async data-goatcounter="https://hoshino-project.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
