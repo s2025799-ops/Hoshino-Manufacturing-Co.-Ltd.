@@ -1174,6 +1174,28 @@
 		<div class="relative max-w-4xl w-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
 			<button class="absolute -top-12 right-0 text-white hover:text-sky-300 transition-colors" onclick="closeVideoModal()"><i class="w-8 h-8" data-lucide="x"></i></button> <video class="w-full rounded-lg shadow-2xl bg-black" controls="" id="contact-video"><source src="copy_6350D95F-0943-4FDB-8F79-83B09A174A04.mov" type="video/quicktime"> お使いのブラウザは動画タグをサポートしていません。</video>
 		</div>
+	<!-- 免責事項モーダル（開いた時にふわっと自動表示） -->
+<div id="disclaimer-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500">
+  <div id="disclaimer-card" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full p-6 shadow-2xl transform scale-95 transition-all duration-500">
+    <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-bold text-lg mb-3">
+      <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+      <span>免責事項</span>
+    </div>
+    
+    <div class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6 space-y-2">
+      <p class="font-bold text-slate-800 dark:text-white text-base">
+        当サイト「星野製作所I」はフィクションです。
+      </p>
+      <p>
+        掲載されている会社名、製品名、ロゴ、および各種サービス内容はすべて創設者が趣味で創り出したものであり、実在の人物・法人・団体等とは一切関係ありません。
+      </p>
+    </div>
+
+    <button onclick="closeDisclaimerModal()" class="w-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-slate-200 text-white dark:text-slate-900 font-bold py-3 px-4 rounded-xl shadow-md transition-all active:scale-95">
+      理解して閲覧する
+    </button>
+  </div>
+</div>	
 	</div><!-- 隠しギミック用モーダル -->
 	<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4" id="secret-modal" onclick="closeSecretModal()">
 		<div class="bg-gradient-to-b from-slate-900 to-sky-950 text-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-sky-500/30 text-center relative overflow-hidden" onclick="event.stopPropagation()">
@@ -1267,7 +1289,42 @@
         }, 2000);
       }
     }
+// ─────────────── 免責事項ポップアップ制御 ───────────────
+function showDisclaimerModal() {
+  const modal = document.getElementById('disclaimer-modal');
+  const card = document.getElementById('disclaimer-card');
+  if (!modal || !card) return;
 
+  // クリック可能にし、ふわっと表示（CSSトランジション）
+  modal.classList.remove('pointer-events-none');
+  setTimeout(() => {
+    modal.classList.remove('opacity-0');
+    modal.classList.add('opacity-100');
+    card.classList.remove('scale-95');
+    card.classList.add('scale-100');
+  }, 100);
+}
+
+function closeDisclaimerModal() {
+  const modal = document.getElementById('disclaimer-modal');
+  const card = document.getElementById('disclaimer-card');
+  if (!modal || !card) return;
+
+  // ふわっと消す処理
+  modal.classList.remove('opacity-100');
+  modal.classList.add('opacity-0');
+  card.classList.remove('scale-100');
+  card.classList.add('scale-95');
+
+  setTimeout(() => {
+    modal.classList.add('pointer-events-none');
+  }, 500);
+}
+
+// ページ読み込み完了時に自動実行
+window.addEventListener('DOMContentLoaded', () => {
+  showDisclaimerModal();
+});
     // ─────────────── 4. 製品データ＆描画処理 ───────────────
     const defaultProducts = [
       {
