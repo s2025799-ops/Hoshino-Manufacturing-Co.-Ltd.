@@ -700,9 +700,8 @@
 							</div>
 						</div>
 					</div>
-				</div><!-- 盲導鈴再生ボタン -->
-				 <button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 rounded-lg text-sm font-semibold transition-colors" id="bell-toggle-btn" onclick="toggleBlindBell()"><i class="w-4 h-4" data-lucide="volume-2" id="bell-icon"></i> <span id="bell-text">盲導鈴 再生</span></button> <!-- 音声要素（loop属性でリピート再生） -->
-				<audio id="blind-bell-audio" loop="" preload="auto" src="eki.mp3"></audio>
+				</div>
+				 
 			</div><iframe frameborder="0" height="200" src="train.html" width="100%"></iframe> <!-- 電車モニター風 E233系カラーメーカーセクション -->
 			<section class="my-12 max-w-5xl mx-auto px-4" id="color-simulator">
 				<!-- 外枠パネル（ダークな機器風カード） -->
@@ -1056,7 +1055,7 @@
 			</style><!-- カウンター表示エリア -->
 			<div class="text-center my-6">
 				<div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300">
-					<i class="w-3.5 h-3.5 text-sky-500" data-lucide="users"></i> <span>総訪問者数: <strong class="text-slate-900 dark:text-white" id="visitor-count">読み込み中...</strong> 人</span>
+					<i class="w-3.5 h-3.5 text-sky-500" data-lucide="users"></i> <span>2026/09/16現在機能していません。まもなく削除します。: <strong class="text-slate-900 dark:text-white" id="visitor-count">読み込み中...</strong> 人</span>
 				</div>
 			</div><!-- LikeBtn.com BEGIN -->
 			<span class="likebtn-wrapper" data-ef_voting="wobble" data-i18n_like="高評価" data-identifier="item_1" data-lang="ja" data-show_dislike_label="true" data-theme="large"></span> 
@@ -1073,6 +1072,8 @@
 			</div>
 			<p class="text-slate-500 dark:text-slate-400 text-sm">&copy; 2026 星野製作所 (Hoshino Factory). All rights reserved.</p>
 		</div>
+		<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 rounded-lg text-sm font-semibold transition-colors" id="bell-toggle-btn" onclick="toggleBlindBell()"><i class="w-4 h-4" data-lucide="volume-2" id="bell-icon"></i> <span id="bell-text">盲導鈴 再生</span></button> <!-- 音声要素（loop属性でリピート再生） -->
+				<audio id="blind-bell-audio" loop="" preload="auto" src="eki.mp3"></audio>
 	</footer><!-- 画像拡大用ライトボックスモーダル -->
 	<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" id="image-modal" onclick="closeImageModal()">
 		<div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
