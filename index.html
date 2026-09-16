@@ -1119,542 +1119,530 @@
 	</div><!-- ページトップへ戻るボタン -->
 	 <button aria-label="ページトップへ戻る" class="fixed bottom-6 right-6 z-50 p-3 bg-sky-500 hover:bg-sky-400 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4 hover:scale-110" id="back-to-top" onclick="scrollToTop()"><i class="w-6 h-6" data-lucide="arrow-up"></i></button> <!-- スクリプト -->
 	<script>
-	// ダークモードの切り替え処理
-	function toggleDarkMode() {
-	 const isDark = document.documentElement.classList.toggle('dark');
-	 localStorage.setItem('hoshino_theme', isDark ? 'dark' : 'light');
-	 updateDarkModeIcon(isDark);
-	}
+    // ─────────────── 1. ダークモード設定 ───────────────
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('hoshino_theme', isDark ? 'dark' : 'light');
+      updateDarkModeIcon(isDark);
+    }
 
-	function updateDarkModeIcon(isDark) {
-	 const icon = document.getElementById('dark-mode-icon');
-	 if (icon) {
-	   icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-	   lucide.createIcons();
-	 }
-	}
+    function updateDarkModeIcon(isDark) {
+      const icon = document.getElementById('dark-mode-icon');
+      if (icon) {
+        icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+        if (window.lucide) lucide.createIcons();
+      }
+    }
 
-	function initDarkMode() {
-	 const savedTheme = localStorage.getItem('hoshino_theme');
-	 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	 const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    function initDarkMode() {
+      const savedTheme = localStorage.getItem('hoshino_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
-	 if (isDark) {
-	   document.documentElement.classList.add('dark');
-	 } else {
-	   document.documentElement.classList.remove('dark');
-	 }
-	 updateDarkModeIcon(isDark);
-	}
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      updateDarkModeIcon(isDark);
+    }
 
-	window.addEventListener('DOMContentLoaded', () => {
-	 initDarkMode();
-	});  
+    // ─────────────── 2. トップへ戻るボタン ───────────────
+    const backToTopBtn = document.getElementById('back-to-top');
 
-	// スクロール位置に応じたボタンの表示制御
-	const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (!backToTopBtn) return;
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
 
-	window.addEventListener('scroll', () => {
-	 if (window.scrollY > 300) {
-	   backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-	   backToTopBtn.classList.add('opacity-100', 'translate-y-0');
-	 } else {
-	   backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-	   backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
-	 }
-	});
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }  
 
-	function scrollToTop() {
-	 window.scrollTo({
-	   top: 0,
-	   behavior: 'smooth'
-	 });
-	}  
+    // ─────────────── 3. リアクション機能 ───────────────
+    const reactionKeys = ['awesome', 'cheer', 'want', 'god'];
 
-	// リアクション処理
-	const reactionKeys = ['awesome', 'cheer', 'want', 'god'];
+    function loadReactions() {
+      reactionKeys.forEach(key => {
+        const savedCount = localStorage.getItem('reaction_' + key) || 0;
+        const countElement = document.getElementById('count-' + key);
+        if (countElement) {
+          countElement.textContent = parseInt(savedCount).toLocaleString();
+        }
+      });
+    }
 
-	function loadReactions() {
-	 reactionKeys.forEach(key => {
-	   const savedCount = localStorage.getItem('reaction_' + key) || 0;
-	   const countElement = document.getElementById('count-' + key);
-	   if (countElement) {
-	     countElement.textContent = parseInt(savedCount).toLocaleString();
-	   }
-	 });
-	}
+    function sendReaction(type) {
+      let currentCount = parseInt(localStorage.getItem('reaction_' + type) || 0);
+      currentCount++;
+      localStorage.setItem('reaction_' + type, currentCount);
 
-	function sendReaction(type) {
-	 let currentCount = parseInt(localStorage.getItem('reaction_' + type) || 0);
-	 currentCount++;
-	 localStorage.setItem('reaction_' + type, currentCount);
+      const countElement = document.getElementById('count-' + type);
+      if (countElement) {
+        countElement.textContent = currentCount.toLocaleString();
+      }
 
-	 const countElement = document.getElementById('count-' + type);
-	 if (countElement) {
-	   countElement.textContent = currentCount.toLocaleString();
-	 }
+      const thanksMsg = document.getElementById('reaction-thanks');
+      if (thanksMsg) {
+        thanksMsg.classList.remove('opacity-0');
+        clearTimeout(window.thanksTimer);
+        window.thanksTimer = setTimeout(() => {
+          thanksMsg.classList.add('opacity-0');
+        }, 2000);
+      }
+    }
 
-	 const thanksMsg = document.getElementById('reaction-thanks');
-	 if (thanksMsg) {
-	   thanksMsg.classList.remove('opacity-0');
-	   clearTimeout(window.thanksTimer);
-	   window.thanksTimer = setTimeout(() => {
-	     thanksMsg.classList.add('opacity-0');
-	   }, 2000);
-	 }
-	}
+    // ─────────────── 4. 製品データ＆描画処理 ───────────────
+    const defaultProducts = [
+      {
+        id: 'hr-logo',
+        title: 'HR東日本様 ロゴマーク',
+        category: 'logo',
+        customIconType: 'hr-svg',
+        imageUrl: 'IMG_hr-rogo.jpg',
+        imageVisible: true
+      },
+      {
+        id: 'shk-logo',
+        title: 'SHK様 ロゴマーク',
+        category: 'logo',
+        icon: 'pen-tool',
+        iconBg: 'bg-indigo-50 dark:bg-indigo-900/40',
+        iconColor: 'text-indigo-500 dark:text-indigo-400',
+        imageUrl: 'IMG_shk.jpg',
+        imageVisible: true
+      },
+      {
+        id: 'hoshino-logo',
+        title: '星野商事様 ロゴマーク',
+        category: 'logo',
+        icon: 'pen-tool',
+        iconBg: 'bg-indigo-50 dark:bg-indigo-900/40',
+        iconColor: 'text-indigo-500 dark:text-indigo-400',
+        imageUrl: 'IMG_nintendoho.jpg',
+        imageVisible: true
+      },
+      {
+        id: 'hr-sign',
+        title: 'HR東日本様 足元サインシステム',
+        category: 'design',
+        icon: 'layout',
+        iconBg: 'bg-emerald-50 dark:bg-emerald-900/40',
+        iconColor: 'text-emerald-500 dark:text-emerald-400',
+        imageUrl: 'https://cdnstatic.tencentcs.com/edgeone/pages/assets/1787610992093-pIL3.png',
+        imageVisible: true
+      },
+      {
+        id: 'shk-yt',
+        title: 'SHK様 YouTubeデザイン',
+        category: 'design',
+        icon: 'youtube',
+        iconBg: 'bg-red-50 dark:bg-red-900/40',
+        iconColor: 'text-red-500 dark:text-red-400',
+        imageUrl: 'IMG_youtushk.jpg',
+        imageVisible: true
+      },
+      {
+        id: 'dipyon-maru',
+        title: 'ディピョン丸',
+        category: 'design',
+        icon: 'star',
+        iconBg: 'bg-yellow-50 dark:bg-yellow-900/40',
+        iconColor: 'text-yellow-500 dark:text-yellow-400',
+        imageUrl: 'IMG_depyon.PNG',
+        imageVisible: true
+      },
+      {
+        id: 'e531-front',
+        title: 'E531系 前面模型',
+        category: 'model',
+        icon: 'box',
+        iconBg: 'bg-sky-50 dark:bg-sky-900/40',
+        iconColor: 'text-sky-500 dark:text-sky-400',
+        imageUrl: 'IMG_531 lao.jpg',
+        imageVisible: true
+      },
+      {
+        id: 'e231-front',
+        title: 'E231系 前面模型',
+        category: 'model',
+        icon: 'box',
+        iconBg: 'bg-sky-50 dark:bg-sky-900/40',
+        iconColor: 'text-sky-500 dark:text-sky-400',
+        imageUrl: 'IMG_231-kao.jpg',
+        imageVisible: true
+      },
+      {
+        id: 'e231-door',
+        title: 'E231系 乗務員扉模型',
+        category: 'model',
+        icon: 'box',
+        iconBg: 'bg-sky-50 dark:bg-sky-900/40',
+        iconColor: 'text-sky-500 dark:text-sky-400',
+        imageUrl: 'IMG_231-door.HEIC',
+        imageVisible: true
+      },
+      {
+        id: 'new-product-1',
+        title: '新規製品名 1',
+        category: 'design',
+        icon: 'star',
+        iconBg: 'bg-purple-50 dark:bg-purple-900/40',
+        iconColor: 'text-purple-500 dark:text-purple-400',
+        imageUrl: 'https://placehold.co/600x400/e2e8f0/64748b?text=New+Product+1',
+        imageVisible: true
+      },
+      {
+        id: 'new-product-2',
+        title: '新規製品名 2',
+        category: 'model',
+        icon: 'box',
+        iconBg: 'bg-orange-50 dark:bg-orange-900/40',
+        iconColor: 'text-orange-500 dark:text-orange-400',
+        imageUrl: 'https://placehold.co/600x400/e2e8f0/64748b?text=New+Product+2',
+        imageVisible: true
+      },
+      {
+        id: 'new-product-3',
+        title: '新規製品名 3',
+        category: 'logo',
+        icon: 'pen-tool',
+        iconBg: 'bg-teal-50 dark:bg-teal-900/40',
+        iconColor: 'text-teal-500 dark:text-teal-400',
+        imageUrl: 'https://placehold.co/600x400/e2e8f0/64748b?text=New+Product+3',
+        imageVisible: true
+      }
+    ];
 
-	window.addEventListener('DOMContentLoaded', () => {
-	 loadReactions();
-	});
+    let products = loadProducts();
+    let currentEditingIndex = null;
 
-	// 製品データ定義
-	const defaultProducts = [
-	{
-	id: 'hr-logo',
-	title: 'HR東日本様 ロゴマーク',
-	category: 'logo',
-	customIconType: 'hr-svg',
-	imageUrl: 'IMG_hr-rogo.jpg',
-	imageVisible: true
-	},
-	{
-	id: 'shk-logo',
-	title: 'SHK様 ロゴマーク',
-	category: 'logo',
-	icon: 'pen-tool',
-	iconBg: 'bg-indigo-50 dark:bg-indigo-900/40',
-	iconColor: 'text-indigo-500 dark:text-indigo-400',
-	imageUrl: 'IMG_shk.jpg',
-	imageVisible: true
-	},
-	{
-	id: 'hoshino-logo',
-	title: '星野商事様 ロゴマーク',
-	category: 'logo',
-	icon: 'pen-tool',
-	iconBg: 'bg-indigo-50 dark:bg-indigo-900/40',
-	iconColor: 'text-indigo-500 dark:text-indigo-400',
-	imageUrl: 'IMG_nintendoho.jpg',
-	imageVisible: true
-	},
-	{
-	id: 'hr-sign',
-	title: 'HR東日本様 足元サインシステム',
-	category: 'design',
-	icon: 'layout',
-	iconBg: 'bg-emerald-50 dark:bg-emerald-900/40',
-	iconColor: 'text-emerald-500 dark:text-emerald-400',
-	imageUrl: 'https://cdnstatic.tencentcs.com/edgeone/pages/assets/1787610992093-pIL3.png',
-	imageVisible: true
-	},
-	{
-	id: 'shk-yt',
-	title: 'SHK様 YouTubeデザイン',
-	category: 'design',
-	icon: 'youtube',
-	iconBg: 'bg-red-50 dark:bg-red-900/40',
-	iconColor: 'text-red-500 dark:text-red-400',
-	imageUrl: 'IMG_youtushk.jpg',
-	imageVisible: true
-	},
-	{
-	id: 'dipyon-maru',
-	title: 'ディピョン丸',
-	category: 'design',
-	icon: 'star',
-	onclick="triggerDipyonBow()"  
-	iconBg: 'bg-yellow-50 dark:bg-yellow-900/40',
-	iconColor: 'text-yellow-500 dark:text-yellow-400',
-	imageUrl: 'IMG_depyon.PNG',
-	imageVisible: true
-	},
-	{
-	id: 'e531-front',
-	title: 'E531系 前面模型',
-	category: 'model',
-	icon: 'box',
-	iconBg: 'bg-sky-50 dark:bg-sky-900/40',
-	iconColor: 'text-sky-500 dark:text-sky-400',
-	imageUrl: 'IMG_531 lao.jpg',
-	imageVisible: true
-	},
-	{
-	id: 'e231-front',
-	title: 'E231系 前面模型',
-	category: 'model',
-	icon: 'box',
-	iconBg: 'bg-sky-50 dark:bg-sky-900/40',
-	iconColor: 'text-sky-500 dark:text-sky-400',
-	imageUrl: 'IMG_231-kao.jpg',
-	imageVisible: true
-	},
-	{
-	id: 'e231-door',
-	title: 'E231系 乗務員扉模型',
-	category: 'model',
-	icon: 'box',
-	iconBg: 'bg-sky-50 dark:bg-sky-900/40',
-	iconColor: 'text-sky-500 dark:text-sky-400',
-	imageUrl: 'IMG_231-door.HEIC',
-	imageVisible: true
-	},
-	{
-	 id: 'new-product-1',
-	 title: '新規製品名 1',
-	 category: 'design',
-	 icon: 'star',
-	 iconBg: 'bg-purple-50 dark:bg-purple-900/40',
-	 iconColor: 'text-purple-500 dark:text-purple-400',
-	 imageUrl: 'https://placehold.co/600x400/e2e8f0/64748b?text=New+Product+1',
-	 imageVisible: true
-	},
-	{
-	 id: 'new-product-2',
-	 title: '新規製品名 2',
-	 category: 'model',
-	 icon: 'box',
-	 iconBg: 'bg-orange-50 dark:bg-orange-900/40',
-	 iconColor: 'text-orange-500 dark:text-orange-400',
-	 imageUrl: 'https://placehold.co/600x400/e2e8f0/64748b?text=New+Product+2',
-	 imageVisible: true
-	},
-	{
-	 id: 'new-product-3',
-	 title: '新規製品名 3',
-	 category: 'logo',
-	 icon: 'pen-tool',
-	 iconBg: 'bg-teal-50 dark:bg-teal-900/40',
-	 iconColor: 'text-teal-500 dark:text-teal-400',
-	 imageUrl: 'https://placehold.co/600x400/e2e8f0/64748b?text=New+Product+3',
-	 imageVisible: true
-	}
-	];
+    function loadProducts() {
+      const saved = localStorage.getItem('hoshino_factory_products');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          return defaultProducts.map(def => {
+            const found = parsed.find(p => p.id === def.id);
+            return found ? { ...def, imageUrl: found.imageUrl } : def;
+          });
+        } catch (e) {
+          console.error('Failed to parse saved products', e);
+        }
+      }
+      return defaultProducts;
+    }
 
-	let products = loadProducts();
-	let currentEditingIndex = null;
+    function saveProducts() {
+      localStorage.setItem('hoshino_factory_products', JSON.stringify(products.map(p => ({ id: p.id, imageUrl: p.imageUrl }))));
+    }
 
-	function loadProducts() {
-	const saved = localStorage.getItem('hoshino_factory_products');
-	if (saved) {
-	try {
-	const parsed = JSON.parse(saved);
-	return defaultProducts.map(def => {
-	const found = parsed.find(p => p.id === def.id);
-	return found ? { ...def, imageUrl: found.imageUrl } : def;
-	});
-	} catch (e) {
-	console.error('Failed to parse saved products', e);
-	}
-	}
-	return defaultProducts;
-	}
+    function renderProducts() {
+      const container = document.getElementById('product-grid');
+      if (!container) return;
+      container.innerHTML = '';
 
-	function saveProducts() {
-	localStorage.setItem('hoshino_factory_products', JSON.stringify(products.map(p => ({ id: p.id, imageUrl: p.imageUrl }))));
-	}
+      products.forEach((prod, index) => {
+        const card = document.createElement('div');
+        card.className = "bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all flex flex-col justify-between";
 
-	let logoClickCount = 0;
-	let logoClickTimer = null;
+        let iconHtml = '';
+        if (prod.customIconType === 'hr-svg') {
+          iconHtml = `
+            <div class="w-10 h-10 bg-[#2E8B3C]/10 dark:bg-[#2E8B3C]/20 rounded-lg flex items-center justify-center shrink-0">
+              <svg viewBox="0 0 100 90" class="w-7 h-auto fill-[#2E8B3C]" fill-rule="evenodd">
+                <path d="M 10,25 L 22,25 L 22,43 L 38,43 L 38,55 L 22,55 L 22,65 L 7,77 L 12,65 L 12,25 Z" />
+                <path d="M 38,25 L 65,25 C 78,25 85,30 85,40 C 85,50 78,55 65,55 L 50,55 L 50,65 L 35,77 L 40,65 L 40,25 Z M 50,37 L 50,43 L 65,43 C 69,43 71,42 71,40 C 71,38 69,37 65,37 Z" />
+                <polygon points="60,57 75,57 87,75 72,75" />
+              </svg>
+            </div>`;
+        } else {
+          iconHtml = `
+            <div class="w-10 h-10 ${prod.iconBg || 'bg-sky-50 dark:bg-sky-900/40'} rounded-lg flex items-center justify-center ${prod.iconColor || 'text-sky-500 dark:text-sky-400'} shrink-0">
+              <i data-lucide="${prod.icon || 'box'}" class="w-5 h-5"></i>
+            </div>`;
+        }
 
-	function handleLogoClick() {
-	 logoClickCount++;
-	 clearTimeout(logoClickTimer);
-	 logoClickTimer = setTimeout(() => {
-	   logoClickCount = 0;
-	 }, 1500);
+        const isVisible = prod.imageVisible;
 
-	 if (logoClickCount === 5) {
-	   logoClickCount = 0;
-	   openSecretModal();
-	 }
-	}
+        // ディピョン丸（id: dipyon-maru）の場合はタップ時にアニメーション処理を呼ぶ
+        const imgOnClick = (prod.id === 'dipyon-maru') 
+          ? `playDipyonGif(this)` 
+          : `openImageModal('${prod.imageUrl}', '${prod.title}')`;
 
-	function openSecretModal() {
-	 const modal = document.getElementById('secret-modal');
-	 if (modal) {
-	   modal.classList.remove('hidden');
-	   lucide.createIcons();
-	 }
-	}
+        const imgIdAttr = (prod.id === 'dipyon-maru') ? `id="dipyon-img"` : '';
 
-	function closeSecretModal() {
-	 const modal = document.getElementById('secret-modal');
-	 if (modal) {
-	   modal.classList.add('hidden');
-	 }
-	}
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                ${iconHtml}
+                <h4 class="font-bold text-base text-slate-800 dark:text-white leading-snug">${prod.title}</h4>
+              </div>
+            </div>
 
-	function renderProducts() {
-	const container = document.getElementById('product-grid');
-	container.innerHTML = '';
+            <div class="overflow-hidden transition-all duration-300 ${isVisible ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'}">
+              <div class="relative group rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900">
+                <img ${imgIdAttr}
+                  src="${prod.imageUrl}"
+                  alt="${prod.title}"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Image+Not+Found';"
+                  class="w-full h-48 object-cover cursor-pointer group-hover:scale-105 transition-transform duration-300"
+                  onclick="${imgOnClick}" />
+                <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                  <span class="text-white text-xs font-semibold px-3 py-1 bg-black/60 rounded-full flex items-center gap-1">
+                    <i data-lucide="${prod.id === 'dipyon-maru' ? 'sparkles' : 'maximize-2'}" class="w-3 h-3"></i> 
+                    ${prod.id === 'dipyon-maru' ? 'タップでアニメーション' : '拡大表示'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-	products.forEach((prod, index) => {
-	const card = document.createElement('div');
-	card.className = "bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all flex flex-col justify-between";
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs gap-2 mt-auto">
+            <button onclick="toggleImage(${index})" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${isVisible ? 'bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 hover:bg-sky-200 dark:hover:bg-sky-900' : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'}">
+              <i data-lucide="${isVisible ? 'eye-off' : 'image'}" class="w-3.5 h-3.5"></i>
+              <span>${isVisible ? '写真を隠す' : '写真を見る'}</span>
+            </button>
 
-	let iconHtml = '';
-	if (prod.customIconType === 'hr-svg') {
-	iconHtml = `
-	<div class="w-10 h-10 bg-[#2E8B3C]/10 dark:bg-[#2E8B3C]/20 rounded-lg flex items-center justify-center shrink-0">
-	<svg viewBox="0 0 100 90" class="w-7 h-auto fill-[#2E8B3C]" fill-rule="evenodd">
-	<path d="M 10,25 L 22,25 L 22,43 L 38,43 L 38,55 L 22,55 L 22,65 L 7,77 L 12,65 L 12,25 Z" />
-	<path d="M 38,25 L 65,25 C 78,25 85,30 85,40 C 85,50 78,55 65,55 L 50,55 L 50,65 L 35,77 L 40,65 L 40,25 Z M 50,37 L 50,43 L 65,43 C 69,43 71,42 71,40 C 71,38 69,37 65,37 Z" />
-	<polygon points="60,57 75,57 87,75 72,75" />
-	<\/svg>
-	<\/div>`;
-	} else {
-	iconHtml = `
-	<div class="w-10 h-10 ${prod.iconBg || 'bg-sky-50 dark:bg-sky-900/40'} rounded-lg flex items-center justify-center ${prod.iconColor || 'text-sky-500 dark:text-sky-400'} shrink-0">
-	<i data-lucide="${prod.icon || 'box'}" class="w-5 h-5"><\/i>
-	<\/div>`;
-	}
+            <button onclick="openUrlModal(${index})" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-medium text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-900/30 transition-colors" title="画像URLを編集">
+              <i data-lucide="link" class="w-3.5 h-3.5"></i>
+              <span>URL変更</span>
+            </button>
+          </div>
+        `;
 
-	const isVisible = prod.imageVisible;
+        container.appendChild(card);
+      });
 
-	card.innerHTML = `
-	<div>
-	<div class="flex items-center justify-between gap-3 mb-4">
-	<div class="flex items-center gap-3">
-	${iconHtml}
-	<h4 class="font-bold text-base text-slate-800 dark:text-white leading-snug">${prod.title}<\/h4>
-	<\/div>
-	<\/div>
+      if (window.lucide) lucide.createIcons();
+    }
 
-	<div class="overflow-hidden transition-all duration-300 ${isVisible ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'}">
-	<div class="relative group rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900">
-	<img src="${prod.imageUrl}"
-	alt="${prod.title}"
-	onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/64748b?text=Image+Not+Found';"
-	class="w-full h-48 object-cover cursor-pointer group-hover:scale-105 transition-transform duration-300"
-	onclick="openImageModal('${prod.imageUrl}', '${prod.title}')" />
-	<div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-	<span class="text-white text-xs font-semibold px-3 py-1 bg-black/60 rounded-full flex items-center gap-1">
-	<i data-lucide="maximize-2" class="w-3 h-3"><\/i> 拡大表示
-	<\/span>
-	<\/div>
-	<\/div>
-	<\/div>
-	<\/div>
+    function toggleImage(index) {
+      products[index].imageVisible = !products[index].imageVisible;
+      renderProducts();
+    }
 
-	<div class="pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs gap-2 mt-auto">
-	<button onclick="toggleImage(${index})" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${isVisible ? 'bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 hover:bg-sky-200 dark:hover:bg-sky-900' : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'}">
-	<i data-lucide="${isVisible ? 'eye-off' : 'image'}" class="w-3.5 h-3.5"><\/i>
-	<span>${isVisible ? '写真を隠す' : '写真を見る'}<\/span>
-	<\/button>
+    function openUrlModal(index) {
+      currentEditingIndex = index;
+      const prod = products[index];
+      document.getElementById('url-modal-title').textContent = prod.title;
+      document.getElementById('url-input').value = prod.imageUrl;
+      document.getElementById('url-modal').classList.remove('hidden');
+    }
 
-	<button onclick="openUrlModal(${index})" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg font-medium text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-900/30 transition-colors" title="画像URLを編集">
-	<i data-lucide="link" class="w-3.5 h-3.5"><\/i>
-	<span>URL変更<\/span>
-	<\/button>
-	<\/div>
-	`;
+    function closeUrlModal() {
+      document.getElementById('url-modal').classList.add('hidden');
+      currentEditingIndex = null;
+    }
 
-	container.appendChild(card);
-	});
+    function saveUrlModal() {
+      if (currentEditingIndex !== null) {
+        const newUrl = document.getElementById('url-input').value.trim();
+        if (newUrl) {
+          products[currentEditingIndex].imageUrl = newUrl;
+          products[currentEditingIndex].imageVisible = true;
+          saveProducts();
+          renderProducts();
+        }
+      }
+      closeUrlModal();
+    }
 
-	lucide.createIcons();
-	}
+    function resetUrlModal() {
+      if (currentEditingIndex !== null) {
+        const def = defaultProducts[currentEditingIndex];
+        products[currentEditingIndex].imageUrl = def.imageUrl;
+        saveProducts();
+        renderProducts();
+      }
+      closeUrlModal();
+    }
 
-	function toggleImage(index) {
-	products[index].imageVisible = !products[index].imageVisible;
-	renderProducts();
-	}
+    function openImageModal(url, title) {
+      document.getElementById('modal-img').src = url;
+      document.getElementById('modal-caption').textContent = title;
+      document.getElementById('image-modal').classList.remove('hidden');
+    }
 
-	function openUrlModal(index) {
-	currentEditingIndex = index;
-	const prod = products[index];
-	document.getElementById('url-modal-title').textContent = prod.title;
-	document.getElementById('url-input').value = prod.imageUrl;
-	document.getElementById('url-modal').classList.remove('hidden');
-	}
+    function closeImageModal() {
+      document.getElementById('image-modal').classList.add('hidden');
+    }
 
-	function closeUrlModal() {
-	document.getElementById('url-modal').classList.add('hidden');
-	currentEditingIndex = null;
-	}
+    function openNoticeModal() {
+      document.getElementById('notice-modal').classList.remove('hidden');
+    }
 
-	function saveUrlModal() {
-	if (currentEditingIndex !== null) {
-	const newUrl = document.getElementById('url-input').value.trim();
-	if (newUrl) {
-	products[currentEditingIndex].imageUrl = newUrl;
-	products[currentEditingIndex].imageVisible = true;
-	saveProducts();
-	renderProducts();
-	}
-	}
-	closeUrlModal();
-	}
+    function closeNoticeModal() {
+      document.getElementById('notice-modal').classList.add('hidden');
+    }
 
-	function resetUrlModal() {
-	if (currentEditingIndex !== null) {
-	const def = defaultProducts[currentEditingIndex];
-	products[currentEditingIndex].imageUrl = def.imageUrl;
-	saveProducts();
-	renderProducts();
-	}
-	closeUrlModal();
-	}
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) menu.classList.toggle('hidden');
+    }
 
-	function openImageModal(url, title) {
-	document.getElementById('modal-img').src = url;
-	document.getElementById('modal-caption').textContent = title;
-	document.getElementById('image-modal').classList.remove('hidden');
-	}
+    function openVideoModal() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('contact-video');
+      if (modal) {
+        modal.classList.remove('hidden');
+        if (video) video.play();
+      }
+    }
 
-	function closeImageModal() {
-	document.getElementById('image-modal').classList.add('hidden');
-	}
+    function closeVideoModal() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('contact-video');
+      if (modal) {
+        modal.classList.add('hidden');
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      }
+    }
 
-	function openContactNotice() {
-	document.getElementById('notice-modal').classList.remove('hidden');
-	}
+    // ─────────────── 5. ロゴ・隠しモーダル ───────────────
+    let logoClickCount = 0;
+    let logoClickTimer = null;
 
-	function closeNoticeModal() {
-	document.getElementById('notice-modal').classList.add('hidden');
-	}
+    function handleLogoClick() {
+      logoClickCount++;
+      clearTimeout(logoClickTimer);
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 1500);
 
-	function toggleMobileMenu() {
-	const menu = document.getElementById('mobile-menu');
-	menu.classList.toggle('hidden');
-	}
+      if (logoClickCount === 5) {
+        logoClickCount = 0;
+        openSecretModal();
+      }
+    }
 
-	function openVideoModal() {
-	 const modal = document.getElementById('video-modal');
-	 const video = document.getElementById('contact-video');
-	 
-	 modal.classList.remove('hidden');
-	 if (video) {
-	   video.play();
-	 }
-	}
+    function openSecretModal() {
+      const modal = document.getElementById('secret-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        if (window.lucide) lucide.createIcons();
+      }
+    }
 
-	function closeVideoModal() {
-	 const modal = document.getElementById('video-modal');
-	 const video = document.getElementById('contact-video');
-	 
-	 modal.classList.add('hidden');
-	 if (video) {
-	   video.pause();
-	   video.currentTime = 0;
-	 }
-	}
+    function closeSecretModal() {
+      const modal = document.getElementById('secret-modal');
+      if (modal) modal.classList.add('hidden');
+    }
 
-	async function initVisitorCounter() {
-	 const countElement = document.getElementById('visitor-count');
-	 if (!countElement) return;
+    // ─────────────── 6. 盲導鈴 機能 ───────────────
+    let isBellPlaying = false;
+    const blindBellAudio = new Audio('moudourei.mp3'); // 音声ファイル名
+    blindBellAudio.loop = true;
 
-	 try {
-	   const res = await fetch('https://api.counterapi.dev/v1/hoshino-factory-site/visits/up');
-	   const data = await res.json();
-	   countElement.textContent = data.count.toLocaleString();
-	 } catch (error) {
-	   console.error('Counter API Error:', error);
-	   countElement.textContent = '---';
-	 }
-	}
+    function toggleBlindBell() {
+      const btnText = document.getElementById('bell-text');
+      const btnIcon = document.getElementById('bell-icon');
+      const btn = document.getElementById('bell-toggle-btn');
 
-	window.addEventListener('DOMContentLoaded', () => {
-	 renderProducts();
-	 initVisitorCounter();
-	});
-	// LINE内ブラウザからのアクセス時に外部ブラウザで開き直す
-	const ua = navigator.userAgent.toLowerCase();
-	if (ua.indexOf('line') !== -1 && !location.search.includes('openExternalBrowser=1')) {
-	 const symbol = location.search ? '&' : '?';
-	 location.href = location.href + symbol + 'openExternalBrowser=1';
-	}
-	// おみくじのデータ定義（修正例）
-	const omikujiData = [
-	 {
-	   luck: "超大吉 ⭐︎",
-	   item: "E231系前面模型",
-	   color: "スカイブルー",
-	   desc: "ものづくりの神様が味方する日！素晴らしいアイディアが形になります。"
-	 },
-	 {
-	   luck: "大吉 🌟",
-	   item: "HR東日本ロゴ",
-	   color: "エメラルドグリーン",
-	   desc: "デザインセンスが光る1日。新しい挑戦をすると良い結果に！"
-	 },
-	 {
-	   luck: "吉 👍",
-	   item: "乗務員扉模型",
-	   color: "シルバー",
-	   desc: "細部まで丁寧にこだわることで、周りからの評価がアップします。"
-	 },
-	 {
-	   luck: "中吉 ✨",
-	   item: "特製ペーパークラフト",
-	   color: "レモンイエロー",
-	   desc: "手先を使う作業や創作活動にツキがあるラッキーデー！"
-	 },
-	 {
-	   luck: "小吉 💡",
-	   item: "精密デザインナイフ",
-	   color: "オレンジ",
-	   desc: "焦らずコツコツ作業を進めると、満足のいく仕上がりになります。"
-	 },
-	 // ─── 以下のようにカンマ区切りで新しい項目を追加します ───
-	 {
-	   luck: "末吉 ☘️",
-	   item: "カッターマット",
-	   color: "グリーン",
-	   desc: "足元をしっかり固める日。基礎作業に時間をかけると吉！"
-	 },
-	 {
-	   luck: "特別吉 🎉",
-	   item: "ディピョン丸の原稿",
-	   color: "イエロー",
-	   desc: "妄想力が爆発する日！思いついたアイデアはメモに残そう。"
-	 }
-	];
+      if (isBellPlaying) {
+        blindBellAudio.pause();
+        blindBellAudio.currentTime = 0;
+        isBellPlaying = false;
+        if (btnText) btnText.textContent = '盲導鈴 再生';
+        if (btnIcon) btnIcon.setAttribute('data-lucide', 'volume-2');
+        if (btn) btn.classList.remove('bg-amber-500', 'text-white');
+      } else {
+        blindBellAudio.play().then(() => {
+          isBellPlaying = true;
+          if (btnText) btnText.textContent = '盲導鈴 停止';
+          if (btnIcon) btnIcon.setAttribute('data-lucide', 'volume-x');
+          if (btn) btn.classList.add('bg-amber-500', 'text-white');
+        }).catch(err => console.log('盲導鈴再生エラー:', err));
+      }
+      if (window.lucide) lucide.createIcons();
+    }
 
-	function drawOmikuji() {
-	 const resultArea = document.getElementById('omikuji-result');
-	 const btnText = document.getElementById('omikuji-btn-text');
+    // ─────────────── 7. カウンター・おみくじ・LINE制御 ───────────────
+    async function initVisitorCounter() {
+      const countElement = document.getElementById('visitor-count');
+      if (!countElement) return;
 
-	 const randomIndex = Math.floor(Math.random() * omikujiData.length);
-	 const result = omikujiData[randomIndex];
+      try {
+        const res = await fetch('https://api.counterapi.dev/v1/hoshino-factory-site/visits/up');
+        const data = await res.json();
+        countElement.textContent = data.count.toLocaleString();
+      } catch (error) {
+        console.error('Counter API Error:', error);
+        countElement.textContent = '---';
+      }
+    }
 
-	 document.getElementById('omikuji-luck').textContent = result.luck;
-	 document.getElementById('omikuji-item').textContent = result.item;
-	 document.getElementById('omikuji-color').textContent = result.color;
-	 document.getElementById('omikuji-desc').textContent = result.desc;
+    const ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('line') !== -1 && !location.search.includes('openExternalBrowser=1')) {
+      const symbol = location.search ? '&' : '?';
+      location.href = location.href + symbol + 'openExternalBrowser=1';
+    }
 
-	 resultArea.classList.remove('hidden');
-	 if (btnText) {
-	   btnText.textContent = "もう一度引く";
-	 }
-	}  
-	</script> 
-	<script async data-goatcounter="https://hoshino-project.goatcounter.com/count" src="//gc.zgo.at/count.js">
-	</script> 
-	<script>
-	 const dipyonSound = new Audio('Suica.mp3');
-	 let isPlaying = false;
+    const omikujiData = [
+      { luck: "超大吉 ⭐︎", item: "E231系前面模型", color: "スカイブルー", desc: "ものづくりの神様が味方する日！素晴らしいアイディアが形になります。" },
+      { luck: "大吉 🌟", item: "HR東日本ロゴ", color: "エメラルドグリーン", desc: "デザインセンスが光る1日。新しい挑戦をすると良い結果に！" },
+      { luck: "吉 👍", item: "乗務員扉模型", color: "シルバー", desc: "細部まで丁寧にこだわることで、周りからの評価がアップします。" },
+      { luck: "中吉 ✨", item: "特製ペーパークラフト", color: "レモンイエロー", desc: "手先を使う作業や創作活動にツキがあるラッキーデー！" },
+      { luck: "小吉 💡", item: "精密デザインナイフ", color: "オレンジ", desc: "焦らずコツコツ作業を進めると、満足のいく仕上がりになります。" },
+      { luck: "末吉 ☘️", item: "カッターマット", color: "グリーン", desc: "足元をしっかり固める日。基礎作業に時間をかけると吉！" },
+      { luck: "特別吉 🎉", item: "ディピョン丸の原稿", color: "イエロー", desc: "妄想力が爆発する日！思いついたアイデアはメモに残そう。" }
+    ];
 
-	 function playDipyonGif() {
-	   if (isPlaying) return; // 再生中の連打防止
-	   isPlaying = true;
+    function drawOmikuji() {
+      const resultArea = document.getElementById('omikuji-result');
+      const btnText = document.getElementById('omikuji-btn-text');
 
-	   const img = document.getElementById('dipyon-img');
+      const randomIndex = Math.floor(Math.random() * omikujiData.length);
+      const result = omikujiData[randomIndex];
 
-	   // 1. 効果音再生
-	   dipyonSound.currentTime = 0;
-	   dipyonSound.play().catch(err => console.log(err));
+      document.getElementById('omikuji-luck').textContent = result.luck;
+      document.getElementById('omikuji-item').textContent = result.item;
+      document.getElementById('omikuji-color').textContent = result.color;
+      document.getElementById('omikuji-desc').textContent = result.desc;
 
-	   // 2. GIF画像に差し替え（末尾の?+時刻は毎回最初から再生させるための処理）
-	   img.src = 'dipi.gif?' + new Date().getTime();
+      resultArea.classList.remove('hidden');
+      if (btnText) btnText.textContent = "もう一度引く";
+    }  
 
-	   // 3. GIFアニメーションの長さ（例：3秒＝3000ミリ秒）に合わせて静止画に戻す
-	   setTimeout(() => {
-	     img.src = 'IMG_depyon.PNG';
-	     isPlaying = false;
-	   },10000); 
-	 }
-	</script>
+    // ─────────────── 8. ディピョン丸 GIF＆効果音演出 ───────────────
+    const dipyonSound = new Audio('Suica.mp3');
+    let isDipyonPlaying = false;
+
+    function playDipyonGif(imgElement) {
+      if (isDipyonPlaying) return;
+      isDipyonPlaying = true;
+
+      const img = imgElement || document.getElementById('dipyon-img');
+
+      dipyonSound.currentTime = 0;
+      dipyonSound.play().catch(err => console.log('効果音再生エラー:', err));
+
+      if (img) {
+        img.src = 'dipi.gif?' + new Date().getTime();
+      }
+
+      setTimeout(() => {
+        if (img) img.src = 'IMG_depyon.PNG';
+        isDipyonPlaying = false;
+      }, 10000); 
+    }
+
+    // ─────────────── 9. 初期化イベント ───────────────
+    window.addEventListener('DOMContentLoaded', () => {
+      initDarkMode();
+      loadReactions();
+      renderProducts();
+      initVisitorCounter();
+    });
+  </script>
+  <script async data-goatcounter="https://hoshino-project.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
