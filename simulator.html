@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>各種シミュレーター | 星野製作所</title>
+    <link rel="icon" type="image/png" href="suke.png?v=2" sizes="48x48">
+    <link rel="apple-touch-icon" href="suke.png?v=2">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans JP', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200">
+
+    <!-- ヘッダー -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img alt="星野製作所 ロゴ" class="block dark:hidden w-20 h-auto object-contain" src="IMG_hoshino.png">
+                <img alt="星野製作所 ロゴ（白）" class="hidden dark:block w-20 h-auto object-contain" src="IMG_hosiro.png">
+                <div>
+                    <h1 class="text-lg font-bold tracking-wider leading-none text-slate-900 dark:text-white">星野製作所</h1>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">HOSHINO FACTORY</span>
+                </div>
+            </a>
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold transition-colors">
+                    ← トップページに戻る
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-12 w-full space-y-16">
+
+        <!-- ページタイトル -->
+        <div class="text-center">
+            <span class="px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-300 text-xs font-bold uppercase tracking-wider">Simulators & Gimmicks</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mt-2 mb-3">シミュレーター・体験コーナー</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl mx-auto">
+                星野製作所が提供する各種Webシミュレーターやお遊びギミックを集約したページです。
+            </p>
+            <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- 1. E233系 カラーメーカー -->
+        <section id="color-simulator" class="scroll-mt-20">
+            <div class="mb-4">
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                    <i data-lucide="palette" class="w-6 h-6 text-sky-500"></i>
+                    E233系 カラーメーカー
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">電車の帯色やカラーリングを自由にシミュレーションできます。</p>
+            </div>
+            <div class="bg-slate-900 border-2 border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="bg-slate-800/90 border-b border-slate-700 px-5 py-3.5 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                        </span>
+                        <div>
+                            <h4 class="text-sm font-bold tracking-wider text-slate-100">E233系 COLOR SIMULATOR</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 sm:p-5 bg-slate-950/60">
+                    <div class="relative w-full rounded-xl overflow-hidden border border-slate-800 shadow-inner bg-slate-900" style="height: 650px;">
+                        <iframe class="w-full h-full border-0" src="https://atelier.kasu.me/programs/E233colormaker.php" title="E233系カラーメーカー"></iframe>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border-t border-slate-800/80 px-5 py-3 flex items-center justify-between text-xs text-slate-400">
+                    <p class="flex items-center gap-1.5"><i class="w-4 h-4 text-slate-400" data-lucide="info"></i> <span>外部シミュレーター（atelier.kasu.me）を表示中</span></p>
+                    <a class="text-sky-400 hover:text-sky-300 hover:underline transition-colors" href="https://atelier.kasu.me/programs/E233colormaker.php" rel="noopener noreferrer" target="_blank">別タブで開く ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 乗務員扉 スイッチ操作 -->
+        <section id="door-simulator" class="scroll-mt-20">
+            <div class="mb-4 text-center sm:text-left">
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-white flex items-center gap-2 justify-center sm:justify-start">
+                    <i data-lucide="door-closed" class="w-6 h-6 text-emerald-500"></i>
+                    乗務員扉 スイッチ操作
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">スイッチを押してドア動作音とステータス変化を楽しめます。</p>
+            </div>
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 max-w-md mx-auto text-center">
+                <div class="flex justify-center items-center mb-6">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600" id="door-status-badge">
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-400 mr-2" id="door-status-dot"></span>
+                        <span id="door-status-text">全閉 (CLOSED)</span>
+                    </span>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-bold rounded-xl shadow-sm transition transform active:scale-95 flex items-center justify-center space-x-2" onclick="operateDoor('open')">
+                        <i class="w-5 h-5" data-lucide="door-open"></i> <span>ドア開</span>
+                    </button>
+                    <button class="py-3.5 px-4 bg-rose-600 hover:bg-rose-500 active:bg-rose-700 text-white font-bold rounded-xl shadow-sm transition transform active:scale-95 flex items-center justify-center space-x-2" onclick="operateDoor('close')">
+                        <i class="w-5 h-5" data-lucide="door-closed"></i> <span>ドア閉</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ETCレーン風ギミック -->
+        <section id="etc-gate-section" class="scroll-mt-20">
+            <div class="mb-4">
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                    <i data-lucide="navigation" class="w-6 h-6 text-purple-500"></i>
+                    ETCレーン シミュレーター
+                </h3>
+            </div>
+            <div class="w-full bg-slate-900 border-4 border-purple-600 rounded-3xl p-4 sm:p-8 shadow-2xl relative overflow-hidden">
+                <div class="mb-6 flex justify-center">
+                    <img src="etc.jpg" alt="ETC専用看板" class="h-16 sm:h-24 w-auto object-contain drop-shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/400x100/6b21a8/ffffff?text=ETC+ONLY';" />
+                </div>
+                <div class="relative w-full h-80 sm:h-[450px] rounded-2xl overflow-hidden border-2 border-slate-700 shadow-2xl bg-slate-950 mb-6">
+                    <div class="absolute inset-0 bg-gradient-to-b from-sky-950 via-slate-900 to-slate-800 flex items-center justify-center">
+                        <img src="kousoku.JPG" alt="高速道路" class="w-full h-full object-cover opacity-75" onerror="this.onerror=null; this.src='https://placehold.co/1200x600/0f172a/475569?text=EXPRESSWAY+LANE';" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="absolute top-4 right-4 z-20 w-64 sm:w-96 md:w-[420px] bg-[#f2ebd9] border-4 border-[#d4c5a9] rounded-xl p-2.5 shadow-2xl">
+                        <div class="text-[11px] sm:text-xs text-slate-700 font-bold font-mono mb-1.5 flex items-center gap-1.5 justify-center">
+                            <i data-lucide="monitor" class="w-3.5 h-3.5 text-amber-800"></i>
+                            <span class="tracking-wider">料金表示器</span>
+                        </div>
+                        <div class="bg-black rounded-lg border-2 border-[#b8a88a] overflow-hidden h-28 sm:h-36 md:h-40 relative shadow-inner">
+                            <img id="etc-display-img" src="etc-stop.jpg" alt="料金表示" class="w-full h-full object-contain bg-black transition-all duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x200/1e1b4b/38bdf8?text=STANDBY';" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ミニ列車フレーム -->
+        <section id="train-frame" class="scroll-mt-20">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-slate-800 dark:text-white">列車モニター / ミニビューアー</h3>
+            </div>
+            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm">
+                <iframe frameborder="0" height="200" src="train.html" width="100%"></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>© 株式会社星野製作所 HOSHINO FACTORY All Rights Reserved.</p>
+    </footer>
+
+    <!-- スクリプト -->
+    <script>
+        lucide.createIcons();
+
+        // ドア開閉処理
+        const doorOpenSound = new Audio('door_open.mp3');
+        const doorCloseSound = new Audio('door_close.mp3');
+
+        function operateDoor(action) {
+            const badge = document.getElementById('door-status-badge');
+            const dot = document.getElementById('door-status-dot');
+            const text = document.getElementById('door-status-text');
+
+            if (action === 'open') {
+                doorOpenSound.currentTime = 0;
+                doorOpenSound.play().catch(err => console.log(err));
+                text.textContent = '全開 (OPEN)';
+                dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mr-2';
+                badge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800';
+            } else if (action === 'close') {
+                doorCloseSound.currentTime = 0;
+                doorCloseSound.play().catch(err => console.log(err));
+                text.textContent = '全閉 (CLOSED)';
+                dot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 mr-2';
+                badge.className = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800';
+            }
+        }
+    </script>
+</body>
+</html>
