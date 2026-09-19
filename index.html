@@ -475,7 +475,89 @@
 
 		renderTabs();
 		updateFloorInfo();
-		</script> <!-- FAQセクション -->
+		</script>
+		
+		<!-- ========================================== -->
+<!-- 会社概要・アクセス セクション -->
+<!-- ========================================== -->
+<section id="access" class="py-16 bg-slate-50 dark:bg-slate-900 transition-colors">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+        所在地・アクセス
+      </h2>
+      <div class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+        星野製作所 本社工場
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      
+      <!-- 左側：会社情報とアクセス文章 -->
+      <div class="space-y-6">
+        <!-- 会社情報テーブル -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+          <table class="w-full text-sm text-left text-slate-700 dark:text-slate-300">
+            <tbody>
+              <tr class="border-b border-slate-200 dark:border-slate-700">
+                <th class="px-6 py-4 font-semibold bg-slate-50 dark:bg-slate-800/50 w-1/3">所在地</th>
+                <td class="px-6 py-4">
+                  〒146-0093<br>
+                  東京都大田区矢口 8丁目 3-14<br>
+                  <span class="text-xs text-emerald-600 dark:text-emerald-400">※フィクション上の架空の住所です</span>
+                </td>
+              </tr>
+              <tr class="border-b border-slate-200 dark:border-slate-700">
+                <th class="px-6 py-4 font-semibold bg-slate-50 dark:bg-slate-800/50">最寄駅</th>
+                <td class="px-6 py-4">東急多摩川線「武蔵新田駅」</td>
+              </tr>
+              <tr>
+                <th class="px-6 py-4 font-semibold bg-slate-50 dark:bg-slate-800/50">営業時間</th>
+                <td class="px-6 py-4">9:00 - 18:00（木曜休業）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- アクセス詳細 -->
+        <div class="prose prose-sm dark:prose-invert text-slate-600 dark:text-slate-400">
+          <h4 class="font-bold text-slate-900 dark:text-slate-200">電車でお越しの場合</h4>
+          <p>
+            東急多摩川線「武蔵新田駅」改札を出て右折。<br>
+            環八通りを越えて直進し、純喫茶「トリノ」の角を左折してすぐの建物です。（徒歩約7分）
+          </p>
+          <h4 class="font-bold text-slate-900 dark:text-slate-200">お車でお越しの場合</h4>
+          <p>
+            来客用駐車場を2台分ご用意しております。<br>
+            ※工場周辺は道幅の狭い住宅街となっております。大型車両での搬入をご希望の業者様は、事前に納品窓口までご連絡ください。
+          </p>
+        </div>
+      </div>
+
+      <!-- 右側：架空の地図エリア -->
+      <div class="relative bg-slate-200 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700 h-80 flex items-center justify-center overflow-hidden shadow-sm">
+        
+        <!-- 地図画像のプレースホルダー（後で自作の地図画像と差し替えます） -->
+        <div class="text-center p-6">
+          <i data-lucide="map" class="w-12 h-12 text-slate-400 dark:text-slate-500 mx-auto mb-3"></i>
+          <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
+            ここに架空の周辺地図（画像）を配置します
+          </p>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-2">
+            ※実際のGoogleマップを埋め込むと別の場所を指してしまうため、<br>画像ファイル（map.png等）を配置するのがおすすめです。
+          </p>
+        </div>
+
+        <!-- 実際の画像を入れる場合はこちらを使います -->
+        <!-- <img src="map.png" alt="星野製作所 周辺地図" class="w-full h-full object-cover"> -->
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+		<!-- FAQセクション -->
 		<section class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors" id="faq">
 			<div class="max-w-4xl mx-auto px-4">
 				<div class="text-center mb-12">
