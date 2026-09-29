@@ -195,6 +195,55 @@
 		  }, 2500);
 		}
 		</script>
+
+		<!-- 免責事項モーダルダイアログ -->
+<div id="disclaimer-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500 ease-out">
+    <div id="disclaimer-content" class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-700 transform scale-95 transition-all duration-500 ease-out text-center">
+        
+        <!-- 注意アイコン -->
+        <div class="w-12 h-12 bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+        </div>
+        
+        <!-- タイトル -->
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">閲覧にあたってのご注意</h3>
+        
+        <!-- 説明文 -->
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            当ウェブサイトは個人の趣味・制作物による非公式サイトです。<br>
+            <strong class="text-slate-900 dark:text-white font-bold underline decoration-amber-500">実在する株式会社星野製作所様、および各鉄道会社・関係機関とは一切関係がございません。</strong>
+        </p>
+        
+        <!-- 確認ボタン -->
+        <button id="close-disclaimer" class="w-full py-3 px-6 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-white font-bold rounded-xl shadow-md transition transform active:scale-95 text-sm">
+            理解して閲覧を続ける
+        </button>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('disclaimer-modal');
+    const content = document.getElementById('disclaimer-content');
+    const closeBtn = document.getElementById('close-disclaimer');
+
+    // 1. ページ読み込み完了後、100ミリ秒後にふわっと表示
+    setTimeout(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+    }, 100);
+
+    // 2. ボタン押下時にふわっと消す
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+    });
+});
+</script>
 	</aside>
 	<main class="flex-grow">
 		<!-- メインビジュアル / ヒーローセクション -->
