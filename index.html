@@ -81,12 +81,6 @@
   <i id="bgm-icon" data-lucide="music" class="w-4 h-4"></i>
   <span id="bgm-text">店内BGM</span>
 </button>
-				<!-- 右下固定のYouTubeフローティングボタン -->
-<a href="https://www.youtube.com/@吉田兼好-u6l" target="_blank" rel="noopener noreferrer" 
-   class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-3 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 border-2 border-white/20">
-    <i data-lucide="youtube" class="w-6 h-6"></i>
-    <span class="text-xs sm:text-sm hidden sm:inline">公式YouTube</span>
-</a>
 				<!-- ダークモード切替ボタン -->
 				 <button aria-label="ダークモード切り替え" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" onclick="toggleDarkMode()" title="テーマ切り替え"><i class="w-5 h-5" data-lucide="moon" id="dark-mode-icon"></i></button> <!-- メニューボタン -->
 				 <button aria-label="Toggle Menu" class="p-2 text-slate-600 dark:text-slate-300 hover:text-sky-500 focus:outline-none flex items-center justify-center" onclick="toggleMenu()"><i class="w-6 h-6" data-lucide="menu"></i></button>
@@ -372,6 +366,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				</div>
 			</div>
 		</section>
+		<!-- 右下固定のYouTubeフローティングボタン -->
+<a href="https://www.youtube.com/@吉田兼好-u6l" target="_blank" rel="noopener noreferrer" 
+   class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-3 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 border-2 border-white/20">
+    <i data-lucide="youtube" class="w-6 h-6"></i>
+    <span class="text-xs sm:text-sm hidden sm:inline">公式YouTube</span>
+</a>
 		<!-- ディピョン丸の部屋 リンクバナー -->
 <div class="max-w-4xl mx-auto px-4 my-10">
     <a href="Depyonn.html" class="group relative block overflow-hidden rounded-2xl bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-slate-800 dark:to-slate-800 border border-amber-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
