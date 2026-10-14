@@ -81,6 +81,12 @@
   <i id="bgm-icon" data-lucide="music" class="w-4 h-4"></i>
   <span id="bgm-text">店内BGM</span>
 </button>
+				<!-- 右下固定のYouTubeフローティングボタン -->
+<a href="https://www.youtube.com/@吉田兼好-u6l" target="_blank" rel="noopener noreferrer" 
+   class="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-3 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 border-2 border-white/20">
+    <i data-lucide="youtube" class="w-6 h-6"></i>
+    <span class="text-xs sm:text-sm hidden sm:inline">公式YouTube</span>
+</a>
 				<!-- ダークモード切替ボタン -->
 				 <button aria-label="ダークモード切り替え" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" onclick="toggleDarkMode()" title="テーマ切り替え"><i class="w-5 h-5" data-lucide="moon" id="dark-mode-icon"></i></button> <!-- メニューボタン -->
 				 <button aria-label="Toggle Menu" class="p-2 text-slate-600 dark:text-slate-300 hover:text-sky-500 focus:outline-none flex items-center justify-center" onclick="toggleMenu()"><i class="w-6 h-6" data-lucide="menu"></i></button>
@@ -403,6 +409,63 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </a>
 </div>
+
+		<!-- 代表紹介セクション -->
+<section id="president" class="max-w-4xl mx-auto px-4 py-12 w-full">
+    <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 dark:border-slate-700">
+        
+        <!-- セクション見出し -->
+        <div class="text-center mb-8">
+            <span class="inline-block bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 text-xs font-semibold px-3 py-1 rounded-full mb-2">
+                MESSAGE & LEADERSHIP
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white flex items-center justify-center gap-2">
+                <i data-lucide="user-check" class="w-7 h-7 text-blue-500"></i>
+                代表紹介
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2">
+                2022年創業、星野製作所を率いる創業者
+            </p>
+        </div>
+
+        <!-- 代表者カード（横型レイアウト） -->
+        <div class="max-w-2xl mx-auto bg-slate-50 dark:bg-slate-700/50 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-600 flex flex-col sm:flex-row items-center gap-6">
+            <!-- アイコン・写真枠 -->
+            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-blue-100 dark:bg-slate-600 flex-shrink-0 flex items-center justify-center border-4 border-blue-500/20 overflow-hidden shadow-inner">
+                <i data-lucide="user" class="w-16 h-16 text-blue-500 dark:text-blue-400"></i>
+            </div>
+
+            <!-- 情報・メッセージ -->
+            <div class="text-center sm:text-left flex-1">
+                <div class="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                    <span class="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-950 px-2.5 py-0.5 rounded-full">
+                        創業者・代表
+                    </span>
+                    <span class="text-xs text-slate-400">2022年 〜 現在</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">星野 真之</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    2022年に星野製作所を創業。「ものづくりとデジタル表現の面白さを形にする」をモットーに、日々挑戦を重ねています。公式マスコット「ディピョン丸」と共に、ワクワクするようなWebサイトや動画コンテンツをお届けしてまいります。
+                </p>
+            </div>
+        </div>
+
+        <!-- 相棒ディピョン丸のワンポイント -->
+        <div class="mt-8 max-w-2xl mx-auto pt-6 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between bg-yellow-50 dark:bg-slate-700/30 p-4 rounded-xl border border-yellow-200 dark:border-slate-600">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-yellow-100 dark:bg-slate-600 flex items-center justify-center font-bold text-yellow-600">
+                    丸
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-800 dark:text-white">最高癒やし責任者 (CHO) / 特別顧問</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">ディピョン丸（2-D出身）</p>
+                </div>
+            </div>
+            <span class="text-xs text-slate-400 hidden sm:inline">2026からの相棒</span>
+        </div>
+
+    </div>
+</section>
 		<!-- 創業者の言葉コーナー -->
 		<section class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl my-8 border-l-4 border-sky-500 flex flex-col md:flex-row items-center gap-5 max-w-6xl mx-auto px-4 transition-colors">
 			<img alt="星野真之" class="w-20 h-20 rounded-full object-cover shrink-0" src="IMG_3659.jpeg">
