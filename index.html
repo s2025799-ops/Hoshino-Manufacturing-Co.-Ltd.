@@ -249,35 +249,60 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 	<main class="flex-grow">
 		<!-- メインビジュアル / ヒーローセクション -->
-		<section class="relative py-24 md:py-32 overflow-hidden bg-cover bg-center" style="background-image: url('IMG_2911.png');">
-			<!-- 文字を読みやすくするためのフィルター -->
-			<div class="absolute inset-0 bg-white/70 dark:bg-slate-900/80 transition-colors"></div>
-			<div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-				<!-- 5周年アニバーサリーバッジ -->
-				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-sky-100 dark:border-slate-700 text-sky-600 dark:text-sky-400 text-sm font-medium mb-8 shadow-sm">
-					<i class="w-4 h-4" data-lucide="party-popper"></i> <span>おかげさまで5周年</span>
-				</div>
-				<h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">確かな技術で<br class="md:hidden">
-				安心を約束</h2>
-				<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">デザインから模型製作まで、幅広いニーズにお応えする星野製作所。<br class="hidden md:inline">
-				あなたの「欲しい」をカタチにします。</p><a class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-sky-400 hover:to-indigo-500 transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30" href="#contact">制作を依頼する <i class="w-5 h-5" data-lucide="arrow-right"></i></a>
+		<!-- メインビジュアル / ヒーローセクション（斜めカット＆背景スライドショー版） -->
+		<section class="relative min-h-[520px] md:min-h-[600px] flex items-center overflow-hidden bg-slate-900">
+			
+			<!-- 右側/背景：画像スライドショー領域 -->
+			<div id="hero-slideshow" class="absolute inset-0 z-0">
+				<!-- 1枚目（建物の画像） -->
+				<div class="hero-slide absolute inset-0 bg-cover bg-right md:bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('IMG_2911.png');"></div>
+				<!-- 2枚目 -->
+				<div class="hero-slide absolute inset-0 bg-cover bg-right md:bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('IMG_photo2.jpg');"></div>
+				<!-- 3枚目 -->
+				<div class="hero-slide absolute inset-0 bg-cover bg-right md:bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('IMG_photo3.jpg');"></div>
+				<!-- 4枚目 -->
+				<div class="hero-slide absolute inset-0 bg-cover bg-right md:bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('IMG_photo4.jpg');"></div>
+				<!-- 5枚目 -->
+				<div class="hero-slide absolute inset-0 bg-cover bg-right md:bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('IMG_photo5.jpg');"></div>
+
+				<!-- モバイル用：文字を読みやすくするためのうっすらフィルター -->
+				<div class="absolute inset-0 bg-black/20 md:hidden z-10"></div>
 			</div>
-		</section><!-- 新着情報セクション -->
-		<section class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors" id="news">
-			<div class="max-w-6xl mx-auto px-4">
-				<div class="text-center mb-12">
-					<h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">新着情報</h3>
-					<p class="text-slate-500 dark:text-slate-400">News & Topics</p>
-					<div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
-				</div>
-				<div class="max-w-4xl mx-auto bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row">
-					<div class="md:w-1/2 relative bg-slate-200 dark:bg-slate-700 min-h-[240px]"><img alt="新着情報画像" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/64748b?text=News+Image';" src="IMG_manga.jpg"></div>
-					<div class="p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
-						<div class="flex items-center gap-2 mb-3">
-							<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300">お知らせ</span> <span class="text-xs text-slate-400 dark:text-slate-500">2026.08.31</span>
+
+			<!-- 左側：斜めカットのホワイトエリア＆コンテンツ -->
+			<div class="relative z-10 w-full h-full">
+				<div class="w-full md:w-[65%] lg:w-[58%] min-h-[520px] md:min-h-[600px] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-8 sm:p-12 md:p-16 flex flex-col justify-center transition-colors md:[clip-path:polygon(0_0,85%_0,65%_100%,0_100%)]">
+					<div class="max-w-xl">
+						<!-- 5周年アニバーサリーバッジ -->
+						<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-slate-800 border border-sky-200 dark:border-slate-700 text-sky-600 dark:text-sky-400 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+							<i class="w-4 h-4" data-lucide="party-popper"></i>
+							<span>おかげさまで5周年</span>
 						</div>
-						<h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">ディピョン丸新作マンガ始動</h4>
-						<p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">動画制作のネタが尽きた結果漫画に迷走したのでどうか暖かく見守ってください。なんで二等身じゃないかって？二等身じゃカッコつかないし参考にできる構図がち⚪︎かわしか無かったからですよ。この構図もある漫画の扉絵を参考にしているので気づいたら当職に言ってください。乞うご期待 星野</p>
+
+						<!-- ブランドロゴ＆社名表記 -->
+						<div class="flex items-center gap-3 mb-4">
+							<span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-widest">星野製作所</span>
+							<span class="text-xs sm:text-sm font-bold text-slate-400 tracking-wider hidden sm:inline">HOSHINO FACTORY</span>
+						</div>
+
+						<!-- メインキャッチコピー -->
+						<h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 dark:text-slate-100 mb-6 leading-tight tracking-tight">
+							確かな技術で<br>
+							安心を約束
+						</h2>
+
+						<!-- サブテキスト -->
+						<p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-md">
+							デザインから模型製作まで、幅広いニーズにお応えする星野製作所。<br class="hidden sm:inline">
+							あなたの「欲しい」をカタチにします。
+						</p>
+
+						<!-- CTAボタン -->
+						<div>
+							<a class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 text-white px-7 py-3.5 rounded-full font-bold text-base hover:from-sky-400 hover:to-indigo-500 transition-all transform hover:scale-105 shadow-lg shadow-sky-500/25" href="#contact">
+								制作を依頼する <i class="w-4 h-4" data-lucide="arrow-right"></i>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -2201,6 +2226,29 @@ function toggleShopBgm() {
       initVisitorCounter();
       showDisclaimerModal(); // 免責事項ポップアップ呼び出しを統合
     });
+</script>
+	<!-- 背景スライドショー制御用スクリプト -->
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const slides = document.querySelectorAll('#hero-slideshow .hero-slide');
+		if (slides.length <= 1) return;
+
+		let currentIndex = 0;
+		const slideInterval = 5000; // 切り替え間隔（ミリ秒）。5000 = 5秒
+
+		setInterval(() => {
+			// 現在の画像を非表示（透明）にする
+			slides[currentIndex].classList.remove('opacity-100');
+			slides[currentIndex].classList.add('opacity-0');
+
+			// 次の画像のインデックスを計算（最後になったら最初に戻る）
+			currentIndex = (currentIndex + 1) % slides.length;
+
+			// 次の画像を表示（くっきり）にする
+			slides[currentIndex].classList.remove('opacity-0');
+			slides[currentIndex].classList.add('opacity-100');
+		}, slideInterval);
+	});
 </script>
   <script async data-goatcounter="https://hoshino-project.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
 </body>
