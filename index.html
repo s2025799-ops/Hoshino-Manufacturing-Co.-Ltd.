@@ -63,21 +63,43 @@
 	   animation: dipyonSlide 3.5s ease-in-out forwards;
 	 }
 
-	/* 例：背景画像を薄く敷くCSS設定 */
+	/* --- 背景柄の設定（修正版） --- */
 body {
-  background-color: #f8fafc;
-  /* 画像を繰り返し表示 */
-  background-image: url('IMG_5534.jpeg'); 
+  font-family: 'Noto Sans JP', sans-serif;
+  position: relative;
+  background-color: #f8fafc; /* ライトモードの基本背景色 */
+}
+
+/* ダークモード時の基本背景色 */
+html.dark body {
+  background-color: #0f172a;
+}
+
+/* 背景に柄画像をうっすら敷く設定 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* コンテンツの裏側に配置 */
+  background-image: url('IMG_5534.jpeg'); /* モケット柄の画像 */
   background-repeat: repeat;
-  background-size: 200px; /* 柄の大きさを調整 */
-  
-  /* 文字を読みやすくするため、白っぽく透かす（blend-mode使用） */
-  background-blend-mode: overlay;
+  background-size: 180px; /* 柄の大きさ（お好みで調整） */
+  opacity: 0.15; /* 柄の濃さ（0.1〜0.3程度で調整） */
+  pointer-events: none;
+}
+
+/* ダークモード時は柄を少し暗めに馴染ませる */
+html.dark body::before {
+  opacity: 0.1;
+  filter: brightness(0.7);
 }
 	</style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200">
-	<!-- ヘッダー -->
+<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-white text-slate-900 dark:text-slate-100 transition-colors duration-200">	
+<!-- ヘッダー -->
 	<header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
 		<div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
 			<!-- ロゴ・企業名エリア（変更なし） -->
