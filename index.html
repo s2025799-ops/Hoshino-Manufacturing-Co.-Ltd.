@@ -34,6 +34,23 @@
 	html {
 	scroll-behavior: smooth;
 	}
+		/* --- セクションやカードの白背景・グレー背景を半透明にして柄を透けさせる --- */
+.bg-white {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.bg-slate-50 {
+  background-color: rgba(248, 250, 252, 0.8) !important;
+}
+
+/* ダークモード時の半透明設定 */
+html.dark .dark\:bg-slate-800 {
+  background-color: rgba(30, 41, 59, 0.85) !important;
+}
+
+html.dark .dark\:bg-slate-900 {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}
 	/* アニメーション用クラス */
 	.transition-max-height {
 	transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -87,7 +104,7 @@ body::before {
   background-image: url('IMG_5534.jpeg'); /* モケット柄の画像 */
   background-repeat: repeat;
   background-size: 180px; /* 柄の大きさ（お好みで調整） */
-  opacity: 0.15; /* 柄の濃さ（0.1〜0.3程度で調整） */
+  opacity: 0.1; /* 柄の濃さ（0.1〜0.3程度で調整） */
   pointer-events: none;
 }
 
